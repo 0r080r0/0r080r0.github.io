@@ -1,0 +1,99 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: "Neural Network Optimization",
+    description: "Advanced optimization techniques for deep learning models using novel gradient descent methods. Achieved 40% performance improvement over state-of-the-art baselines.",
+    image: "/project1.jpg", // Use your nature/travel images
+    tags: ["Python", "TensorFlow", "Deep Learning"],
+    githubUrl: "https://github.com/yourusername/neural-optimization",
+    paperUrl: "/papers/neural-optimization.pdf",
+    demoUrl: "https://demo.yourproject.com"
+  },
+  {
+    title: "Distributed Computing Framework",
+    description: "Scalable framework for distributed machine learning workloads across multiple GPU clusters. Handles fault tolerance and dynamic resource allocation.",
+    image: "/project2.jpg",
+    tags: ["Python", "CUDA", "Distributed Systems"],
+    githubUrl: "https://github.com/yourusername/distributed-ml",
+    paperUrl: "/papers/distributed-computing.pdf"
+  },
+  {
+    title: "Computer Vision Pipeline",
+    description: "End-to-end computer vision system for real-time object detection and tracking in complex environments. Deployed in production systems.",
+    image: "/project3.jpg",
+    tags: ["OpenCV", "PyTorch", "Computer Vision"],
+    githubUrl: "https://github.com/yourusername/cv-pipeline",
+    demoUrl: "https://cv-demo.yourproject.com"
+  }
+];
+---
+
+<Layout title="Your Name - PhD Portfolio">
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+    
+    <!-- Projects Section -->
+    <section class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+            Featured Research
+          </h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Exploring the frontiers of machine learning and artificial intelligence through innovative research and practical applications.
+          </p>
+        </div>
+        
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map(project => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              tags={project.tags}
+              githubUrl={project.githubUrl}
+              paperUrl={project.paperUrl}
+              demoUrl={project.demoUrl}
+            />
+          ))}
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+          <button class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors">
+            View All Projects
+          </button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-20 bg-slate-900/50">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">
+          About My Research
+        </h2>
+        <p class="text-lg text-gray-300 leading-relaxed">
+          My doctoral research focuses on advancing the state of artificial intelligence through 
+          novel algorithmic approaches and practical applications. I specialize in deep learning 
+          architectures, optimization techniques, and distributed computing systems that enable 
+          scalable AI solutions for real-world problems.
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
