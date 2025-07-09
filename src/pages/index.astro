@@ -36,28 +36,37 @@ const projects = [
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
   <!-- Hero Section -->
   <section class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23374151" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <!-- Enhanced Background Pattern -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23374151" fill-opacity="0.2"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
+    </div>
     
     <div class="max-w-6xl mx-auto px-6 text-center z-10">
-      <div class="mb-8">
-        <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
+      <div class="mb-12 animate-fade-in">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight tracking-tight">
           Evangelia Karakoliou
         </h1>
-        <p class="text-2xl md:text-3xl text-gray-300 mb-8 font-light">
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 font-light">
           PhD Researcher in Musician Health & AI
         </p>
-        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-base md:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
           Exploring the intersection of artificial intelligence, computer vision, and musician health. 
           Building intelligent systems that help musicians perform better while staying healthy.
         </p>
       </div>
       
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#research" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105">
-          View Research
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style="animation-delay: 0.3s;">
+        <a href="#research" class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <span class="flex items-center gap-2">
+            View Research
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </span>
         </a>
-        <a href="/cv.pdf" class="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-slate-900 rounded-full font-medium transition-all duration-300">
+        <a href="/cv.pdf" class="px-8 py-4 border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 rounded-full font-medium transition-all duration-300 backdrop-blur-sm">
           Download CV
         </a>
       </div>
@@ -65,60 +74,75 @@ const projects = [
   </section>
 
   <!-- Research Section -->
-  <section id="research" class="py-20 bg-slate-900">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+  <section id="research" class="py-24 bg-slate-900 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
           Featured Research
         </h2>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Advancing musician health through innovative AI applications and computer vision technology.
         </p>
       </div>
-
+      
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <article class="bg-slate-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 shadow-2xl">
-            <div class="relative">
+          <article class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-slate-800/70 transition-all duration-500 shadow-xl hover:shadow-2xl card-hover border border-slate-700/50">
+            <div class="relative overflow-hidden">
               <img 
                 src={project.image} 
                 alt={project.title}
-                class="w-full h-48 object-cover"
+                class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div class="absolute top-4 left-4 bg-slate-900 bg-opacity-80 text-white px-3 py-1 rounded-full text-sm">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+              <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
                 {project.readTime}
+              </div>
+              <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
               </div>
             </div>
             
             <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-3 leading-tight">
+              <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-blue-400 transition-colors">
                 {project.title}
               </h3>
-              <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+              <p class="text-gray-400 mb-6 text-sm leading-relaxed">
                 {project.description}
               </p>
               
-              <div class="flex flex-wrap gap-2 mb-4">
+              <div class="flex flex-wrap gap-2 mb-6">
                 {project.tags.map(tag => (
-                  <span class="px-3 py-1 bg-blue-600 bg-opacity-20 text-blue-400 rounded-full text-xs">
+                  <span class="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-300 rounded-full text-xs font-medium border border-blue-500/20">
                     {tag}
                   </span>
                 ))}
               </div>
               
-              <div class="flex gap-3 text-sm">
+              <div class="flex gap-4 text-sm">
                 {project.githubUrl && (
-                  <a href={project.githubUrl} class="text-blue-400 hover:text-blue-300 transition-colors">
+                  <a href={project.githubUrl} class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
                     GitHub
                   </a>
                 )}
                 {project.demoUrl && (
-                  <a href={project.demoUrl} class="text-green-400 hover:text-green-300 transition-colors">
+                  <a href={project.demoUrl} class="flex items-center gap-1 text-green-400 hover:text-green-300 transition-colors font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
                     Demo
                   </a>
                 )}
                 {project.paperUrl && (
-                  <a href={project.paperUrl} class="text-yellow-400 hover:text-yellow-300 transition-colors">
+                  <a href={project.paperUrl} class="flex items-center gap-1 text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
                     Paper
                   </a>
                 )}
@@ -131,20 +155,22 @@ const projects = [
   </section>
 
   <!-- About Section -->
-  <section class="py-20 bg-gradient-to-b from-slate-900 to-slate-800">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-8">
+  <section class="py-24 bg-gradient-to-b from-slate-900 to-slate-800">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-10">
         About My Research
       </h2>
-      <p class="text-lg text-gray-300 leading-relaxed mb-8">
-        My doctoral research focuses on developing AI-powered solutions for musician health and performance optimization. 
-        I combine computer vision, machine learning, and biomechanical analysis to create tools that help musicians 
-        prevent injuries and improve their technique.
-      </p>
-      <p class="text-lg text-gray-300 leading-relaxed">
-        Through innovative applications of pose estimation, movement analysis, and real-time feedback systems, 
-        I'm working to make music performance safer and more accessible for musicians of all levels.
-      </p>
+      <div class="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed">
+        <p>
+          My doctoral research focuses on developing AI-powered solutions for musician health and performance optimization. 
+          I combine computer vision, machine learning, and biomechanical analysis to create tools that help musicians 
+          prevent injuries and improve their technique.
+        </p>
+        <p>
+          Through innovative applications of pose estimation, movement analysis, and real-time feedback systems, 
+          I'm working to make music performance safer and more accessible for musicians of all levels.
+        </p>
+      </div>
     </div>
   </section>
 </Layout>
@@ -157,7 +183,7 @@ const projects = [
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -165,7 +191,22 @@ const projects = [
     }
   }
   
-  article {
-    animation: fadeInUp 0.6s ease-out;
+  .animate-fade-in {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-12px);
+  }
+  
+  /* Smooth scrolling for older browsers */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 </style>
