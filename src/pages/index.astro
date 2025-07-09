@@ -32,26 +32,26 @@ const projects = [
 ];
 ---
 
-<Layout title="Your Name - PhD Portfolio">
+<Layout title="Evangelia Karakoliou - PhD Portfolio">
   <main>
     <!-- Hero Section -->
     <Hero />
     
     <!-- Projects Section -->
-    <section class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16">
+      <div class="max-w-6xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
             Featured Research
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            Exploring the frontiers of machine learning and artificial intelligence through innovative research and practical applications.
+          <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+            Exploring the frontiers of Musician Health through innovative research and practical applications.
           </p>
         </div>
         
-        <!-- Projects Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Projects Grid - 2 rows, 3 columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {projects.map(project => (
             <ProjectCard
               title={project.title}
