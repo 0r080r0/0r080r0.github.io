@@ -129,80 +129,82 @@ const theses = [
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
-  <main class="h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex overflow-hidden">
-     
+  <main class="h-screen bg-black flex overflow-hidden relative">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('/assets/Tatras.jpg');"></div>
+    
     <!-- Left Sidebar -->
-    <aside class="w-64 bg-gray-900/70 backdrop-blur-sm border-r border-gray-800 p-6 flex flex-col">
+    <aside class="w-64 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-6 flex flex-col relative z-10">
       <nav class="space-y-6">
         <!-- Research Areas -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Research Areas</h3>
+          <h3 class="text-sm font-semibold text-white mb-3 tracking-wide uppercase opacity-90">Research Areas</h3>
           <div class="space-y-2">
             {researchAreas.map(area => (
-              <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
                 <span class="text-lg">{area.icon}</span>
                 <div>
-                  <div class="text-sm font-medium text-gray-900">{area.title}</div>
-                  <div class="text-xs text-gray-500">{area.description}</div>
+                  <div class="text-sm font-medium text-white">{area.title}</div>
+                  <div class="text-xs text-gray-300 opacity-70">{area.description}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
+        
         <!-- Academic Work -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Academic Work</h3>
+          <h3 class="text-sm font-semibold text-white mb-3 tracking-wide uppercase opacity-90">Academic Work</h3>
           <div class="space-y-2">
             {theses.map(thesis => (
-              <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
-                <div class="text-sm font-medium text-gray-900">{thesis.title}</div>
-                <div class="text-xs text-gray-600 mt-1">{thesis.topic}</div>
-                <div class="text-xs text-gray-500 mt-1">{thesis.year} • {thesis.type}</div>
+              <div class="p-3 bg-white/10 rounded-lg hover:bg-white/20 cursor-pointer transition-colors">
+                <div class="text-sm font-medium text-white">{thesis.title}</div>
+                <div class="text-xs text-gray-300 mt-1 opacity-80">{thesis.topic}</div>
+                <div class="text-xs text-gray-400 mt-1 opacity-70">{thesis.year} • {thesis.type}</div>
               </div>
             ))}
           </div>
         </div>
-
+        
         <!-- Quick Links -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Quick Links</h3>
+          <h3 class="text-sm font-semibold text-white mb-3 tracking-wide uppercase opacity-90">Quick Links</h3>
           <div class="space-y-2">
-            <a href="/cv.pdf" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="/cv.pdf" class="block text-sm text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100">
               📄 Download CV
             </a>
-            <a href="#publications" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="#publications" class="block text-sm text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100">
               📚 Publications
             </a>
-            <a href="#contact" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="#contact" class="block text-sm text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100">
               📧 Contact
             </a>
           </div>
         </div>
       </nav>
     </aside>
-
+    
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
+    <div class="flex-1 flex flex-col relative z-10">
       <!-- Header -->
-      <header class="px-8 py-8 bg-gray-700/50 backdrop-blur-sm border-b border-gray-800">
+      <header class="px-8 py-8 bg-black/50 backdrop-blur-sm border-b border-gray-700">
         <div class="max-w-6xl mx-auto text-center">
           <h1 class="text-4xl font-light text-white mb-4">Evangelia Karakoliou</h1>
-          <div class="intro-text opacity-0 space-y-2 text-gray-400">
-            <p class="text-lg">PhD Candidate in Musician Health</p>
-            <p>Bridging the gap between technology and human performance</p>
-            <p class="text-sm italic">Dedicated to preventing injuries and optimising practice sessions through evidence-based interventions</p>
+          <div class="intro-text opacity-0 space-y-2 text-gray-300">
+            <p class="text-lg opacity-90">PhD Candidate in Musician Health</p>
+            <p class="opacity-80">Bridging the gap between technology and human performance</p>
+            <p class="text-sm italic opacity-70">Dedicated to preventing injuries and optimising practice sessions through evidence-based interventions</p>
           </div>
         </div>
       </header>
-
+      
       <!-- Projects Grid -->
       <div class="flex-1 px-8 py-6 overflow-y-auto">
         <div class="max-w-6xl mx-auto">
           <div class="grid grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <div 
-                class="project-card group relative bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300"
+                class="project-card group relative bg-black/60 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-500"
                 data-project-id={project.id}
               >
                 <div class="h-32 relative overflow-hidden">
@@ -211,7 +213,7 @@ const theses = [
                     alt={project.title}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                   <div class="absolute bottom-3 left-3 text-white">
                     <h3 class="font-medium text-sm mb-1">{project.title}</h3>
                     <p class="text-xs text-white/80">{project.shortDescription}</p>
@@ -232,7 +234,7 @@ const theses = [
                     )}
                   </div>
                   
-                  <div class="flex items-center justify-between text-xs text-gray-500">
+                  <div class="flex items-center justify-between text-xs text-gray-400">
                     <span>{project.readTime}</span>
                     <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -245,13 +247,13 @@ const theses = [
         </div>
       </div>
     </div>
-
+    
     <!-- Project Modal -->
-    <div id="project-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
-      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
-          <h2 id="modal-title" class="text-2xl font-semibold text-gray-900"></h2>
-          <button id="close-modal" class="text-gray-500 hover:text-gray-700 transition-colors">
+    <div id="project-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+      <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between">
+          <h2 id="modal-title" class="text-2xl font-semibold text-white"></h2>
+          <button id="close-modal" class="text-gray-400 hover:text-white transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -262,26 +264,26 @@ const theses = [
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <img id="modal-image" class="w-full h-64 object-cover rounded-lg mb-4" />
-              <p id="modal-description" class="text-gray-700 leading-relaxed"></p>
+              <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
             </div>
             
             <div class="space-y-6">
               <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h3>
+                <h3 class="text-lg font-semibold text-white mb-3">Technologies Used</h3>
                 <div id="modal-technologies" class="flex flex-wrap gap-2"></div>
               </div>
               
               <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Key Challenges</h3>
-                <ul id="modal-challenges" class="space-y-2 text-gray-700"></ul>
+                <h3 class="text-lg font-semibold text-white mb-3">Key Challenges</h3>
+                <ul id="modal-challenges" class="space-y-2 text-gray-300"></ul>
               </div>
               
               <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Outcomes & Impact</h3>
-                <ul id="modal-outcomes" class="space-y-2 text-gray-700"></ul>
+                <h3 class="text-lg font-semibold text-white mb-3">Outcomes & Impact</h3>
+                <ul id="modal-outcomes" class="space-y-2 text-gray-300"></ul>
               </div>
               
-              <div id="modal-links" class="flex gap-3 pt-4 border-t border-gray-200"></div>
+              <div id="modal-links" class="flex gap-3 pt-4 border-t border-gray-700"></div>
             </div>
           </div>
         </div>
@@ -306,11 +308,11 @@ const theses = [
   #project-modal.active {
     display: flex;
   }
-
+  
   .intro-text {
     animation: fadeIn 2s ease-in-out 0.5s forwards;
   }
-
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -420,7 +422,7 @@ const theses = [
     modalTechnologies.innerHTML = '';
     project.technologies.forEach(tech => {
       const span = document.createElement('span');
-      span.className = 'px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium';
+      span.className = 'px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-700';
       span.textContent = tech;
       modalTechnologies.appendChild(span);
     });
@@ -430,7 +432,7 @@ const theses = [
     project.challenges.forEach(challenge => {
       const li = document.createElement('li');
       li.className = 'flex items-start space-x-2';
-      li.innerHTML = `<span class="text-red-500 mt-1">•</span><span>${challenge}</span>`;
+      li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
       modalChallenges.appendChild(li);
     });
     
@@ -439,7 +441,7 @@ const theses = [
     project.outcomes.forEach(outcome => {
       const li = document.createElement('li');
       li.className = 'flex items-start space-x-2';
-      li.innerHTML = `<span class="text-green-500 mt-1">•</span><span>${outcome}</span>`;
+      li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${outcome}</span>`;
       modalOutcomes.appendChild(li);
     });
     
@@ -449,7 +451,7 @@ const theses = [
       const githubLink = document.createElement('a');
       githubLink.href = project.githubUrl;
       githubLink.target = '_blank';
-      githubLink.className = 'flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors';
+      githubLink.className = 'flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors border border-gray-600';
       githubLink.innerHTML = `
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
@@ -463,7 +465,7 @@ const theses = [
       const demoLink = document.createElement('a');
       demoLink.href = project.demoUrl;
       demoLink.target = '_blank';
-      demoLink.className = 'flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors';
+      demoLink.className = 'flex items-center gap-2 px-4 py-2 bg-green-800 text-white rounded-lg hover:bg-green-700 transition-colors border border-green-600';
       demoLink.innerHTML = `
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M8 5v14l11-7z"/>
@@ -477,7 +479,7 @@ const theses = [
       const paperLink = document.createElement('a');
       paperLink.href = project.paperUrl;
       paperLink.target = '_blank';
-      paperLink.className = 'flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors';
+      paperLink.className = 'flex items-center gap-2 px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-700 transition-colors border border-blue-600';
       paperLink.innerHTML = `
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
