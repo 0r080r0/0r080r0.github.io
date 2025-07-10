@@ -131,12 +131,12 @@ const theses = [
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
   <main class="h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex overflow-hidden">
     <!-- Left Sidebar -->
-    <aside class="w-64 bg-white/80 backdrop-blur-sm border-r border-gray-200 p-6 overflow-y-auto">
-      <nav class="space-y-8">
+    <aside class="w-64 bg-white/60 backdrop-blur-sm border-r border-gray-200 p-6 flex flex-col">
+      <nav class="space-y-6">
         <!-- Research Areas -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Research Areas</h3>
-          <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Research Areas</h3>
+          <div class="space-y-2">
             {researchAreas.map(area => (
               <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                 <span class="text-lg">{area.icon}</span>
@@ -151,8 +151,8 @@ const theses = [
 
         <!-- Academic Work -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Academic Work</h3>
-          <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Academic Work</h3>
+          <div class="space-y-2">
             {theses.map(thesis => (
               <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
                 <div class="text-sm font-medium text-gray-900">{thesis.title}</div>
@@ -165,7 +165,7 @@ const theses = [
 
         <!-- Quick Links -->
         <div>
-          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Quick Links</h3>
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Quick Links</h3>
           <div class="space-y-2">
             <a href="/cv.pdf" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
               📄 Download CV
@@ -184,17 +184,22 @@ const theses = [
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
       <!-- Header -->
-      <header class="px-8 py-6 bg-white/60 backdrop-blur-sm border-b border-gray-200">
-        <div class="max-w-6xl mx-auto">
-          <h1 class="text-2xl font-light text-gray-900 mb-2">Evangelia Karakoliou</h1>
-          <p class="text-gray-600 text-sm">PhD Researcher in Musician Health & AI • Exploring AI-powered solutions for musician wellbeing</p>
+      <header class="px-8 py-8 bg-white/40 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto text-center">
+          <h1 class="text-4xl font-light text-gray-900 mb-4">Evangelia Karakoliou</h1>
+          <div class="intro-text opacity-0 space-y-2 text-gray-600">
+            <p class="text-lg">PhD Researcher in Musician Health & AI</p>
+            <p>Exploring AI-powered solutions for musician wellbeing through computer vision</p>
+            <p>Bridging the gap between technology and human performance</p>
+            <p class="text-sm italic">Dedicated to preventing injuries and optimizing practice sessions</p>
+          </div>
         </div>
       </header>
 
       <!-- Projects Grid -->
-      <div class="flex-1 px-8 py-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto h-full">
-          <div class="grid grid-cols-3 gap-4 h-full">
+      <div class="flex-1 px-8 py-6 overflow-y-auto">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <div 
                 class="project-card group relative bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300"
@@ -301,23 +306,20 @@ const theses = [
   #project-modal.active {
     display: flex;
   }
-  
-  /* Custom scrollbar for sidebar */
-  aside::-webkit-scrollbar {
-    width: 4px;
+
+  .intro-text {
+    animation: fadeIn 2s ease-in-out 0.5s forwards;
   }
-  
-  aside::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  aside::-webkit-scrollbar-thumb {
-    background: #e5e7eb;
-    border-radius: 2px;
-  }
-  
-  aside::-webkit-scrollbar-thumb:hover {
-    background: #d1d5db;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 
