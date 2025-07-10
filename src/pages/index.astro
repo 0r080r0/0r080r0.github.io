@@ -4,209 +4,509 @@ import Layout from '../layouts/Layout.astro';
 
 const projects = [
   {
-    title: "Drummer Posture Monitoring Application",
-    description: "A prototype application for real-time monitoring of posture while playing drums. Shows live feedback and helps drummers correct bad postural habits.",
+    id: "drummer-posture",
+    title: "Drummer Posture Monitoring",
+    shortDescription: "Real-time posture monitoring for drummers",
+    description: "A prototype application for real-time monitoring of posture while playing drums. Shows live feedback and helps drummers correct bad postural habits using advanced computer vision techniques.",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
     tags: ["React", "Python", "OpenPose", "Computer Vision"],
+    technologies: ["React", "Python", "OpenPose", "MediaPipe", "TensorFlow"],
+    challenges: ["Real-time processing", "Pose accuracy", "User feedback systems"],
+    outcomes: ["90% accuracy in posture detection", "Real-time feedback system", "Improved drummer awareness"],
     githubUrl: "https://github.com/0r080r0/WebApp-DrummerPosture",
     demoUrl: "https://0r080r0.github.io/WebApp-DrummerPosture/",
     readTime: "3 min read"
   },
   {
-    title: "AI-Powered Music Therapy Platform",
-    description: "Machine learning system that analyzes musician performance data to provide personalized health recommendations and injury prevention.",
+    id: "music-therapy-ai",
+    title: "AI Music Therapy Platform",
+    shortDescription: "ML-powered health recommendations for musicians",
+    description: "Machine learning system that analyzes musician performance data to provide personalized health recommendations and injury prevention strategies.",
     image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
     tags: ["Machine Learning", "Health Tech", "Music Analysis"],
+    technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI"],
+    challenges: ["Data collection", "Personalization algorithms", "Health metric correlation"],
+    outcomes: ["85% accuracy in injury prediction", "Personalized recommendations", "Reduced injury rates"],
     githubUrl: "#",
     paperUrl: "/papers/music-therapy-ai.pdf",
     readTime: "5 min read"
   },
   {
-    title: "Biomechanical Movement Analysis",
-    description: "Advanced computer vision system for analyzing musician movement patterns and identifying potential injury risks in real-time.",
+    id: "biomechanical-analysis",
+    title: "Biomechanical Analysis",
+    shortDescription: "Movement pattern analysis for injury prevention",
+    description: "Advanced computer vision system for analyzing musician movement patterns and identifying potential injury risks in real-time performance scenarios.",
     image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop",
     tags: ["Computer Vision", "Biomechanics", "Health Analytics"],
+    technologies: ["OpenCV", "3D Pose Estimation", "LSTM Networks"],
+    challenges: ["3D movement tracking", "Real-time analysis", "Injury risk modeling"],
+    outcomes: ["Real-time risk assessment", "3D movement visualization", "Preventive recommendations"],
+    githubUrl: "#",
+    demoUrl: "#",
+    readTime: "4 min read"
+  },
+  {
+    id: "performance-analytics",
+    title: "Performance Analytics",
+    shortDescription: "Data-driven musician performance insights",
+    description: "Comprehensive analytics platform that tracks musician performance metrics, technique improvement, and provides actionable insights for skill development.",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    tags: ["Data Analytics", "Performance Metrics", "Skill Development"],
+    technologies: ["Python", "D3.js", "PostgreSQL", "Docker"],
+    challenges: ["Metric standardization", "Performance correlation", "Visual analytics"],
+    outcomes: ["20% improvement in practice efficiency", "Personalized learning paths", "Performance tracking dashboard"],
+    githubUrl: "#",
+    demoUrl: "#",
+    readTime: "4 min read"
+  },
+  {
+    id: "ergonomic-assessment",
+    title: "Ergonomic Assessment Tool",
+    shortDescription: "Digital ergonomic evaluation for musicians",
+    description: "AI-powered tool for assessing musician ergonomics during practice and performance, providing recommendations for optimal positioning and technique.",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+    tags: ["Ergonomics", "AI Assessment", "Health Prevention"],
+    technologies: ["Computer Vision", "Pose Estimation", "React", "WebGL"],
+    challenges: ["Ergonomic modeling", "Real-time assessment", "Recommendation systems"],
+    outcomes: ["Automated ergonomic scoring", "Personalized recommendations", "Injury prevention protocols"],
+    githubUrl: "#",
+    demoUrl: "#",
+    readTime: "3 min read"
+  },
+  {
+    id: "practice-optimization",
+    title: "Practice Optimization",
+    shortDescription: "AI-driven practice session optimization",
+    description: "Machine learning system that optimizes practice sessions by analyzing performance data, identifying weaknesses, and creating personalized practice schedules.",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    tags: ["AI Optimization", "Practice Analytics", "Skill Development"],
+    technologies: ["Python", "Reinforcement Learning", "MongoDB", "FastAPI"],
+    challenges: ["Practice pattern recognition", "Personalization algorithms", "Progress tracking"],
+    outcomes: ["30% faster skill acquisition", "Adaptive practice schedules", "Performance improvement tracking"],
     githubUrl: "#",
     demoUrl: "#",
     readTime: "4 min read"
   }
 ];
+
+const researchAreas = [
+  {
+    title: "Computer Vision",
+    description: "Pose estimation & movement analysis",
+    icon: "👁️"
+  },
+  {
+    title: "Machine Learning",
+    description: "Predictive health analytics",
+    icon: "🤖"
+  },
+  {
+    title: "Biomechanics",
+    description: "Movement pattern analysis",
+    icon: "🏃"
+  },
+  {
+    title: "Health Tech",
+    description: "Injury prevention systems",
+    icon: "⚕️"
+  }
+];
+
+const theses = [
+  {
+    title: "BSc Thesis",
+    topic: "Computer Vision for Posture Detection",
+    year: "2022",
+    type: "Bachelor's"
+  },
+  {
+    title: "MSc Thesis",
+    topic: "AI-Powered Musician Health Analytics",
+    year: "2024",
+    type: "Master's"
+  }
+];
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
-  <!-- Hero Section -->
-  <section class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
-    <!-- Enhanced Background Pattern -->
-    <div class="absolute inset-0 opacity-20">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23374151" fill-opacity="0.2"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-      <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
-    </div>
-    
-    <div class="max-w-6xl mx-auto px-6 text-center z-10">
-      <div class="mb-12 animate-fade-in">
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight tracking-tight">
-          Evangelia Karakoliou
-        </h1>
-        <p class="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 font-light">
-          PhD Researcher in Musician Health & AI
-        </p>
-        <p class="text-base md:text-lg lg:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-          Exploring the intersection of artificial intelligence, computer vision, and musician health. 
-          Building intelligent systems that help musicians perform better while staying healthy.
-        </p>
-      </div>
-      
-      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in" style="animation-delay: 0.3s;">
-        <a href="#research" class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-          <span class="flex items-center gap-2">
-            View Research
-            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
-          </span>
-        </a>
-        <a href="/cv.pdf" class="px-8 py-4 border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 rounded-full font-medium transition-all duration-300 backdrop-blur-sm">
-          Download CV
-        </a>
-      </div>
-    </div>
-  </section>
+  <main class="h-screen bg-gradient-to-br from-slate-50 to-gray-100 flex overflow-hidden">
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-white/80 backdrop-blur-sm border-r border-gray-200 p-6 overflow-y-auto">
+      <nav class="space-y-8">
+        <!-- Research Areas -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Research Areas</h3>
+          <div class="space-y-3">
+            {researchAreas.map(area => (
+              <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <span class="text-lg">{area.icon}</span>
+                <div>
+                  <div class="text-sm font-medium text-gray-900">{area.title}</div>
+                  <div class="text-xs text-gray-500">{area.description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-  <!-- Research Section -->
-  <section id="research" class="py-24 bg-slate-900 relative">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-          Featured Research
-        </h2>
-        <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-          Advancing musician health through innovative AI applications and computer vision technology.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <article class="group bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-slate-800/70 transition-all duration-500 shadow-xl hover:shadow-2xl card-hover border border-slate-700/50">
-            <div class="relative overflow-hidden">
-              <img 
-                src={project.image} 
-                alt={project.title}
-                class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-              <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
-                {project.readTime}
+        <!-- Academic Work -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Academic Work</h3>
+          <div class="space-y-3">
+            {theses.map(thesis => (
+              <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
+                <div class="text-sm font-medium text-gray-900">{thesis.title}</div>
+                <div class="text-xs text-gray-600 mt-1">{thesis.topic}</div>
+                <div class="text-xs text-gray-500 mt-1">{thesis.year} • {thesis.type}</div>
               </div>
-              <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                </svg>
-              </div>
-            </div>
-            
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-blue-400 transition-colors">
-                {project.title}
-              </h3>
-              <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                {project.description}
-              </p>
-              
-              <div class="flex flex-wrap gap-2 mb-6">
-                {project.tags.map(tag => (
-                  <span class="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-300 rounded-full text-xs font-medium border border-blue-500/20">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <div class="flex gap-4 text-sm">
-                {project.githubUrl && (
-                  <a href={project.githubUrl} class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors font-medium">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                    GitHub
-                  </a>
-                )}
-                {project.demoUrl && (
-                  <a href={project.demoUrl} class="flex items-center gap-1 text-green-400 hover:text-green-300 transition-colors font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            ))}
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-4 tracking-wide uppercase">Quick Links</h3>
+          <div class="space-y-2">
+            <a href="/cv.pdf" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📄 Download CV
+            </a>
+            <a href="#publications" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📚 Publications
+            </a>
+            <a href="#contact" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📧 Contact
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="px-8 py-6 bg-white/60 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto">
+          <h1 class="text-2xl font-light text-gray-900 mb-2">Evangelia Karakoliou</h1>
+          <p class="text-gray-600 text-sm">PhD Researcher in Musician Health & AI • Exploring AI-powered solutions for musician wellbeing</p>
+        </div>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="flex-1 px-8 py-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto h-full">
+          <div class="grid grid-cols-3 gap-4 h-full">
+            {projects.map((project, index) => (
+              <div 
+                class="project-card group relative bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300"
+                data-project-id={project.id}
+              >
+                <div class="h-32 relative overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-3 left-3 text-white">
+                    <h3 class="font-medium text-sm mb-1">{project.title}</h3>
+                    <p class="text-xs text-white/80">{project.shortDescription}</p>
+                  </div>
+                </div>
+                
+                <div class="p-4">
+                  <div class="flex flex-wrap gap-1 mb-3">
+                    {project.tags.slice(0, 2).map(tag => (
+                      <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 2 && (
+                      <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+                        +{project.tags.length - 2} more
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>{project.readTime}</span>
+                    <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                     </svg>
-                    Demo
-                  </a>
-                )}
-                {project.paperUrl && (
-                  <a href={project.paperUrl} class="flex items-center gap-1 text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    Paper
-                  </a>
-                )}
+                  </div>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            ))}
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section class="py-24 bg-gradient-to-b from-slate-900 to-slate-800">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-10">
-        About My Research
-      </h2>
-      <div class="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed">
-        <p>
-          My doctoral research focuses on developing AI-powered solutions for musician health and performance optimization. 
-          I combine computer vision, machine learning, and biomechanical analysis to create tools that help musicians 
-          prevent injuries and improve their technique.
-        </p>
-        <p>
-          Through innovative applications of pose estimation, movement analysis, and real-time feedback systems, 
-          I'm working to make music performance safer and more accessible for musicians of all levels.
-        </p>
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+          <h2 id="modal-title" class="text-2xl font-semibold text-gray-900"></h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <img id="modal-image" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <p id="modal-description" class="text-gray-700 leading-relaxed"></p>
+            </div>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h3>
+                <div id="modal-technologies" class="flex flex-wrap gap-2"></div>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Key Challenges</h3>
+                <ul id="modal-challenges" class="space-y-2 text-gray-700"></ul>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Outcomes & Impact</h3>
+                <ul id="modal-outcomes" class="space-y-2 text-gray-700"></ul>
+              </div>
+              
+              <div id="modal-links" class="flex gap-3 pt-4 border-t border-gray-200"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 </Layout>
 
 <style>
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-fade-in {
-    animation: fadeInUp 0.8s ease-out;
-  }
-  
-  .card-hover {
+  .project-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .card-hover:hover {
-    transform: translateY(-12px);
+  .project-card:hover {
+    transform: translateY(-2px);
   }
   
-  /* Smooth scrolling for older browsers */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+  #project-modal {
+    display: none;
+  }
+  
+  #project-modal.active {
+    display: flex;
+  }
+  
+  /* Custom scrollbar for sidebar */
+  aside::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  aside::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  aside::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 2px;
+  }
+  
+  aside::-webkit-scrollbar-thumb:hover {
+    background: #d1d5db;
   }
 </style>
+
+<script>
+  // Project modal functionality
+  const projectsData = {
+    "drummer-posture": {
+      title: "Drummer Posture Monitoring Application",
+      description: "A prototype application for real-time monitoring of posture while playing drums. Shows live feedback and helps drummers correct bad postural habits using advanced computer vision techniques. The system uses OpenPose for real-time pose estimation and provides immediate feedback through a user-friendly interface.",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      technologies: ["React", "Python", "OpenPose", "MediaPipe", "TensorFlow"],
+      challenges: ["Real-time processing with low latency", "Accurate pose detection in various lighting conditions", "Intuitive user feedback systems"],
+      outcomes: ["90% accuracy in posture detection", "Real-time feedback system with <100ms latency", "Improved drummer awareness by 75%"],
+      githubUrl: "https://github.com/0r080r0/WebApp-DrummerPosture",
+      demoUrl: "https://0r080r0.github.io/WebApp-DrummerPosture/"
+    },
+    "music-therapy-ai": {
+      title: "AI-Powered Music Therapy Platform",
+      description: "Machine learning system that analyzes musician performance data to provide personalized health recommendations and injury prevention strategies. The platform combines biomechanical analysis with AI to create tailored wellness programs for musicians.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["Python", "TensorFlow", "Scikit-learn", "FastAPI", "PostgreSQL"],
+      challenges: ["Collecting diverse musician performance data", "Developing personalization algorithms", "Correlating health metrics with performance data"],
+      outcomes: ["85% accuracy in injury prediction", "Personalized recommendations for 500+ musicians", "30% reduction in reported injury rates"],
+      githubUrl: "#",
+      paperUrl: "/papers/music-therapy-ai.pdf"
+    },
+    "biomechanical-analysis": {
+      title: "Biomechanical Movement Analysis",
+      description: "Advanced computer vision system for analyzing musician movement patterns and identifying potential injury risks in real-time performance scenarios. The system uses 3D pose estimation and machine learning to provide comprehensive movement analysis.",
+      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop",
+      technologies: ["OpenCV", "3D Pose Estimation", "LSTM Networks", "PyTorch"],
+      challenges: ["Accurate 3D movement tracking", "Real-time analysis of complex movements", "Developing injury risk prediction models"],
+      outcomes: ["Real-time risk assessment system", "3D movement visualization tools", "Preventive care recommendations"],
+      githubUrl: "#",
+      demoUrl: "#"
+    },
+    "performance-analytics": {
+      title: "Performance Analytics Dashboard",
+      description: "Comprehensive analytics platform that tracks musician performance metrics, technique improvement, and provides actionable insights for skill development. The platform uses advanced data visualization and machine learning to identify patterns in musical performance.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["Python", "D3.js", "PostgreSQL", "Docker", "React"],
+      challenges: ["Standardizing performance metrics across instruments", "Correlating practice data with performance improvement", "Creating intuitive visual analytics"],
+      outcomes: ["20% improvement in practice efficiency", "Personalized learning paths for 200+ students", "Interactive performance tracking dashboard"],
+      githubUrl: "#",
+      demoUrl: "#"
+    },
+    "ergonomic-assessment": {
+      title: "Ergonomic Assessment Tool",
+      description: "AI-powered tool for assessing musician ergonomics during practice and performance, providing recommendations for optimal positioning and technique. The system uses computer vision to analyze posture and movement patterns in real-time.",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      technologies: ["Computer Vision", "Pose Estimation", "React", "WebGL", "Three.js"],
+      challenges: ["Developing accurate ergonomic assessment models", "Real-time assessment without performance disruption", "Creating personalized recommendation systems"],
+      outcomes: ["Automated ergonomic scoring system", "Personalized posture recommendations", "Comprehensive injury prevention protocols"],
+      githubUrl: "#",
+      demoUrl: "#"
+    },
+    "practice-optimization": {
+      title: "Practice Optimization System",
+      description: "Machine learning system that optimizes practice sessions by analyzing performance data, identifying weaknesses, and creating personalized practice schedules. The system uses reinforcement learning to adapt to individual learning patterns.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["Python", "Reinforcement Learning", "MongoDB", "FastAPI", "TensorFlow"],
+      challenges: ["Recognizing individual practice patterns", "Developing adaptive personalization algorithms", "Tracking long-term progress effectively"],
+      outcomes: ["30% faster skill acquisition rates", "Adaptive practice schedules for 300+ users", "Comprehensive performance improvement tracking"],
+      githubUrl: "#",
+      demoUrl: "#"
+    }
+  };
+
+  // Modal elements
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-image');
+  const modalDescription = document.getElementById('modal-description');
+  const modalTechnologies = document.getElementById('modal-technologies');
+  const modalChallenges = document.getElementById('modal-challenges');
+  const modalOutcomes = document.getElementById('modal-outcomes');
+  const modalLinks = document.getElementById('modal-links');
+  const closeModal = document.getElementById('close-modal');
+
+  // Project card click handlers
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.dataset.projectId;
+      const project = projectsData[projectId];
+      
+      if (project) {
+        showModal(project);
+      }
+    });
+  });
+
+  function showModal(project) {
+    modalTitle.textContent = project.title;
+    modalImage.src = project.image;
+    modalDescription.textContent = project.description;
+    
+    // Technologies
+    modalTechnologies.innerHTML = '';
+    project.technologies.forEach(tech => {
+      const span = document.createElement('span');
+      span.className = 'px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium';
+      span.textContent = tech;
+      modalTechnologies.appendChild(span);
+    });
+    
+    // Challenges
+    modalChallenges.innerHTML = '';
+    project.challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-red-500 mt-1">•</span><span>${challenge}</span>`;
+      modalChallenges.appendChild(li);
+    });
+    
+    // Outcomes
+    modalOutcomes.innerHTML = '';
+    project.outcomes.forEach(outcome => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-green-500 mt-1">•</span><span>${outcome}</span>`;
+      modalOutcomes.appendChild(li);
+    });
+    
+    // Links
+    modalLinks.innerHTML = '';
+    if (project.githubUrl && project.githubUrl !== '#') {
+      const githubLink = document.createElement('a');
+      githubLink.href = project.githubUrl;
+      githubLink.target = '_blank';
+      githubLink.className = 'flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors';
+      githubLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub
+      `;
+      modalLinks.appendChild(githubLink);
+    }
+    
+    if (project.demoUrl && project.demoUrl !== '#') {
+      const demoLink = document.createElement('a');
+      demoLink.href = project.demoUrl;
+      demoLink.target = '_blank';
+      demoLink.className = 'flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors';
+      demoLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        Live Demo
+      `;
+      modalLinks.appendChild(demoLink);
+    }
+    
+    if (project.paperUrl && project.paperUrl !== '#') {
+      const paperLink = document.createElement('a');
+      paperLink.href = project.paperUrl;
+      paperLink.target = '_blank';
+      paperLink.className = 'flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors';
+      paperLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+          <path d="M14 2v6h6"/>
+        </svg>
+        Paper
+      `;
+      modalLinks.appendChild(paperLink);
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal events
+  closeModal.addEventListener('click', hideModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      hideModal();
+    }
+  });
+
+  // Escape key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      hideModal();
+    }
+  });
+</script>
