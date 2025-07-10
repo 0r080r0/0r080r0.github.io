@@ -22,30 +22,30 @@ const { title, description, image, tags, githubUrl, paperUrl, demoUrl } = Astro.
       class="w-full h-full object-cover opacity-20 mix-blend-lighten pointer-events-none"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-900/70 to-transparent"></div>
-  </div>
 
-  <!-- Foreground Content -->
-  <div class="relative z-10 h-full flex flex-col justify-between p-5">
-    <!-- Top Meta -->
-    <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+    <!-- Meta Info Bar -->
+    <div class="absolute bottom-0 left-0 right-0 bg-black/90 text-white text-[0.7rem] flex justify-between px-4 py-1 z-20 font-mono tracking-wide">
       <span>3 min read</span>
       <span>Dec 15, 2024</span>
     </div>
+  </div>
 
+  <!-- Foreground Content -->
+  <div class="relative z-10 h-full flex flex-col justify-end p-5">
     <!-- Title -->
-    <h3 class="text-xl font-semibold text-white leading-tight group-hover:text-blue-400 transition-colors line-clamp-2">
+    <h3 class="text-xl font-semibold text-white leading-tight group-hover:text-blue-400 transition-colors line-clamp-2 mb-2">
       {title}
     </h3>
 
     <!-- Description -->
-    <p class="text-sm text-slate-300 mt-2 mb-3 line-clamp-2">
+    <p class="text-sm text-slate-300 mb-3 line-clamp-2">
       {description}
     </p>
 
     <!-- Tags -->
     <div class="flex flex-wrap gap-1 mb-4">
       {tags.slice(0, 3).map(tag => (
-        <span class="px-2 py-0.5 text-xs bg-blue-700/20 text-blue-400 rounded-full tracking-tight">
+        <span class="px-2 py-0.5 text-xs bg-slate-800 text-teal-300 rounded-full tracking-tight">
           {tag}
         </span>
       ))}
