@@ -187,11 +187,11 @@ const theses = [
       <header class="px-8 py-8 bg-gray-900/50 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-6xl mx-auto text-center">
           <h1 class="text-4xl font-light text-white mb-4">Evangelia Karakoliou</h1>
-          <div class="intro-text opacity-0 space-y-2 text-gray-200">
-            <p class="text-lg">PhD Researcher in Musician Health & AI</p>
-            <p>Exploring AI-powered solutions for musician wellbeing through computer vision</p>
+          <div class="intro-text opacity-0 space-y-2 text-gray-500">
+            <p class="text-lg">PhD Candidate in Musician Health</p>
+            <p>Exploring innovative solutions for musician wellbeing through digital health and evidence-based interventions</p>
             <p>Bridging the gap between technology and human performance</p>
-            <p class="text-sm italic">Dedicated to preventing injuries and optimizing practice sessions</p>
+            <p class="text-sm italic">Dedicated to preventing injuries, creating sustainable touring strategies, and optimising practice sessions</p>
           </div>
         </div>
       </header>
@@ -221,12 +221,12 @@ const theses = [
                 <div class="p-4">
                   <div class="flex flex-wrap gap-1 mb-3">
                     {project.tags.slice(0, 2).map(tag => (
-                      <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                      <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
                         {tag}
                       </span>
                     ))}
                     {project.tags.length > 2 && (
-                      <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
+                      <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
                         +{project.tags.length - 2} more
                       </span>
                     )}
