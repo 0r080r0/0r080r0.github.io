@@ -13,7 +13,7 @@ export interface Props {
 const { title, description, image, tags, githubUrl, paperUrl, demoUrl } = Astro.props;
 ---
 
-<article class="group relative bg-slate-900/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-slate-900/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl h-96">
+<article class="group relative bg-slate-950/70 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden hover:bg-slate-900 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl group-hover:ring-2 group-hover:ring-blue-500/50 h-96">
   <!-- Background Image -->
   <div class="h-48 relative overflow-hidden">
     <img 
@@ -21,31 +21,31 @@ const { title, description, image, tags, githubUrl, paperUrl, demoUrl } = Astro.
       alt={title}
       class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/50 to-transparent z-10"></div>
     
     <!-- Favorite/Star Icon -->
-    <div class="absolute top-4 right-4 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <div class="absolute top-4 right-4 text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+      <svg class="w-5 h-5 animate-pulse group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
       </svg>
     </div>
   </div>
   
   <!-- Content -->
-  <div class="p-4 relative z-10 h-48 flex flex-col justify-between">
+  <div class="p-4 relative z-20 h-48 flex flex-col justify-between">
     <!-- Meta Info -->
-    <div class="flex items-center justify-between mb-2 text-xs text-gray-400">
+    <div class="flex items-center justify-between mb-2 text-xs text-slate-400">
       <span>3 min read</span>
       <span>Dec 15, 2024</span>
     </div>
     
     <!-- Title -->
-    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
+    <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors line-clamp-2">
       {title}
     </h3>
     
     <!-- Description -->
-    <p class="text-gray-300 mb-3 line-clamp-2 text-sm">
+    <p class="text-slate-200 mb-3 line-clamp-2 text-sm">
       {description}
     </p>
     
