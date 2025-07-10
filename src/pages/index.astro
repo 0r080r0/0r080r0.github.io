@@ -129,90 +129,166 @@ const theses = [
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
-  <main class="relative h-screen overflow-hidden">
-    <!-- Background Image + Dark Overlay -->
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/images/your-photo.jpg"   <!-- ← Update this path -->
-        alt="Background"
-        class="w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 opacity-80"></div>
-    </div>
-
-    <!-- Foreground Content -->
-    <div class="relative z-10 flex h-full">
-      <!-- Left Sidebar -->
-      <aside class="w-64 bg-gray-900/70 backdrop-blur-sm border-r border-gray-800 p-6 flex flex-col">
-        <!-- Sidebar content -->
-      </aside>
-
-      <!-- Main Content Panel -->
-      <div class="flex-1 flex flex-col">
-        <!-- Header -->
-        <header class="px-8 py-8 bg-gray-700/50 backdrop-blur-sm border-b border-gray-800">
-          <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl font-light text-white mb-4">Evangelia Karakoliou</h1>
-            <div class="intro-text opacity-0 space-y-2 text-gray-400">
-              <p class="text-lg">PhD Candidate in Musician Health</p>
-              <p>Exploring innovative solutions for musician wellbeing through digital health and evidence-based interventions</p>
-              <p>Bridging the gap between technology and human performance</p>
-              <p class="text-sm italic">Dedicated to preventing injuries, creating sustainable touring strategies, and optimising practice sessions</p>
-            </div>
+  <main class="h-screen bg-gradient-to-br from-gray-800 to-gray-900 flex overflow-hidden">
+     
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-gray-900/70 backdrop-blur-sm border-r border-gray-800 p-6 flex flex-col">
+      <nav class="space-y-6">
+        <!-- Research Areas -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Research Areas</h3>
+          <div class="space-y-2">
+            {researchAreas.map(area => (
+              <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <span class="text-lg">{area.icon}</span>
+                <div>
+                  <div class="text-sm font-medium text-gray-900">{area.title}</div>
+                  <div class="text-xs text-gray-500">{area.description}</div>
+                </div>
+              </div>
+            ))}
           </div>
-        </header>
+        </div>
 
-        <!-- Projects Grid -->
-        <div class="flex-1 px-8 py-6 overflow-y-auto">
-          <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-3 gap-6">
-              {projects.map(project => (
-                <div
-                  class="project-card group relative bg-slate-900 border border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  data-project-id={project.id}
-                >
-                  <div class="h-32 relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                      <h3 class="font-medium text-sm mb-1">{project.title}</h3>
-                      <p class="text-xs text-white/80">{project.shortDescription}</p>
-                    </div>
-                  </div>
-                  <div class="p-4 bg-slate-900">
-                    <div class="flex flex-wrap gap-1 mb-3">
-                      {project.tags.slice(0, 2).map(tag => (
-                        <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
-                          {tag}
-                        </span>
-                      ))}
-                      {project.tags.length > 2 && (
-                        <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
-                          +{project.tags.length - 2} more
-                        </span>
-                      )}
-                    </div>
-                    <div class="flex items-center justify-between text-xs text-gray-500">
-                      <span>{project.readTime}</span>
-                      <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                      </svg>
-                    </div>
+        <!-- Academic Work -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Academic Work</h3>
+          <div class="space-y-2">
+            {theses.map(thesis => (
+              <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors">
+                <div class="text-sm font-medium text-gray-900">{thesis.title}</div>
+                <div class="text-xs text-gray-600 mt-1">{thesis.topic}</div>
+                <div class="text-xs text-gray-500 mt-1">{thesis.year} • {thesis.type}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-sm font-semibold text-gray-900 mb-3 tracking-wide uppercase">Quick Links</h3>
+          <div class="space-y-2">
+            <a href="/cv.pdf" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📄 Download CV
+            </a>
+            <a href="#publications" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📚 Publications
+            </a>
+            <a href="#contact" class="block text-sm text-gray-700 hover:text-gray-900 transition-colors">
+              📧 Contact
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="px-8 py-8 bg-gray-700/50 backdrop-blur-sm border-b border-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+          <h1 class="text-4xl font-light text-white mb-4">Evangelia Karakoliou</h1>
+          <div class="intro-text opacity-0 space-y-2 text-gray-400">
+            <p class="text-lg">PhD Candidate in Musician Health</p>
+            <p>Exploring innovative solutions for musician wellbeing through digital health and evidence-based interventions</p>
+            <p>Bridging the gap between technology and human performance</p>
+            <p class="text-sm italic">Dedicated to preventing injuries, creating sustainable touring strategies, and optimising practice sessions</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="flex-1 px-8 py-6 overflow-y-auto">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-3 gap-6">
+            {projects.map((project, index) => (
+              <div 
+                class="project-card group relative bg-white/80 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-300"
+                data-project-id={project.id}
+              >
+                <div class="h-32 relative overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  <div class="absolute bottom-3 left-3 text-white">
+                    <h3 class="font-medium text-sm mb-1">{project.title}</h3>
+                    <p class="text-xs text-white/80">{project.shortDescription}</p>
                   </div>
                 </div>
-              ))}
+                
+                <div class="p-4">
+                  <div class="flex flex-wrap gap-1 mb-3">
+                    {project.tags.slice(0, 2).map(tag => (
+                      <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 2 && (
+                      <span class="px-2 py-1 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
+                        +{project.tags.length - 2} more
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>{project.readTime}</span>
+                    <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
+          <h2 id="modal-title" class="text-2xl font-semibold text-gray-900"></h2>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <img id="modal-image" class="w-full h-64 object-cover rounded-lg mb-4" />
+              <p id="modal-description" class="text-gray-700 leading-relaxed"></p>
+            </div>
+            
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h3>
+                <div id="modal-technologies" class="flex flex-wrap gap-2"></div>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Key Challenges</h3>
+                <ul id="modal-challenges" class="space-y-2 text-gray-700"></ul>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Outcomes & Impact</h3>
+                <ul id="modal-outcomes" class="space-y-2 text-gray-700"></ul>
+              </div>
+              
+              <div id="modal-links" class="flex gap-3 pt-4 border-t border-gray-200"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-
-  <!-- Rest of your modal, scripts, styles unchanged... -->
 </Layout>
 
 <style>
