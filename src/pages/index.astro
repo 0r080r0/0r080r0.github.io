@@ -148,12 +148,23 @@ const theses = [
           <div>
             <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Research Areas</h3>
             <div class="space-y-1">
-              {researchAreas.map(area => (
-                <div class="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-white/10 cursor-pointer transition-colors">
-                  <span class="text-sm">{area.icon}</span>
-                  <div>
-                    <div class="text-xs font-medium text-white">{area.title}</div>
-                    <div class="text-xs text-gray-300 opacity-70 leading-tight">{area.description}</div>
+              {researchAreas.map((area, index) => (
+                <div class="research-area-item cursor-pointer" data-area-index={index}>
+                  <div class="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-white/10 transition-colors">
+                    <span class="text-sm">{area.icon}</span>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs font-medium text-white">{area.title}</div>
+                        <svg class="w-3 h-3 text-gray-400 transition-transform research-area-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </div>
+                      <div class="text-xs text-gray-300 opacity-70 leading-tight">{area.description}</div>
+                    </div>
+                  </div>
+                  <div class="research-area-details hidden ml-6 mt-2 space-y-1">
+                    <div class="text-xs text-gray-400 opacity-80">Related Projects:</div>
+                    <div class="research-area-projects space-y-1"></div>
                   </div>
                 </div>
               ))}
@@ -164,11 +175,20 @@ const theses = [
           <div>
             <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Academic Work</h3>
             <div class="space-y-1">
-              {theses.map(thesis => (
-                <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 cursor-pointer transition-colors">
-                  <div class="text-xs font-medium text-white">{thesis.title}</div>
-                  <div class="text-xs text-gray-300 mt-0.5 opacity-80 leading-tight">{thesis.topic}</div>
-                  <div class="text-xs text-gray-400 mt-0.5 opacity-70">{thesis.year} • {thesis.type}</div>
+              {theses.map((thesis, index) => (
+                <div class="thesis-item cursor-pointer" data-thesis-index={index}>
+                  <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+                    <div class="flex items-center justify-between">
+                      <div class="text-xs font-medium text-white">{thesis.title}</div>
+                      <svg class="w-3 h-3 text-gray-400 transition-transform thesis-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </div>
+                    <div class="text-xs text-gray-400 mt-0.5 opacity-70">{thesis.year} • {thesis.type}</div>
+                  </div>
+                  <div class="thesis-details hidden ml-2 mt-2 p-2 bg-white/5 rounded-lg">
+                    <div class="text-xs text-gray-300 opacity-90 leading-tight">{thesis.topic}</div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -521,5 +541,61 @@ const theses = [
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       hideModal();
     }
+  });
+  
+  // Sidebar expandable functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Research areas expandable
+    document.querySelectorAll('.research-area-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const details = this.querySelector('.research-area-details');
+        const arrow = this.querySelector('.research-area-arrow');
+        const areaIndex = this.dataset.areaIndex;
+        
+        if (details.classList.contains('hidden')) {
+          details.classList.remove('hidden');
+          arrow.style.transform = 'rotate(90deg)';
+          
+          // Populate related projects
+          const projectsContainer = details.querySelector('.research-area-projects');
+          const areaTitle = researchAreas[areaIndex].title.toLowerCase();
+          const relatedProjects = projects.filter(project => 
+            project.tags.some(tag => tag.toLowerCase().includes(areaTitle.split(' ')[0])) ||
+            project.technologies.some(tech => tech.toLowerCase().includes(areaTitle.split(' ')[0]))
+          );
+          
+          projectsContainer.innerHTML = '';
+          relatedProjects.slice(0, 3).forEach(project => {
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'text-xs text-teal-300 hover:text-teal-200 cursor-pointer transition-colors';
+            projectDiv.textContent = `• ${project.title}`;
+            projectDiv.onclick = () => {
+              const projectCard = document.querySelector(`[data-project-id="${project.id}"]`);
+              if (projectCard) projectCard.click();
+            };
+            projectsContainer.appendChild(projectDiv);
+          });
+        } else {
+          details.classList.add('hidden');
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+
+    // Academic work expandable
+    document.querySelectorAll('.thesis-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const details = this.querySelector('.thesis-details');
+        const arrow = this.querySelector('.thesis-arrow');
+        
+        if (details.classList.contains('hidden')) {
+          details.classList.remove('hidden');
+          arrow.style.transform = 'rotate(90deg)';
+        } else {
+          details.classList.add('hidden');
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
   });
 </script>
