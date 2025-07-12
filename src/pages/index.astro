@@ -30,7 +30,60 @@ const projects = [
     githubUrl: "#",
     readTime: "GitHub"
   },
-  // ... (rest of your projects)
+  {
+    id: "biomechanical-analysis",
+    title: "Biomechanical Analysis (EMG)",
+    shortDescription: "Muscle activity pattern analysis for injury prevention",
+    description: "Independently developed skills in electromyography analysis to identify early musculoskeletal risk factors such as tension and inefficient muscle coordination in drummers. This enables detection of potential injury risks in real-time performance scenarios and supports evidence-based injury and pain prevention interventions such as EMG biofeedback, body awareness, and advanced technologies like vagus nerve stimulation - aiming to improve physical health by preventing musculoskeletal disorders common in musicians.",
+    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop",
+    tags: ["Computer Vision", "Biomechanics", "Health Analytics"],
+    technologies: ["R", "Python", "EMG"],
+    challenges: ["Extracting meaningful muscle contraction signals from noisy simulated EMG data", "Translating complex EMG signals into actionable insights for biofeedback and targeted interventionsg", "Detecting and quantifying co-contractions linked to muscular inefficiency"],
+    outcomes: ["Inpendently developed practical skills in EMG signal processing relevant to musician health research", "Supports my PhD proposal's focus on injury and pain prevention in drummers via evidence-based interventions", "Provides a foundation for understanding muscle function and guiding targeted prevention strategies"],
+    githubUrl: "https://github.com/0r080r0/PhD-Portfolio/tree/main/EMG_DataAnalysis",
+    readTime: "GitHub"
+  },
+  {
+    id: "performance-analytics",
+    title: "ML-Based Early Detection and Prediction of Injury and Pain",
+    shortDescription: "ML algorithm for prediction of performance-related musculosceletal injuries",
+    description: "This project applies machine learning techniques to analyze electromyography (EMG) signals, biomechanical data, and subjective measures to both detect early signs of injury risk and predict future injury and pain outcomes in musicians. By integrating multimodal data sources, the model aims to enable proactive, personalized interventions that improve musician health and performance longevity.",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    tags: ["Data Analytics", "Performance Metrics", "Skill Development"],
+    technologies: ["Python", "D3.js", "PostgreSQL", "Docker"],
+    challenges: ["Metric standardization", "Performance correlation", "Visual analytics"],
+    outcomes: ["20% improvement in practice efficiency", "Personalized learning paths", "Performance tracking dashboard"],
+    githubUrl: "#",
+    demoUrl: "#",
+    readTime: "4 min read"
+  },
+  {
+    id: "ergonomic-assessment",
+    title: "Multi-Level Modeling",
+    shortDescription: "Multi-Level Modeling for Panic Symptoms and Performance Anxiety in Drummers",
+    description: This project applied multi-level modeling (MLM) techniques to an AI-generated dataset designed with domain-specific input to simulate panic symptoms and contextual factors in drummers. While the dataset itself was synthetically generated, it was structured around realistic variables selected based on research literature and personal experience in musician health. Variables included panic symptom indicators, lifestyle habits, performance context, and musical background.",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+    tags: ["Ergonomics", "AI Assessment", "Health Prevention"],
+    technologies: ["R"],
+    challenges: ["Designing a realistic dataset structure with meaningful, interrelated variables reflecting both psychological and musical factors", "Implementing multi-level models to account for nested structures (e.g., individuals within bands or genres)", "Ensuring model validity despite synthetic data, with careful consideration of variance, collinearity, and interpretability"],
+    outcomes: ["Demonstrated the potential of MLM to analyse performance-related psychological data in music populations", "Showed how contextual (e.g., tour status, venue size) and individual (e.g., sleep, caffeine, practice hours) factors interact in panic symptom severity", "Strengthened my skills in modeling complex hierarchical data and designing synthetic research datasets with applied relevance"],
+    githubUrl: "https://github.com/0r080r0/PhD-Portfolio/tree/main/Multi-Level_Modelling",
+    readTime: "GitHub"
+  },
+  {
+    id: "practice-optimization",
+    title: "Music Experience Website",
+    shortDescription: "A self-developed website showcasing my music experience",
+    description: "Developed using R and Quarto, this website showcases my journey as a dedicated, self-taught intermediate musician. It highlights my long-term engagement with musicianship and provides essential context and credibility for my research in musician health.",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    tags: ["Website", "Web Development", "Music Experience" "Music Industry"],
+    technologies: ["R", "Quarto", "JavaScript", "HTML", "CSS"],
+    challenges: ["Learning Quarto as a new tool for web publishing", "Designing a site that effectively balances personal storytelling with professional presentation", "Ensuring the website is accessible and responsive across devices"],
+    outcomes: ["Established a professional online presence that reinforces my credibility as a musician-researcher", "Created a resource that bridges practical musicianship with scientific inquiry", "Enhanced my skills in Quarto, supporting future data-driven communication projects"],
+    githubUrl: "https://github.com/0r080r0/MusicianHealth_Website",
+    demoUrl: "https://evangelia-music.netlify.app/",
+    readTime: "GitHub & Demo"
+  }
 ];
 
 const researchExperiences = [
@@ -42,7 +95,30 @@ const researchExperiences = [
     challenges: ["Signal noise reduction", "Participant recruitment", "Data preprocessing"],
     contributions: ["Improved experimental protocols", "Enhanced data quality", "Research methodology development"]
   },
-  // ... (rest of your research experiences)
+  {
+    title: "Meta-Analysis Research",
+    description: "Cognitive & physical performance from music",
+    icon: "📊",
+    tasks: ["Literature review", "Effect size calculations", "Statistical meta-analysis"],
+    challenges: ["Study selection criteria", "Heterogeneity analysis", "Publication bias assessment"],
+    contributions: ["Comprehensive systematic review", "Statistical synthesis", "Evidence-based recommendations"]
+  },
+  {
+    title: "BSc Thesis Research",
+    description: "Mental toughness & peak performance",
+    icon: "🎯",
+    tasks: ["Online experiment design", "Data collection", "Statistical modeling"],
+    challenges: ["Remote data quality", "Construct measurement", "Causal inference"],
+    contributions: ["Novel experimental paradigm", "Theoretical insights", "Practical applications"]
+  },
+  {
+    title: "MSc Thesis Research", 
+    description: "Music therapy in Parkinson's rehabilitation",
+    icon: "🎵",
+    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+    challenges: ["Study heterogeneity", "Outcome standardization", "Clinical significance"],
+    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"]
+  }
 ];
 
 const theses = [
@@ -59,30 +135,31 @@ const theses = [
     topic: "Music therapy effectiveness in Parkinson's disease rehabilitation: A systematic review and meta-analysis"
   }
 ];
+
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
   <main class="h-screen bg-black flex overflow-hidden relative">
-    <!-- Background Layer -->
+    <!-- Background Layer: Solid black background -->
     <div class="absolute inset-0 bg-black"></div>
-
-    <!-- Background Image Layer -->
+    
+    <!-- Background Image Layer: Transparent Tatras image -->
     <div 
       class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15" 
       style="background-image: url('/assets/Tatras.jpg'); z-index: 1;"
     ></div>
-
-    <!-- Content Layer -->
+    
+    <!-- Content Layer: All content above the background -->
     <div class="relative z-10 w-full flex">
       <!-- Left Sidebar -->
-      <aside class="w-56 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col overflow-y-auto">
+      <aside class="w-56 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col">
         <nav class="space-y-4">
           <!-- Research Experience -->
           <div>
             <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Research Experience</h3>
             <div class="space-y-1">
               {researchExperiences.map((area, index) => (
-                <div class="research-area-item cursor-pointer" data-area-index={index} key={index}>
+                <div class="research-area-item cursor-pointer" data-area-index={index}>
                   <div class="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-white/10 transition-colors">
                     <span class="text-sm">{area.icon}</span>
                     <div class="flex-1">
@@ -105,7 +182,7 @@ const theses = [
             <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Academic Work</h3>
             <div class="space-y-1">
               {theses.map((thesis, index) => (
-                <div class="thesis-item cursor-pointer" data-thesis-index={index} key={index}>
+                <div class="thesis-item cursor-pointer" data-thesis-index={index}>
                   <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
                     <div class="flex items-center justify-between">
                       <div class="text-xs font-medium text-white">{thesis.title}</div>
@@ -137,7 +214,7 @@ const theses = [
           </div>
         </nav>
       </aside>
-
+      
       <!-- Main Content -->
       <div class="flex-1 flex flex-col">
         <!-- Header -->
@@ -151,16 +228,15 @@ const theses = [
             </div>
           </div>
         </header>
-
+        
         <!-- Projects Grid -->
         <div class="flex-1 px-6 py-4">
           <div class="max-w-6xl mx-auto h-full">
             <div class="grid grid-cols-3 gap-4 h-full">
-              {projects.map((project) => (
+              {projects.map((project, index) => (
                 <div 
                   class="project-card group relative bg-black/60 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700 hover:border-gray-500 flex flex-col"
                   data-project-id={project.id}
-                  key={project.id}
                 >
                   <div class="h-24 relative overflow-hidden flex-shrink-0">
                     <img 
@@ -177,8 +253,8 @@ const theses = [
                   
                   <div class="p-3 flex-1 flex flex-col">
                     <div class="flex flex-wrap gap-1 mb-2">
-                      {project.tags.slice(0, 2).map((tag, i) => (
-                        <span key={i} class="px-2 py-0.5 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
+                      {project.tags.slice(0, 2).map(tag => (
+                        <span class="px-2 py-0.5 bg-slate-800 text-teal-300 rounded-full text-xs font-medium">
                           {tag}
                         </span>
                       ))}
@@ -203,7 +279,7 @@ const theses = [
         </div>
       </div>
     </div>
-
+    
     <!-- Project Modal -->
     <div id="project-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
       <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
@@ -215,32 +291,37 @@ const theses = [
             </svg>
           </button>
         </div>
+        
         <div class="p-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <img id="modal-image" class="w-full h-64 object-cover rounded-lg mb-4" />
               <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
             </div>
+            
             <div class="space-y-6">
               <div>
                 <h3 class="text-lg font-semibold text-white mb-3">Technologies Used</h3>
                 <div id="modal-technologies" class="flex flex-wrap gap-2"></div>
               </div>
+              
               <div>
                 <h3 class="text-lg font-semibold text-white mb-3">Key Challenges</h3>
                 <ul id="modal-challenges" class="space-y-2 text-gray-300"></ul>
               </div>
+              
               <div>
                 <h3 class="text-lg font-semibold text-white mb-3">Outcomes & Impact</h3>
                 <ul id="modal-outcomes" class="space-y-2 text-gray-300"></ul>
               </div>
+              
               <div id="modal-links" class="flex gap-3 pt-4 border-t border-gray-700"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+      
     <!-- Research Experience Modal -->
     <div id="research-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
       <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
@@ -252,17 +333,23 @@ const theses = [
             </svg>
           </button>
         </div>
+        
         <div class="p-6">
           <div class="space-y-6">
-            <p id="research-modal-description" class="text-gray-300 leading-relaxed text-lg"></p>
+            <div>
+              <p id="research-modal-description" class="text-gray-300 leading-relaxed text-lg"></p>
+            </div>
+            
             <div>
               <h3 class="text-lg font-semibold text-white mb-3">Key Tasks</h3>
               <ul id="research-modal-tasks" class="space-y-2 text-gray-300"></ul>
             </div>
+            
             <div>
               <h3 class="text-lg font-semibold text-white mb-3">Challenges</h3>
               <ul id="research-modal-challenges" class="space-y-2 text-gray-300"></ul>
             </div>
+            
             <div>
               <h3 class="text-lg font-semibold text-white mb-3">Contributions</h3>
               <ul id="research-modal-contributions" class="space-y-2 text-gray-300"></ul>
@@ -283,14 +370,23 @@ const theses = [
             </svg>
           </button>
         </div>
+        
         <div class="p-6">
           <div class="space-y-6">
-            <h3 class="text-lg font-semibold text-white mb-3">Type</h3>
-            <p id="thesis-modal-type" class="text-gray-300 text-lg"></p>
-            <h3 class="text-lg font-semibold text-white mb-3">Year</h3>
-            <p id="thesis-modal-year" class="text-gray-300 text-lg"></p>
-            <h3 class="text-lg font-semibold text-white mb-3">Topic</h3>
-            <p id="thesis-modal-topic" class="text-gray-300 leading-relaxed"></p>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3">Type</h3>
+              <p id="thesis-modal-type" class="text-gray-300 text-lg"></p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3">Year</h3>
+              <p id="thesis-modal-year" class="text-gray-300 text-lg"></p>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-3">Topic</h3>
+              <p id="thesis-modal-topic" class="text-gray-300 leading-relaxed"></p>
+            </div>
           </div>
         </div>
       </div>
@@ -299,22 +395,26 @@ const theses = [
 </Layout>
 
 <style>
-  /* Your styles here, no changes needed unless specific */
   .project-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  
   .project-card:hover {
     transform: translateY(-2px);
   }
+  
   #project-modal {
     display: none;
   }
+  
   #project-modal.active {
     display: flex;
   }
+  
   .intro-text {
     animation: fadeIn 2s ease-in-out 0.5s forwards;
   }
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -327,243 +427,526 @@ const theses = [
   }
 </style>
 
-<script type="module">
-  // Your scripts
+<script define:vars={{ researchExperiences, theses }}>
+</script>
 
-  // Data (already imported as variables)
-  // No need to redeclare; use the variables directly
+// Add this debugging script right after your define:vars script
+<script define:vars={{ researchExperiences, theses }}>
+  // Variables are now available
+</script>
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // -- Modal Elements
-    const modal = document.getElementById('project-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalImage = document.getElementById('modal-image');
-    const modalDescription = document.getElementById('modal-description');
-    const modalTechnologies = document.getElementById('modal-technologies');
-    const modalChallenges = document.getElementById('modal-challenges');
-    const modalOutcomes = document.getElementById('modal-outcomes');
-    const modalLinks = document.getElementById('modal-links');
-    const closeModal = document.getElementById('close-modal');
-
+<script>
+  // Debug script - add this temporarily to see what's happening
+  console.log('Script loaded');
+  console.log('researchExperiences:', researchExperiences);
+  console.log('theses:', theses);
+  
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    // Check if elements exist
+    const researchItems = document.querySelectorAll('.research-area-item');
+    const thesisItems = document.querySelectorAll('.thesis-item');
+    
+    console.log('Research items found:', researchItems.length);
+    console.log('Thesis items found:', thesisItems.length);
+    
+    // Check if modals exist
+    const researchModal = document.getElementById('research-modal');
+    const thesisModal = document.getElementById('thesis-modal');
+    
+    console.log('Research modal exists:', !!researchModal);
+    console.log('Thesis modal exists:', !!thesisModal);
+    
+    // Add click handlers with debugging
+    researchItems.forEach((item, index) => {
+      console.log(`Adding click handler to research item ${index}`);
+      item.addEventListener('click', function(e) {
+        console.log('Research item clicked:', index);
+        console.log('Dataset areaIndex:', this.dataset.areaIndex);
+        
+        const areaIndex = this.dataset.areaIndex;
+        const researchArea = researchExperiences[areaIndex];
+        console.log('Research area data:', researchArea);
+        
+        if (researchArea) {
+          showResearchModal(researchArea);
+        } else {
+          console.error('No research area found for index:', areaIndex);
+        }
+      });
+    });
+    
+    thesisItems.forEach((item, index) => {
+      console.log(`Adding click handler to thesis item ${index}`);
+      item.addEventListener('click', function(e) {
+        console.log('Thesis item clicked:', index);
+        console.log('Dataset thesisIndex:', this.dataset.thesisIndex);
+        
+        const thesisIndex = this.dataset.thesisIndex;
+        const thesis = theses[thesisIndex];
+        console.log('Thesis data:', thesis);
+        
+        if (thesis) {
+          showThesisModal(thesis);
+        } else {
+          console.error('No thesis found for index:', thesisIndex);
+        }
+      });
+    });
+  });
+  
+  // Modal functions
+  function showResearchModal(researchArea) {
+    console.log('showResearchModal called with:', researchArea);
+    
     const researchModal = document.getElementById('research-modal');
     const researchModalTitle = document.getElementById('research-modal-title');
     const researchModalDescription = document.getElementById('research-modal-description');
     const researchModalTasks = document.getElementById('research-modal-tasks');
     const researchModalChallenges = document.getElementById('research-modal-challenges');
     const researchModalContributions = document.getElementById('research-modal-contributions');
-    const closeResearchModalBtn = document.getElementById('close-research-modal');
-
+    
+    if (!researchModal) {
+      console.error('Research modal not found');
+      return;
+    }
+    
+    researchModalTitle.textContent = researchArea.title;
+    researchModalDescription.textContent = researchArea.description;
+    
+    // Tasks
+    researchModalTasks.innerHTML = '';
+    researchArea.tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-blue-400 mt-1">•</span><span>${task}</span>`;
+      researchModalTasks.appendChild(li);
+    });
+    
+    // Challenges
+    researchModalChallenges.innerHTML = '';
+    researchArea.challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
+      researchModalChallenges.appendChild(li);
+    });
+    
+    // Contributions
+    researchModalContributions.innerHTML = '';
+    researchArea.contributions.forEach(contribution => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${contribution}</span>`;
+      researchModalContributions.appendChild(li);
+    });
+    
+    researchModal.classList.add('active');
+    researchModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    console.log('Research modal should be visible now');
+  }
+  
+  function showThesisModal(thesis) {
+    console.log('showThesisModal called with:', thesis);
+    
     const thesisModal = document.getElementById('thesis-modal');
     const thesisModalTitle = document.getElementById('thesis-modal-title');
     const thesisModalType = document.getElementById('thesis-modal-type');
     const thesisModalYear = document.getElementById('thesis-modal-year');
     const thesisModalTopic = document.getElementById('thesis-modal-topic');
-    const closeThesisModalBtn = document.getElementById('close-thesis-modal');
-
-    // Helper functions to show/hide modals
-    function showModal(project) {
-      modalTitle.textContent = project.title;
-      modalImage.src = project.image;
-      modalDescription.textContent = project.description;
-
-      // Technologies
-      modalTechnologies.innerHTML = '';
-      project.technologies.forEach((tech) => {
-        const span = document.createElement('span');
-        span.className =
-          'px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-700';
-        span.textContent = tech;
-        modalTechnologies.appendChild(span);
-      });
-      // Challenges
-      modalChallenges.innerHTML = '';
-      project.challenges.forEach((challenge) => {
-        const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2';
-        li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
-        modalChallenges.appendChild(li);
-      });
-      // Outcomes
-      modalOutcomes.innerHTML = '';
-      project.outcomes.forEach((outcome) => {
-        const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2';
-        li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${outcome}</span>`;
-        modalOutcomes.appendChild(li);
-      });
-      // Links
-      modalLinks.innerHTML = '';
-      if (project.githubUrl && project.githubUrl !== '#') {
-        const a = document.createElement('a');
-        a.href = project.githubUrl;
-        a.target = '_blank';
-        a.className =
-          'flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors border border-gray-600';
-        a.innerHTML = `
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-          </svg>
-          GitHub
-        `;
-        modalLinks.appendChild(a);
-      }
-      if (project.demoUrl && project.demoUrl !== '#') {
-        const a = document.createElement('a');
-        a.href = project.demoUrl;
-        a.target = '_blank';
-        a.className =
-          'flex items-center gap-2 px-4 py-2 bg-green-800 text-white rounded-lg hover:bg-green-700 transition-colors border border-green-600';
-        a.innerHTML = `
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          Live Demo
-        `;
-        modalLinks.appendChild(a);
-      }
-      if (project.paperUrl && project.paperUrl !== '#') {
-        const a = document.createElement('a');
-        a.href = project.paperUrl;
-        a.target = '_blank';
-        a.className =
-          'flex items-center gap-2 px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-700 transition-colors border border-blue-600';
-        a.innerHTML = `
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
-            <path d="M14 2v6h6"/>
-          </svg>
-          Paper
-        `;
-        modalLinks.appendChild(a);
-      }
-      modal.classList.add('active');
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+    
+    if (!thesisModal) {
+      console.error('Thesis modal not found');
+      return;
     }
-
-    function hideModal() {
-      modal.classList.remove('active');
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
+    
+    thesisModalTitle.textContent = thesis.title;
+    thesisModalType.textContent = thesis.type;
+    thesisModalYear.textContent = thesis.year;
+    thesisModalTopic.textContent = thesis.topic;
+    
+    thesisModal.classList.add('active');
+    thesisModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    console.log('Thesis modal should be visible now');
+  }
+  
+  // Close modal functions
+  function hideResearchModal() {
+    const researchModal = document.getElementById('research-modal');
+    researchModal.classList.remove('active');
+    researchModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  function hideThesisModal() {
+    const thesisModal = document.getElementById('thesis-modal');
+    thesisModal.classList.remove('active');
+    thesisModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Setup close handlers when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    const closeResearchModal = document.getElementById('close-research-modal');
+    const closeThesisModal = document.getElementById('close-thesis-modal');
+    const researchModal = document.getElementById('research-modal');
+    const thesisModal = document.getElementById('thesis-modal');
+    
+    if (closeResearchModal) {
+      closeResearchModal.addEventListener('click', hideResearchModal);
     }
-
-    // Attach event to close modal
-    closeModal.addEventListener('click', hideModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) hideModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') hideModal();
-    });
-
-    // -- Research Modal handlers
-    function showResearchModal(area) {
-      researchModalTitle.textContent = area.title;
-      researchModalDescription.textContent = area.description;
-
-      // Tasks
-      researchModalTasks.innerHTML = '';
-      area.tasks.forEach((task) => {
-        const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2';
-        li.innerHTML = `<span class="text-blue-400 mt-1">•</span><span>${task}</span>`;
-        researchModalTasks.appendChild(li);
-      });
-      // Challenges
-      researchModalChallenges.innerHTML = '';
-      area.challenges.forEach((challenge) => {
-        const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2';
-        li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
-        researchModalChallenges.appendChild(li);
-      });
-      // Contributions
-      researchModalContributions.innerHTML = '';
-      area.contributions.forEach((contribution) => {
-        const li = document.createElement('li');
-        li.className = 'flex items-start space-x-2';
-        li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${contribution}</span>`;
-        researchModalContributions.appendChild(li);
-      });
-      researchModal.classList.add('active');
-      researchModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+    
+    if (closeThesisModal) {
+      closeThesisModal.addEventListener('click', hideThesisModal);
     }
-
-    function hideResearchModal() {
-      researchModal.classList.remove('active');
-      researchModal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // -- Thesis Modal handlers
-    function showThesisModal(thesis) {
-      thesisModalTitle.textContent = thesis.title;
-      thesisModalType.textContent = thesis.type;
-      thesisModalYear.textContent = thesis.year;
-      thesisModalTopic.textContent = thesis.topic;
-
-      thesisModal.classList.add('active');
-      thesisModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    function hideThesisModal() {
-      thesisModal.classList.remove('active');
-      thesisModal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // Attach event listeners for research items
-    document.querySelectorAll('.research-area-item').forEach((item, index) => {
-      item.addEventListener('click', () => {
-        showResearchModal(researchExperiences[index]);
-      });
-    });
-    // Attach event listeners for thesis items
-    document.querySelectorAll('.thesis-item').forEach((item, index) => {
-      item.addEventListener('click', () => {
-        showThesisModal(theses[index]);
-      });
-    });
-
-    // modal close buttons
-    document.getElementById('close-research-modal').addEventListener('click', hideResearchModal);
-    document.getElementById('close-thesis-modal').addEventListener('click', hideThesisModal);
-
-    // modal background close
-    researchModal.addEventListener('click', (e) => {
-      if (e.target === researchModal) hideResearchModal();
-    });
-    thesisModal.addEventListener('click', (e) => {
-      if (e.target === thesisModal) hideThesisModal();
-    });
-
-    // global escape handler
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        hideModal();
-        hideResearchModal();
-        hideThesisModal();
-      }
-    });
-
-    // Utility to hide project modal if needed
-    function hideModal() {
-      modal.classList.remove('active');
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // Attach event listeners for project cards
-    document.querySelectorAll('.project-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        const projectId = card.dataset.projectId;
-        const project = projects.find(p => p.id === projectId);
-        if (project) {
-          showModal(project);
+    
+    if (researchModal) {
+      researchModal.addEventListener('click', (e) => {
+        if (e.target === researchModal) {
+          hideResearchModal();
         }
       });
+    }
+    
+    if (thesisModal) {
+      thesisModal.addEventListener('click', (e) => {
+        if (e.target === thesisModal) {
+          hideThesisModal();
+        }
+      });
+    }
+  });
+  
+  // Escape key handler
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const researchModal = document.getElementById('research-modal');
+      const thesisModal = document.getElementById('thesis-modal');
+      
+      if (researchModal && researchModal.classList.contains('active')) {
+        hideResearchModal();
+      }
+      if (thesisModal && thesisModal.classList.contains('active')) {
+        hideThesisModal();
+      }
+    }
+  });
+</script>
+
+<script>
+  // Project modal functionality
+  const projectsData = {
+    "drummer-posture": {
+      title: "Drummer Posture Monitoring Application",
+      description: "A prototype web application developed to support injury prevention in drummers by addressing poor postural habits - a well-documented risk factor for performance-related musculoskeletal disorders. Using OpenPose for real-time pose estimation, the system provides immediate visual feedback on upper-body alignment during playing, helping users identify and correct suboptimal posture through an intuitive, user-friendly interface.",
+      image: "src/assets/drums.png",
+      technologies: ["OpenPose", "Computer Vision", "React", "Python", "TensorFlow", "JavaScript", "HTML", "CSS"],
+      challenges: ["Creating real-time, evidence-based posture quality metrics", "Ensuring accurate feedback despite variable lighting and rapid movement", "Handling occlusion from drumsticks and equipment that disrupts keypoint detection"],
+      outcomes: ["Created a real-time posture feedback prototype web app", "Applied existing computer vision tools", "Next: develop session tracking and validate posture metrics for injury prevention"],
+      githubUrl: "https://github.com/0r080r0/WebApp-DrummerPosture",
+      demoUrl: "https://0r080r0.github.io/WebApp-DrummerPosture/"
+    },
+    "music-therapy-ai": {
+      title: "Musician Health Survey",
+      description: "Developed a structured, web-based questionnaire to assess musicians’ mental health, physical health, and overall wellbeing. Designed for use in longitudinal studies, the tool enables consistent self-report data collection to support health monitoring and analysis alongside physiological measures. Includes evidence-informed guidance tailored to each domain.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["R", "JavaScript", "HTML", "CSS"],
+      challenges: ["Designing questions that balance clinical relevance with accessibility", "Creating tailored, evidence-based guidance without exceeding the scope of non-clinical tools", "Ensuring future compatibility with multimodal datasets"],
+      outcomes: ["Built a flexible survey tool for structured assessment of musician health", "Enables longitudinal self-report data collection for research and health monitoring", "Supports integration of subjective health metrics into broader musician wellbeing analyses"],
+      githubUrl: "#"
+    },
+    "biomechanical-analysis": {
+      title: "Biomechanical Movement Analysis",
+      description: "Independently developed skills in electromyography analysis to identify early musculoskeletal risk factors such as tension and inefficient muscle coordination in drummers. This enables detection of potential injury risks in real-time performance scenarios and supports evidence-based injury and pain prevention interventions such as EMG biofeedback, body awareness, and advanced technologies like vagus nerve stimulation - aiming to improve physical health by preventing musculoskeletal disorders common in musicians.",
+      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop",
+      technologies: ["R", "Python", "EMG"],
+      challenges: ["Extracting meaningful muscle contraction signals from noisy simulated EMG data", "Translating complex EMG signals into actionable insights for biofeedback and targeted interventionsg", "Detecting and quantifying co-contractions linked to muscular inefficiency"],
+      outcomes: ["Independently developed practical skills in EMG signal processing relevant to musician health research", "Supports my PhD proposal's focus on injury and pain prevention in drummers via evidence-based interventions", "Provides a foundation for understanding muscle function and guiding targeted prevention strategies"],
+      githubUrl: "#"
+    },
+    "performance-analytics": {
+      title: "ML-Based Early Detection and Prediction of Injury and Pain",
+      description: "This project applies machine learning techniques to analyze electromyography (EMG) signals, biomechanical data, and subjective measures to both detect early signs of injury risk and predict future injury and pain outcomes in musicians. By integrating multimodal data sources, the model aims to enable proactive, personalized interventions that improve musician health and performance longevity.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["Python", "React"],
+      challenges: ["Standardizing performance metrics across instruments", "Correlating practice data with performance improvement", "Creating intuitive visual analytics"],
+      outcomes: ["20% improvement in practice efficiency", "Personalized learning paths for 200+ students", "Interactive performance tracking dashboard"],
+      githubUrl: "#",
+      demoUrl: "#"
+    },
+    "ergonomic-assessment": {
+      title: "Multi-Level Modeling for Panic Symptoms and Performance Anxiety in Drummers",
+      description: "This project applied multi-level modeling (MLM) techniques to an AI-generated dataset designed with domain-specific input to simulate panic symptoms and contextual factors in drummers. While the dataset itself was synthetically generated, it was structured around realistic variables selected based on research literature and personal experience in musician health. Variables included panic symptom indicators, lifestyle habits, performance context, and musical background.",
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      technologies: ["R"],
+      challenges: ["Designing a realistic dataset structure with meaningful, interrelated variables reflecting both psychological and musical factors", "Implementing multi-level models to account for nested structures (e.g., individuals within bands or genres)", "Ensuring model validity despite synthetic data, with careful consideration of variance, collinearity, and interpretability"],
+      outcomes: ["Demonstrated the potential of MLM to analyse performance-related psychological data in music populations", "Showed how contextual (e.g., tour status, venue size) and individual (e.g., sleep, caffeine, practice hours) factors interact in panic symptom severity", "Strengthened my skills in modeling complex hierarchical data and designing synthetic research datasets with applied relevance"],
+      githubUrl: "https://github.com/0r080r0/PhD-Portfolio/tree/main/Multi-Level_Modelling"
+    },
+    "practice-optimization": {
+      title: "Music Experience Website",
+      description: "Developed using R and Quarto, this website showcases my journey as a dedicated, self-taught intermediate musician. It highlights my long-term engagement with musicianship and provides essential context and credibility for my research in musician health.",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+      technologies: ["R", "Quarto", "JavaScript", "HTML", "CSS"],
+      challenges: ["Learning Quarto as a new tool for web publishing", "Designing a site that effectively balances personal storytelling with professional presentation", "Ensuring the website is accessible and responsive across devices"],
+      outcomes: ["Established a professional online presence that reinforces my credibility as a musician-researcher", "Created a resource that bridges practical musicianship with scientific inquiry", "Enhanced my skills in Quarto, supporting future data-driven communication projects"],
+      githubUrl: "https://github.com/0r080r0/MusicianHealth_Website",
+      demoUrl: "https://evangelia-music.netlify.app/"
+    }
+  };
+
+  // Research Experience Modal functionality
+  const researchModal = document.getElementById('research-modal');
+  const researchModalTitle = document.getElementById('research-modal-title');
+  const researchModalDescription = document.getElementById('research-modal-description');
+  const researchModalTasks = document.getElementById('research-modal-tasks');
+  const researchModalChallenges = document.getElementById('research-modal-challenges');
+  const researchModalContributions = document.getElementById('research-modal-contributions');
+  const closeResearchModal = document.getElementById('close-research-modal');
+
+  // Thesis Modal functionality
+  const thesisModal = document.getElementById('thesis-modal');
+  const thesisModalTitle = document.getElementById('thesis-modal-title');
+  const thesisModalType = document.getElementById('thesis-modal-type');
+  const thesisModalYear = document.getElementById('thesis-modal-year');
+  const thesisModalTopic = document.getElementById('thesis-modal-topic');
+  const closeThesisModal = document.getElementById('close-thesis-modal');
+
+  // Research area click handlers
+  document.querySelectorAll('.research-area-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const areaIndex = this.dataset.areaIndex;
+      const researchArea = researchExperiences[areaIndex];
+      showResearchModal(researchArea);
     });
+  });
+
+  // Thesis click handlers
+  document.querySelectorAll('.thesis-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const thesisIndex = this.dataset.thesisIndex;
+      const thesis = theses[thesisIndex];
+      showThesisModal(thesis);
+    });
+  });
+
+  function showResearchModal(researchArea) {
+    researchModalTitle.textContent = researchArea.title;
+    researchModalDescription.textContent = researchArea.description;
+    
+    // Tasks
+    researchModalTasks.innerHTML = '';
+    researchArea.tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-blue-400 mt-1">•</span><span>${task}</span>`;
+      researchModalTasks.appendChild(li);
+    });
+    
+    // Challenges
+    researchModalChallenges.innerHTML = '';
+    researchArea.challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
+      researchModalChallenges.appendChild(li);
+    });
+    
+    // Contributions
+    researchModalContributions.innerHTML = '';
+    researchArea.contributions.forEach(contribution => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${contribution}</span>`;
+      researchModalContributions.appendChild(li);
+    });
+    
+    researchModal.classList.add('active');
+    researchModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showThesisModal(thesis) {
+    thesisModalTitle.textContent = thesis.title;
+    thesisModalType.textContent = thesis.type;
+    thesisModalYear.textContent = thesis.year;
+    thesisModalTopic.textContent = thesis.topic;
+    
+    thesisModal.classList.add('active');
+    thesisModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideResearchModal() {
+    researchModal.classList.remove('active');
+    researchModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function hideThesisModal() {
+    thesisModal.classList.remove('active');
+    thesisModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal events
+  closeResearchModal.addEventListener('click', hideResearchModal);
+  closeThesisModal.addEventListener('click', hideThesisModal);
+
+  researchModal.addEventListener('click', (e) => {
+    if (e.target === researchModal) {
+      hideResearchModal();
+    }
+  });
+
+  thesisModal.addEventListener('click', (e) => {
+    if (e.target === thesisModal) {
+      hideThesisModal();
+    }
+  });
+
+  // Update the existing escape key handler to include new modals
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (modal.classList.contains('active')) {
+        hideModal();
+      }
+      if (researchModal.classList.contains('active')) {
+        hideResearchModal();
+      }
+      if (thesisModal.classList.contains('active')) {
+        hideThesisModal();
+      }
+    }
+  });
+  
+  // Modal elements
+  const modal = document.getElementById('project-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalImage = document.getElementById('modal-image');
+  const modalDescription = document.getElementById('modal-description');
+  const modalTechnologies = document.getElementById('modal-technologies');
+  const modalChallenges = document.getElementById('modal-challenges');
+  const modalOutcomes = document.getElementById('modal-outcomes');
+  const modalLinks = document.getElementById('modal-links');
+  const closeModal = document.getElementById('close-modal');
+
+  // Project card click handlers
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const projectId = card.dataset.projectId;
+      const project = projectsData[projectId];
+      
+      if (project) {
+        showModal(project);
+      }
+    });
+  });
+
+  function showModal(project) {
+    modalTitle.textContent = project.title;
+    modalImage.src = project.image;
+    modalDescription.textContent = project.description;
+    
+    // Technologies
+    modalTechnologies.innerHTML = '';
+    project.technologies.forEach(tech => {
+      const span = document.createElement('span');
+      span.className = 'px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-700';
+      span.textContent = tech;
+      modalTechnologies.appendChild(span);
+    });
+    
+    // Challenges
+    modalChallenges.innerHTML = '';
+    project.challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
+      modalChallenges.appendChild(li);
+    });
+    
+    // Outcomes
+    modalOutcomes.innerHTML = '';
+    project.outcomes.forEach(outcome => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${outcome}</span>`;
+      modalOutcomes.appendChild(li);
+    });
+    
+    // Links
+    modalLinks.innerHTML = '';
+    if (project.githubUrl && project.githubUrl !== '#') {
+      const githubLink = document.createElement('a');
+      githubLink.href = project.githubUrl;
+      githubLink.target = '_blank';
+      githubLink.className = 'flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors border border-gray-600';
+      githubLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub
+      `;
+      modalLinks.appendChild(githubLink);
+    }
+    
+    if (project.demoUrl && project.demoUrl !== '#') {
+      const demoLink = document.createElement('a');
+      demoLink.href = project.demoUrl;
+      demoLink.target = '_blank';
+      demoLink.className = 'flex items-center gap-2 px-4 py-2 bg-green-800 text-white rounded-lg hover:bg-green-700 transition-colors border border-green-600';
+      demoLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        Live Demo
+      `;
+      modalLinks.appendChild(demoLink);
+    }
+    
+    if (project.paperUrl && project.paperUrl !== '#') {
+      const paperLink = document.createElement('a');
+      paperLink.href = project.paperUrl;
+      paperLink.target = '_blank';
+      paperLink.className = 'flex items-center gap-2 px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-700 transition-colors border border-blue-600';
+      paperLink.innerHTML = `
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+          <path d="M14 2v6h6"/>
+        </svg>
+        Paper
+      `;
+      modalLinks.appendChild(paperLink);
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hideModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal events
+  closeModal.addEventListener('click', hideModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      hideModal();
+    }
+  });
+
+  // Escape key to close modal
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      hideModal();
+    }
   });
 </script>
