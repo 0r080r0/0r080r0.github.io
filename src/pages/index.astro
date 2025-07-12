@@ -124,6 +124,21 @@ const researchExperiences = [
   }
 ];
 
+const theses = [
+  {
+    title: "BSc Thesis",
+    year: "2021",
+    type: "Bachelor in Psychology",
+    topic: "Mental toughness and peak performance in competitive environments"
+  },
+  {
+    title: "MSc Thesis", 
+    year: "2024",
+    type: "Master in Psychological Science",
+    topic: "Music therapy effectiveness in Parkinson's disease rehabilitation: A systematic review and meta-analysis"
+  }
+];
+
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
@@ -540,7 +555,7 @@ const researchExperiences = [
       hideModal();
     }
   });
-  
+
   // Sidebar expandable functionality
   document.addEventListener('DOMContentLoaded', function() {
     // Research areas expandable
@@ -554,25 +569,38 @@ const researchExperiences = [
           details.classList.remove('hidden');
           arrow.style.transform = 'rotate(90deg)';
           
-          // Populate related projects
+          // Populate with research experience details
           const projectsContainer = details.querySelector('.research-area-projects');
-          const areaTitle = researchAreas[areaIndex].title.toLowerCase();
-          const relatedProjects = projects.filter(project => 
-            project.tags.some(tag => tag.toLowerCase().includes(areaTitle.split(' ')[0])) ||
-            project.technologies.some(tech => tech.toLowerCase().includes(areaTitle.split(' ')[0]))
-          );
+          const researchArea = ${JSON.stringify(researchExperiences)}[areaIndex];
           
           projectsContainer.innerHTML = '';
-          relatedProjects.slice(0, 3).forEach(project => {
-            const projectDiv = document.createElement('div');
-            projectDiv.className = 'text-xs text-teal-300 hover:text-teal-200 cursor-pointer transition-colors';
-            projectDiv.textContent = `• ${project.title}`;
-            projectDiv.onclick = () => {
-              const projectCard = document.querySelector(`[data-project-id="${project.id}"]`);
-              if (projectCard) projectCard.click();
-            };
-            projectsContainer.appendChild(projectDiv);
-          });
+          
+          // Add tasks
+          if (researchArea.tasks) {
+            const tasksDiv = document.createElement('div');
+            tasksDiv.className = 'mb-2';
+            tasksDiv.innerHTML = '<div class="text-xs text-gray-400 mb-1">Key Tasks:</div>';
+            researchArea.tasks.forEach(task => {
+              const taskDiv = document.createElement('div');
+              taskDiv.className = 'text-xs text-teal-300 ml-2';
+              taskDiv.textContent = `• ${task}`;
+              tasksDiv.appendChild(taskDiv);
+            });
+            projectsContainer.appendChild(tasksDiv);
+          }
+          
+          // Add contributions
+          if (researchArea.contributions) {
+            const contribDiv = document.createElement('div');
+            contribDiv.innerHTML = '<div class="text-xs text-gray-400 mb-1">Contributions:</div>';
+            researchArea.contributions.slice(0, 2).forEach(contrib => {
+              const contribItem = document.createElement('div');
+              contribItem.className = 'text-xs text-green-300 ml-2';
+              contribItem.textContent = `• ${contrib}`;
+              contribDiv.appendChild(contribItem);
+            });
+            projectsContainer.appendChild(contribDiv);
+          }
         } else {
           details.classList.add('hidden');
           arrow.style.transform = 'rotate(0deg)';
