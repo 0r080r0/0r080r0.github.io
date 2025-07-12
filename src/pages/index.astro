@@ -89,43 +89,41 @@ const projects = [
   }
 ];
 
-const researchAreas = [
+const researchExperiences = [
   {
-    title: "Computer Vision",
-    description: "Pose estimation & movement analysis",
-    icon: "👁️"
+    title: "Experimental Neuroscience",
+    description: "Undergraduate research experience",
+    icon: "🧠",
+    tasks: ["EEG data collection", "Behavioral experiment design", "Statistical analysis"],
+    challenges: ["Signal noise reduction", "Participant recruitment", "Data preprocessing"],
+    contributions: ["Improved experimental protocols", "Enhanced data quality", "Research methodology development"]
   },
   {
-    title: "Machine Learning",
-    description: "Predictive health analytics",
-    icon: "🤖"
+    title: "Meta-Analysis Research",
+    description: "Cognitive & physical performance from music",
+    icon: "📊",
+    tasks: ["Literature review", "Effect size calculations", "Statistical meta-analysis"],
+    challenges: ["Study selection criteria", "Heterogeneity analysis", "Publication bias assessment"],
+    contributions: ["Comprehensive systematic review", "Statistical synthesis", "Evidence-based recommendations"]
   },
   {
-    title: "Biomechanics",
-    description: "Movement pattern analysis",
-    icon: "🏃"
+    title: "BSc Thesis Research",
+    description: "Mental toughness & peak performance",
+    icon: "🎯",
+    tasks: ["Online experiment design", "Data collection", "Statistical modeling"],
+    challenges: ["Remote data quality", "Construct measurement", "Causal inference"],
+    contributions: ["Novel experimental paradigm", "Theoretical insights", "Practical applications"]
   },
   {
-    title: "Health Tech",
-    description: "Injury prevention systems",
-    icon: "⚕️"
+    title: "MSc Thesis Research", 
+    description: "Music therapy in Parkinson's rehabilitation",
+    icon: "🎵",
+    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+    challenges: ["Study heterogeneity", "Outcome standardization", "Clinical significance"],
+    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"]
   }
 ];
 
-const theses = [
-  {
-    title: "BSc Thesis",
-    topic: "Online Experiment: The Role of Mental Toughness on Goal Focus and Peak Performance",
-    year: "2021",
-    type: "Bachelor in Psychology"
-  },
-  {
-    title: "MSc Thesis",
-    topic: "Meta-Analysis: Music Listening Effects on Rehabilitation for Motricity in Parkinson's Disease",
-    year: "2024",
-    type: "Master in Psychological Science"
-  }
-];
 ---
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
@@ -144,11 +142,11 @@ const theses = [
       <!-- Left Sidebar -->
       <aside class="w-56 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col">
         <nav class="space-y-4">
-          <!-- Research Areas -->
+          <!-- Research Experience -->
           <div>
-            <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Research Areas</h3>
+            <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Research Experience</h3>
             <div class="space-y-1">
-              {researchAreas.map((area, index) => (
+              {researchExperiences.map((area, index) => (
                 <div class="research-area-item cursor-pointer" data-area-index={index}>
                   <div class="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-white/10 transition-colors">
                     <span class="text-sm">{area.icon}</span>
@@ -163,7 +161,7 @@ const theses = [
                     </div>
                   </div>
                   <div class="research-area-details hidden ml-6 mt-2 space-y-1">
-                    <div class="text-xs text-gray-400 opacity-80">Related Projects:</div>
+                    <div class="text-xs text-gray-400 opacity-80">Experience Details:</div>
                     <div class="research-area-projects space-y-1"></div>
                   </div>
                 </div>
