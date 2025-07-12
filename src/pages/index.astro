@@ -433,6 +433,215 @@ const theses = [
 <script define:vars={{ researchExperiences, theses }}>
 </script>
 
+// Add this debugging script right after your define:vars script
+<script define:vars={{ researchExperiences, theses }}>
+  // Variables are now available
+</script>
+
+<script>
+  // Debug script - add this temporarily to see what's happening
+  console.log('Script loaded');
+  console.log('researchExperiences:', researchExperiences);
+  console.log('theses:', theses);
+  
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    // Check if elements exist
+    const researchItems = document.querySelectorAll('.research-area-item');
+    const thesisItems = document.querySelectorAll('.thesis-item');
+    
+    console.log('Research items found:', researchItems.length);
+    console.log('Thesis items found:', thesisItems.length);
+    
+    // Check if modals exist
+    const researchModal = document.getElementById('research-modal');
+    const thesisModal = document.getElementById('thesis-modal');
+    
+    console.log('Research modal exists:', !!researchModal);
+    console.log('Thesis modal exists:', !!thesisModal);
+    
+    // Add click handlers with debugging
+    researchItems.forEach((item, index) => {
+      console.log(`Adding click handler to research item ${index}`);
+      item.addEventListener('click', function(e) {
+        console.log('Research item clicked:', index);
+        console.log('Dataset areaIndex:', this.dataset.areaIndex);
+        
+        const areaIndex = this.dataset.areaIndex;
+        const researchArea = researchExperiences[areaIndex];
+        console.log('Research area data:', researchArea);
+        
+        if (researchArea) {
+          showResearchModal(researchArea);
+        } else {
+          console.error('No research area found for index:', areaIndex);
+        }
+      });
+    });
+    
+    thesisItems.forEach((item, index) => {
+      console.log(`Adding click handler to thesis item ${index}`);
+      item.addEventListener('click', function(e) {
+        console.log('Thesis item clicked:', index);
+        console.log('Dataset thesisIndex:', this.dataset.thesisIndex);
+        
+        const thesisIndex = this.dataset.thesisIndex;
+        const thesis = theses[thesisIndex];
+        console.log('Thesis data:', thesis);
+        
+        if (thesis) {
+          showThesisModal(thesis);
+        } else {
+          console.error('No thesis found for index:', thesisIndex);
+        }
+      });
+    });
+  });
+  
+  // Modal functions
+  function showResearchModal(researchArea) {
+    console.log('showResearchModal called with:', researchArea);
+    
+    const researchModal = document.getElementById('research-modal');
+    const researchModalTitle = document.getElementById('research-modal-title');
+    const researchModalDescription = document.getElementById('research-modal-description');
+    const researchModalTasks = document.getElementById('research-modal-tasks');
+    const researchModalChallenges = document.getElementById('research-modal-challenges');
+    const researchModalContributions = document.getElementById('research-modal-contributions');
+    
+    if (!researchModal) {
+      console.error('Research modal not found');
+      return;
+    }
+    
+    researchModalTitle.textContent = researchArea.title;
+    researchModalDescription.textContent = researchArea.description;
+    
+    // Tasks
+    researchModalTasks.innerHTML = '';
+    researchArea.tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-blue-400 mt-1">•</span><span>${task}</span>`;
+      researchModalTasks.appendChild(li);
+    });
+    
+    // Challenges
+    researchModalChallenges.innerHTML = '';
+    researchArea.challenges.forEach(challenge => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-red-400 mt-1">•</span><span>${challenge}</span>`;
+      researchModalChallenges.appendChild(li);
+    });
+    
+    // Contributions
+    researchModalContributions.innerHTML = '';
+    researchArea.contributions.forEach(contribution => {
+      const li = document.createElement('li');
+      li.className = 'flex items-start space-x-2';
+      li.innerHTML = `<span class="text-green-400 mt-1">•</span><span>${contribution}</span>`;
+      researchModalContributions.appendChild(li);
+    });
+    
+    researchModal.classList.add('active');
+    researchModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    console.log('Research modal should be visible now');
+  }
+  
+  function showThesisModal(thesis) {
+    console.log('showThesisModal called with:', thesis);
+    
+    const thesisModal = document.getElementById('thesis-modal');
+    const thesisModalTitle = document.getElementById('thesis-modal-title');
+    const thesisModalType = document.getElementById('thesis-modal-type');
+    const thesisModalYear = document.getElementById('thesis-modal-year');
+    const thesisModalTopic = document.getElementById('thesis-modal-topic');
+    
+    if (!thesisModal) {
+      console.error('Thesis modal not found');
+      return;
+    }
+    
+    thesisModalTitle.textContent = thesis.title;
+    thesisModalType.textContent = thesis.type;
+    thesisModalYear.textContent = thesis.year;
+    thesisModalTopic.textContent = thesis.topic;
+    
+    thesisModal.classList.add('active');
+    thesisModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    console.log('Thesis modal should be visible now');
+  }
+  
+  // Close modal functions
+  function hideResearchModal() {
+    const researchModal = document.getElementById('research-modal');
+    researchModal.classList.remove('active');
+    researchModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  function hideThesisModal() {
+    const thesisModal = document.getElementById('thesis-modal');
+    thesisModal.classList.remove('active');
+    thesisModal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+  
+  // Setup close handlers when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    const closeResearchModal = document.getElementById('close-research-modal');
+    const closeThesisModal = document.getElementById('close-thesis-modal');
+    const researchModal = document.getElementById('research-modal');
+    const thesisModal = document.getElementById('thesis-modal');
+    
+    if (closeResearchModal) {
+      closeResearchModal.addEventListener('click', hideResearchModal);
+    }
+    
+    if (closeThesisModal) {
+      closeThesisModal.addEventListener('click', hideThesisModal);
+    }
+    
+    if (researchModal) {
+      researchModal.addEventListener('click', (e) => {
+        if (e.target === researchModal) {
+          hideResearchModal();
+        }
+      });
+    }
+    
+    if (thesisModal) {
+      thesisModal.addEventListener('click', (e) => {
+        if (e.target === thesisModal) {
+          hideThesisModal();
+        }
+      });
+    }
+  });
+  
+  // Escape key handler
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const researchModal = document.getElementById('research-modal');
+      const thesisModal = document.getElementById('thesis-modal');
+      
+      if (researchModal && researchModal.classList.contains('active')) {
+        hideResearchModal();
+      }
+      if (thesisModal && thesisModal.classList.contains('active')) {
+        hideThesisModal();
+      }
+    }
+  });
+</script>
+
 <script>
   // Project modal functionality
   const projectsData = {
