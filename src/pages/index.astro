@@ -275,15 +275,15 @@ const projects = [
         <!-- Projects Grid -->
         <div class="flex-1 px-6 py-4">
           <div class="max-w-6xl mx-auto h-full">
-            <div class="grid grid-cols-3 gap-6 h-full">
+            <div class="grid grid-cols-3 gap-8 h-full">
               {projects.map((project, index) => (
   <div
-    class="project-card group relative bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col h-80 w-full"
+    class="project-card group relative bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col h-64 w-full"
     data-project-id={project.id}
     key={index}
   >
     <!-- Larger image container with increased height -->
-    <div class="h-32 relative overflow-hidden flex-shrink-0">
+    <div class="h-36 relative overflow-hidden flex-shrink-0">
       <img
         src={project.image}
         alt={project.title}
