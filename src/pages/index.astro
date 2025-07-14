@@ -146,7 +146,7 @@ const projects = [
 
     <!-- Background Image Layer: Transparent Tatras image -->
     <div
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
       style="background-image: url('/assets/Tatras.jpg'); z-index: 1;"
     ></div>
 
@@ -275,10 +275,10 @@ const projects = [
         <!-- Projects Grid -->
         <div class="flex-1 px-6 py-4">
           <div class="max-w-6xl mx-auto h-full">
-            <div class="grid grid-cols-3 gap-6 h-full max-h-[70vh]">
+            <div class="grid grid-cols-3 gap-6 h-full">
               {projects.map((project, index) => (
   <div
-    class="project-card group relative bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col max-w-sm max-h-80 mx-auto"
+    class="project-card group relative bg-black/30 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col h-80 w-full"
     data-project-id={project.id}
     key={index}
   >
