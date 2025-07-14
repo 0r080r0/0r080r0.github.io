@@ -740,6 +740,7 @@ const projects = [
       githubUrl: "https://github.com/0r080r0/MusicianHealth_Website",
       demoUrl: "https://evangelia-music.netlify.app/",
     },
+  };
   
   const researchExperiences = [
   {
@@ -791,7 +792,6 @@ const theses = [
       "Music therapy effectiveness in Parkinson's disease rehabilitation: A systematic review and meta-analysis",
   },
 ];
-  };
 
   // Modal elements
   const modal = document.getElementById("project-modal");
@@ -962,7 +962,7 @@ const theses = [
   }
 
   // Setup event listeners when DOM ready
-  document.addEventListener("DOMContentLoaded", () => {
+  function setupEventListeners() {
     // Project cards
     document.querySelectorAll(".project-card").forEach((card) => {
       card.addEventListener("click", () => {
@@ -1036,4 +1036,8 @@ const theses = [
       }
     }
   });
+  }
+
+  // Call setup function immediately
+  setupEventListeners();
 </script>
