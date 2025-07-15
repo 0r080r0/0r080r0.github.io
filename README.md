@@ -1,5 +1,5 @@
 # 0r080r0.github.io
-PhD Portfolio
+PhD Portfolio (GitHub Pages)
 
 # Welcome to my PhD Portfolio for Musician Health!
 
