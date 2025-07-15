@@ -3,6 +3,8 @@ PhD Portfolio (GitHub Pages)
 
 # Welcome to my PhD Portfolio for Musician Health!
 
+Live Link to my Portfolio: https://0r080r0.github.io/
+
 #################################################### ADD IMAGES + CONTENT CONCISELY!!! #################################################### 
 
 ## Project Structure
