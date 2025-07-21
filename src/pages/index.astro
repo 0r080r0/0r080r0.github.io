@@ -96,7 +96,7 @@ const projects = [
       "This project applied multi-level modeling (MLM) techniques to an AI-generated dataset designed with domain-specific input to simulate panic symptoms and contextual factors in drummers. This synthetic dataset was structured around realistic variables selected based on research literature. Variables included panic symptom indicators, lifestyle habits, performance context, and musical background.",
     image:
       "/assets/fear.png",
-    tags: ["Ergonomics", "AI Assessment", "Health Prevention"],
+    tags: ["MLM", "Performance Anxiety", "Panic Symptoms"],
     technologies: ["R"],
     challenges: [
       "Designing a realistic dataset structure with meaningful, interrelated variables",
@@ -219,12 +219,12 @@ const projects = [
               <a
                 href="/cv.pdf"
                 class="block text-xs text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100"
-                >📄 Download CV</a
+                >📄 GitHub PhD Portfolio</a
               >
               <a
                 href="#publications"
                 class="block text-xs text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100"
-                >📚 Publications</a
+                >📚 LinkedIn</a
               >
               <a
                 href="#contact"
@@ -791,7 +791,7 @@ const theses = [
     modalTechnologies.innerHTML = "";
     project.technologies.forEach((tech) => {
       const span = document.createElement("span");
-      span.className = "px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm font-medium border border-blue-700";
+      span.className = "px-2 py-0.5 bg-slate-800/80 text-teal-300 rounded-full text-xs font-medium backdrop-blur-sm";
       span.textContent = tech;
       modalTechnologies.appendChild(span);
     });
