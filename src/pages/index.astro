@@ -287,7 +287,7 @@ const projects = [
     <!-- More transparent content area to show background -->
     <div class="p-2 flex-1 flex flex-col bg-black/10 backdrop-blur-sm min-h-20">
       <div class="flex flex-wrap gap-1 mb-2">
-        {project.tags.slice(0, 2).map((tag, i) => (
+        {project.tags.slice(0, 3).map((tag, i) => (
           <span
             class="px-2 py-0.5 bg-slate-800/80 text-teal-300 rounded-full text-xs font-medium backdrop-blur-sm"
             key={i}
@@ -295,11 +295,11 @@ const projects = [
             {tag}
           </span>
         ))}
-        {project.tags.length > 3 && (
+        {project.tags.length > 2 && (
           <span
             class="px-2 py-0.5 bg-slate-800/80 text-teal-300 rounded-full text-xs font-medium backdrop-blur-sm"
           >
-            +{project.tags.length - 3}
+            +{project.tags.length - 2}
           </span>
         )}
       </div>
