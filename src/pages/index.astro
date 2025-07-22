@@ -1030,10 +1030,6 @@ const projects = [
     });
   }
 
-  // Setup event listeners when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupEventListeners);
-  } else {
-    setupEventListeners();
-  }
+  // Setup event listeners
+  document.addEventListener('DOMContentLoaded', setupEventListeners);
 </script>
