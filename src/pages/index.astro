@@ -226,11 +226,6 @@ const projects = [
                 class="block text-xs text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100"
                 >[in] LinkedIn</a
               >
-              <a
-                href="#contact"
-                class="block text-xs text-gray-300 hover:text-white transition-colors opacity-80 hover:opacity-100"
-                >📧 Contact</a
-              >
             </div>
           </div>
         </nav>
@@ -270,27 +265,34 @@ const projects = [
                 >
                   <!-- Image container -->
                   <div class="h-32 relative overflow-hidden flex-shrink-0">
-                    <div class="gallery-container">
-                      <div class="gallery-slides" data-project={project.id}>
-                        {project.image && (
-                          <div class="gallery-slide">
-                            <img
-                              src={project.image}
-                              alt={project.title}
-                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                        )}
-                      </div>
-                      <button class="gallery-nav prev" data-project={project.id} data-dir="prev">‹</button>
-                      <button class="gallery-nav next" data-project={project.id} data-dir="next">›</button>
-                      <div class="gallery-dots" data-project={project.id}></div>
-                    </div>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                     <div class="absolute bottom-3 left-3 text-white">
                       <h3 class="font-medium text-sm mb-1">{project.title}</h3>
                     </div>
                   </div>
+                  <!-- Content area - compact -->
+                  <div class="p-3 flex flex-col justify-between bg-black/10 backdrop-blur-sm flex-1">
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-1 mb-2">
+                      {project.tags.slice(0, 3).map((tag, i) => (
+                        <span
+                          class="px-2 py-0.5 bg-slate-800/80 text-teal-300 rounded-full text-xs font-medium backdrop-blur-sm"
+                          key={i}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span class="px-2 py-0.5 bg-slate-600/80 text-gray-300 rounded-full text-xs font-medium backdrop-blur-sm">
+                          +{project.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
                     
                     <!-- GitHub/Demo buttons -->
                     <div class="flex gap-1 mb-2">
@@ -590,85 +592,6 @@ const projects = [
       transform: translateY(0);
     }
   }
-  
-  /* Gallery styles */
-  .gallery-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .gallery-slides {
-    display: flex;
-    transition: transform 0.3s ease;
-    height: 100%;
-  }
-  
-  .gallery-slide {
-    min-width: 100%;
-    height: 100%;
-    flex-shrink: 0;
-  }
-  
-  .gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-  }
-  
-  .gallery-nav:hover {
-    background: rgba(0, 0, 0, 0.7);
-  }
-  
-  .gallery-nav.prev {
-    left: 4px;
-  }
-  
-  .gallery-nav.next {
-    right: 4px;
-  }
-  
-  .project-card:hover .gallery-nav {
-    opacity: 1;
-  }
-  
-  .gallery-dots {
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 4px;
-    z-index: 10;
-  }
-  
-  .gallery-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .gallery-dot.active {
-    background: rgba(255, 255, 255, 1);
-  }
 </style>
 
 <script client:load>
@@ -677,7 +600,7 @@ const projects = [
       title: "Drummer Posture Monitoring Application",
       description:
         "A prototype web application developed to support injury prevention in drummers by addressing poor postural habits - a well-documented risk factor for performance-related musculoskeletal disorders. Using OpenPose for real-time pose estimation, the system provides immediate visual feedback on upper-body alignment during playing, helping users identify and correct suboptimal posture through an intuitive, user-friendly interface.",
-      images: ["/assets/drums.png", "/assets/drums-demo.jpg", "/assets/drums-interface.png"],
+      image: "/assets/drums.png",
       technologies: [
         "OpenPose",
         "Computer Vision",
@@ -705,7 +628,8 @@ const projects = [
       title: "Musician Health Survey",
       description:
         "Developed a structured, web-based questionnaire to assess musicians' mental health, physical health, and overall wellbeing. Designed for use in longitudinal studies, the tool enables consistent self-report data collection to support health monitoring and analysis alongside physiological measures. Includes evidence-informed guidance tailored to each domain.",
-      images: ["/assets/survey.png", "/assets/survey-design.jpg", "/assets/survey-results.png"],
+      image:
+        "/assets/survey.png",
       technologies: ["R", "JavaScript", "HTML", "CSS"],
       challenges: [
         "Designing questions that balance clinical relevance with accessibility",
@@ -723,7 +647,8 @@ const projects = [
       title: "Biomechanical Movement Analysis",
       description:
         "Independently developed skills in electromyography analysis to identify early musculoskeletal risk factors such as tension and inefficient muscle coordination in drummers. This enables detection of potential injury risks in real-time performance scenarios and supports evidence-based injury and pain prevention interventions - aiming to improve physical health by preventing musculoskeletal disorders common in musicians.",
-      images: ["/assets/emg.png", "/assets/emg-analysis.jpg", "/assets/emg-signals.png"],
+      image:
+        "/assets/emg.png",
       technologies: ["R", "Python", "EMG"],
       challenges: [
         "Extracting meaningful muscle contraction signals from noisy simulated EMG data",
@@ -741,7 +666,8 @@ const projects = [
       title: "ML-Based Early Detection and Prediction of Injury and Pain (in Progress)",
       description:
         "This project applies machine learning techniques to analyse electromyography (EMG) signals, biomechanical data, and subjective measures to both detect early signs of injury risk and predict future injury and pain outcomes in musicians. By integrating multimodal data sources, the model aims to enable proactive, personalised interventions that improve musician health and performance longevity.",
-      images: ["assets/violin.jpg", "/assets/ml-model.png", "/assets/prediction-chart.jpg"],
+      image:
+        "assets/violin.jpg",
       technologies: ["Python", "PostgreSQL"],
       challenges: [
         "Standardising performance metrics across instruments",
@@ -760,7 +686,8 @@ const projects = [
       title: "Multi-Level Modeling for Panic Symptoms and Performance Anxiety in Drummers",
       description:
         "This project applied multi-level modeling (MLM) techniques to an AI-generated dataset designed with domain-specific input to simulate panic symptoms and contextual factors in drummers. This synthetic dataset was structured around realistic variables selected based on research literature. Variables included panic symptom indicators, lifestyle habits, performance context, and musical background.",
-      images: ["assets/fear.png", "/assets/mlm-diagram.jpg", "/assets/anxiety-chart.png"],
+      image:
+        "assets/fear.png",
       technologies: ["R"],
       challenges: [
         "Designing a realistic dataset structure with meaningful, interrelated variables",
@@ -778,7 +705,8 @@ const projects = [
       title: "Music Experience Website",
       description:
         "Developed using R and Quarto, this website showcases my journey as a dedicated, self-taught intermediate musician. It highlights my long-term engagement with musicianship and provides essential context and credibility for my research in musician health.",
-      images: ["/assets/drum.png", "/assets/website-home.jpg", "/assets/website-gallery.png"],
+      image:
+        "/assets/drum.png",
       technologies: ["R", "Quarto", "JavaScript", "HTML", "CSS"],
       challenges: [
         "Learning Quarto as a new tool for web publishing",
@@ -794,41 +722,6 @@ const projects = [
       demoUrl: "https://evangelia-music.netlify.app/",
     },
   };
-
-  const researchExperiences = [
-    {
-      title: "Experimental Neuroscience",
-      description: "Undergraduate research assistant",
-      icon: "🧠",
-      tasks: ["EEG data collection", "MATLAB", "Audiovisual Working Memory", "Behavioral experiment design", "Statistical analysis"],
-      challenges: ["Signal noise reduction", "Participant recruitment", "Data preprocessing"],
-      contributions: ["Improved experimental protocols", "Enhanced data quality", "Research methodology development"],
-    },
-    {
-      title: "Meta-Analysis",
-      description: "Research Practicum: Music Listening Effects on Cognitive & Physical Performance",
-      icon: "📊",
-      tasks: ["Literature review", "Effect size calculations", "Multivariate Meta-Analysis"],
-      challenges: ["Study selection criteria", "Heterogeneity analysis", "Publication bias assessment"],
-      contributions: ["Comprehensive systematic review", "Statistical synthesis", "Evidence-based recommendations"],
-    },
-    {
-      title: "BSc Thesis Research",
-      description: "Mental toughness & peak performance",
-      icon: "🎯",
-      tasks: ["Online experiment design", "Data collection", "Statistical modeling"],
-      challenges: ["Remote data quality", "Construct measurement", "Causal inference"],
-      contributions: ["Novel experimental paradigm", "Theoretical insights", "Practical applications"],
-    },
-    {
-      title: "MSc Thesis Research",
-      description: "Music therapy in Parkinson's rehabilitation",
-      icon: "🎵",
-      tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-      challenges: ["Study heterogeneity", "Outcome standardization", "Clinical significance"],
-      contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
-    },
-  ];
 
   const theses = [
     {
@@ -1139,100 +1032,8 @@ const projects = [
 
   // Setup event listeners when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      setupEventListeners();
-      initGalleries();
-    });
+    document.addEventListener('DOMContentLoaded', setupEventListeners);
   } else {
     setupEventListeners();
-    initGalleries();
   }
-  
-  // Gallery functionality
-  const galleries = {};
-  
-  function initGalleries() {
-    document.querySelectorAll('.gallery-slides').forEach(container => {
-      const projectId = container.dataset.project;
-      const project = projectsData[projectId];
-      
-      if (!project || !project.images) return;
-      
-      // Initialize gallery state
-      galleries[projectId] = { currentSlide: 0, totalSlides: project.images.length };
-      
-      // Create slides
-      container.innerHTML = '';
-      project.images.forEach((imageSrc, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'gallery-slide';
-        slide.innerHTML = `<img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">`;
-        container.appendChild(slide);
-      });
-      
-      // Create dots
-      const dotsContainer = document.querySelector(`.gallery-dots[data-project="${projectId}"]`);
-      if (dotsContainer && project.images.length > 1) {
-        dotsContainer.innerHTML = '';
-        project.images.forEach((_, index) => {
-          const dot = document.createElement('button');
-          dot.className = `gallery-dot ${index === 0 ? 'active' : ''}`;
-          dot.addEventListener('click', (e) => {
-            e.stopPropagation();
-            goToSlide(projectId, index);
-          });
-          dotsContainer.appendChild(dot);
-        });
-      }
-    });
-    
-    // Add navigation event listeners
-    document.querySelectorAll('.gallery-nav').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const projectId = btn.dataset.project;
-        const direction = btn.dataset.dir;
-        const gallery = galleries[projectId];
-        
-        if (!gallery) return;
-        
-        const newSlide = direction === 'next' 
-          ? (gallery.currentSlide + 1) % gallery.totalSlides
-          : (gallery.currentSlide - 1 + gallery.totalSlides) % gallery.totalSlides;
-        
-        goToSlide(projectId, newSlide);
-      });
-    });
-  }
-  
-  function goToSlide(projectId, slideIndex) {
-    const gallery = galleries[projectId];
-    if (!gallery) return;
-    
-    gallery.currentSlide = slideIndex;
-    
-    const container = document.querySelector(`.gallery-slides[data-project="${projectId}"]`);
-    const dotsContainer = document.querySelector(`.gallery-dots[data-project="${projectId}"]`);
-    
-    if (container) {
-      container.style.transform = `translateX(-${slideIndex * 100}%)`;
-    }
-    
-    if (dotsContainer) {
-      dotsContainer.querySelectorAll('.gallery-dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index === slideIndex);
-      });
-    }
-  }
-  
-  // Update the showModal function to use the first image
-  const originalShowModal = showModal;
-  showModal = function(project) {
-    // Update the project image to use the first image from the array
-    const updatedProject = {
-      ...project,
-      image: project.images ? project.images[0] : project.image
-    };
-    originalShowModal(updatedProject);
-  };
 </script>
