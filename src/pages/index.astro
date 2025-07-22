@@ -297,7 +297,7 @@ const projects = [
                     <!-- GitHub/Demo buttons -->
                     <div class="flex gap-1 mb-2">
                       {project.githubUrl && project.githubUrl !== "#" && (
-                        
+                        <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -311,7 +311,7 @@ const projects = [
                         </a>
                       )}
                       {project.demoUrl && project.demoUrl !== "#" && (
-                        
+                        <a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
