@@ -1012,8 +1012,15 @@ const theses = [
     });
   }
 
-  // Use a small delay to ensure DOM is fully rendered
-  setTimeout(() => {
-    setupEventListeners();
-  }, 100);
+  // Better event listener setup - wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setupEventListeners();
+});
+
+// Fallback if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupEventListeners);
+} else {
+  setupEventListeners();
+}
 </script>
