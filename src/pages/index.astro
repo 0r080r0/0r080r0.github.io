@@ -600,7 +600,7 @@ const projects = [
     "music-therapy-ai": {
       title: "Musician Health Survey",
       description:
-        "Developed a structured, web-based questionnaire to assess musicians’ mental health, physical health, and overall wellbeing. Designed for use in longitudinal studies, the tool enables consistent self-report data collection to support health monitoring and analysis alongside physiological measures. Includes evidence-informed guidance tailored to each domain.",
+        "Developed a structured, web-based questionnaire to assess musicians' mental health, physical health, and overall wellbeing. Designed for use in longitudinal studies, the tool enables consistent self-report data collection to support health monitoring and analysis alongside physiological measures. Includes evidence-informed guidance tailored to each domain.",
       image:
         "/assets/survey.png",
       technologies: ["R", "JavaScript", "HTML", "CSS"],
@@ -695,115 +695,96 @@ const projects = [
       demoUrl: "https://evangelia-music.netlify.app/",
     },
   };
-  
+
   const researchExperiences = [
-  {
-    title: "Experimental Neuroscience",
-    description: "Undergraduate research assistant",
-    icon: "🧠",
-    tasks: ["EEG data collection", "MATLAB", "Audiovisual Working Memory", "Behavioral experiment design", "Statistical analysis"],
-    challenges: ["Signal noise reduction", "Participant recruitment", "Data preprocessing"],
-    contributions: ["Improved experimental protocols", "Enhanced data quality", "Research methodology development"],
-  },
-  {
-    title: "Meta-Analysis",
-    description: "Research Practicum: Music Listening Effects on Cognitive & Physical Performance",
-    icon: "📊",
-    tasks: ["Literature review", "Effect size calculations", "Multivariate Meta-Analysis"],
-    challenges: ["Study selection criteria", "Heterogeneity analysis", "Publication bias assessment"],
-    contributions: ["Comprehensive systematic review", "Statistical synthesis", "Evidence-based recommendations"],
-  },
-  {
-    title: "BSc Thesis Research",
-    description: "Mental toughness & peak performance",
-    icon: "🎯",
-    tasks: ["Online experiment design", "Data collection", "Statistical modeling"],
-    challenges: ["Remote data quality", "Construct measurement", "Causal inference"],
-    contributions: ["Novel experimental paradigm", "Theoretical insights", "Practical applications"],
-  },
-  {
-    title: "MSc Thesis Research",
-    description: "Music therapy in Parkinson's rehabilitation",
-    icon: "🎵",
-    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-    challenges: ["Study heterogeneity", "Outcome standardization", "Clinical significance"],
-    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
-  },
-];
-
-const theses = [
-  {
-    title: "BSc Thesis",
-    year: "2021",
-    type: "Bachelor in Psychology",
-    focus: "Performance Psychology",
-    topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
-  },
-  {
-    title: "MSc Thesis",
-    year: "2023",
-    type: "Master in Psychological Science",
-    focus: "Neuro Motor Rehabilitation",
-    topic:
-      "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
-    research questions: "",
-    hypotheses: "",
-    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-    challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
-    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
-    images: [
     {
-      src: "/assets/motricity.png",
-      caption: "Music-Motricity-Model"
+      title: "Experimental Neuroscience",
+      description: "Undergraduate research assistant",
+      icon: "🧠",
+      tasks: ["EEG data collection", "MATLAB", "Audiovisual Working Memory", "Behavioral experiment design", "Statistical analysis"],
+      challenges: ["Signal noise reduction", "Participant recruitment", "Data preprocessing"],
+      contributions: ["Improved experimental protocols", "Enhanced data quality", "Research methodology development"],
     },
     {
-      src: "/assets/flowchart.png",
-      caption: "Flow chart of the literature search"
+      title: "Meta-Analysis",
+      description: "Research Practicum: Music Listening Effects on Cognitive & Physical Performance",
+      icon: "📊",
+      tasks: ["Literature review", "Effect size calculations", "Multivariate Meta-Analysis"],
+      challenges: ["Study selection criteria", "Heterogeneity analysis", "Publication bias assessment"],
+      contributions: ["Comprehensive systematic review", "Statistical synthesis", "Evidence-based recommendations"],
     },
     {
-      src: "/assets/walk.png",
-      caption: "Univariate meta-analysis of walking"
+      title: "BSc Thesis Research",
+      description: "Mental toughness & peak performance",
+      icon: "🎯",
+      tasks: ["Online experiment design", "Data collection", "Statistical modeling"],
+      challenges: ["Remote data quality", "Construct measurement", "Causal inference"],
+      contributions: ["Novel experimental paradigm", "Theoretical insights", "Practical applications"],
     },
     {
-      src: "/assets/updrs.png",
-      caption: "Univariate meta-analysis of the UPDRS-III"
+      title: "MSc Thesis Research",
+      description: "Music therapy in Parkinson's rehabilitation",
+      icon: "🎵",
+      tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+      challenges: ["Study heterogeneity", "Outcome standardization", "Clinical significance"],
+      contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
+    },
+  ];
+
+  const theses = [
+    {
+      title: "BSc Thesis",
+      year: "2021",
+      type: "Bachelor in Psychology",
+      focus: "Performance Psychology",
+      topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
     },
     {
-      src: "/assets/cadence.png",
-      caption: "Univariate meta-analysis of Cadence"
-    }
-  ]
-  },
-];
+      title: "MSc Thesis",
+      year: "2023",
+      type: "Master in Psychological Science",
+      focus: "Neuro Motor Rehabilitation",
+      topic:
+        "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
+      research_questions: "",
+      hypotheses: "",
+      tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+      challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
+      contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
+      images: [
+        {
+          src: "/assets/motricity.png",
+          caption: "Music-Motricity-Model"
+        },
+        {
+          src: "/assets/flowchart.png",
+          caption: "Flow chart of the literature search"
+        },
+        {
+          src: "/assets/walk.png",
+          caption: "Univariate meta-analysis of walking"
+        },
+        {
+          src: "/assets/updrs.png",
+          caption: "Univariate meta-analysis of the UPDRS-III"
+        },
+        {
+          src: "/assets/cadence.png",
+          caption: "Univariate meta-analysis of Cadence"
+        }
+      ]
+    },
+  ];
 
-  // Modal elements
-  const modal = document.getElementById("project-modal");
-  const modalTitle = document.getElementById("modal-title");
-  const modalImage = document.getElementById("modal-image");
-  const modalDescription = document.getElementById("modal-description");
-  const modalTechnologies = document.getElementById("modal-technologies");
-  const modalChallenges = document.getElementById("modal-challenges");
-  const modalOutcomes = document.getElementById("modal-outcomes");
-  const modalLinks = document.getElementById("modal-links");
-  const closeModal = document.getElementById("close-modal");
-
-  const researchModal = document.getElementById("research-modal");
-  const researchModalTitle = document.getElementById("research-modal-title");
-  const researchModalDescription = document.getElementById("research-modal-description");
-  const researchModalTasks = document.getElementById("research-modal-tasks");
-  const researchModalChallenges = document.getElementById("research-modal-challenges");
-  const researchModalContributions = document.getElementById("research-modal-contributions");
-  const closeResearchModal = document.getElementById("close-research-modal");
-
-  const thesisModal = document.getElementById("thesis-modal");
-  const thesisModalTitle = document.getElementById("thesis-modal-title");
-  const thesisModalType = document.getElementById("thesis-modal-type");
-  const thesisModalYear = document.getElementById("thesis-modal-year");
-  const thesisModalTopic = document.getElementById("thesis-modal-topic");
-  const closeThesisModal = document.getElementById("close-thesis-modal");
+  // Modal elements - declared but will be assigned in setupEventListeners
+  let modal, modalTitle, modalImage, modalDescription, modalTechnologies, modalChallenges, modalOutcomes, modalLinks, closeModal;
+  let researchModal, researchModalTitle, researchModalDescription, researchModalTasks, researchModalChallenges, researchModalContributions, closeResearchModal;
+  let thesisModal, thesisModalTitle, thesisModalType, thesisModalYear, thesisModalTopic, closeThesisModal;
 
   // Handler to show Project Modal
   function showModal(project) {
+    if (!modal || !modalTitle) return; // Safety check
+    
     modalTitle.textContent = project.title;
     modalImage.src = project.image;
     modalImage.alt = project.title;
@@ -874,12 +855,15 @@ const theses = [
 
   // Handler to hide Project Modal
   function hideModal() {
+    if (!modal) return;
     modal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
 
   // Research Modal show
   function showResearchModal(researchArea) {
+    if (!researchModal) return;
+    
     researchModalTitle.textContent = researchArea.title;
     researchModalDescription.textContent = researchArea.description;
 
@@ -916,12 +900,15 @@ const theses = [
 
   // Research Modal hide
   function hideResearchModal() {
+    if (!researchModal) return;
     researchModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
 
   // Thesis Modal show
   function showThesisModal(thesis) {
+    if (!thesisModal) return;
+    
     thesisModalTitle.textContent = thesis.title;
     thesisModalType.textContent = thesis.type;
     thesisModalYear.textContent = thesis.year;
@@ -933,12 +920,39 @@ const theses = [
 
   // Thesis Modal hide
   function hideThesisModal() {
+    if (!thesisModal) return;
     thesisModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
 
   // Setup event listeners when DOM is ready
   function setupEventListeners() {
+    // Get modal elements
+    modal = document.getElementById("project-modal");
+    modalTitle = document.getElementById("modal-title");
+    modalImage = document.getElementById("modal-image");
+    modalDescription = document.getElementById("modal-description");
+    modalTechnologies = document.getElementById("modal-technologies");
+    modalChallenges = document.getElementById("modal-challenges");
+    modalOutcomes = document.getElementById("modal-outcomes");
+    modalLinks = document.getElementById("modal-links");
+    closeModal = document.getElementById("close-modal");
+
+    researchModal = document.getElementById("research-modal");
+    researchModalTitle = document.getElementById("research-modal-title");
+    researchModalDescription = document.getElementById("research-modal-description");
+    researchModalTasks = document.getElementById("research-modal-tasks");
+    researchModalChallenges = document.getElementById("research-modal-challenges");
+    researchModalContributions = document.getElementById("research-modal-contributions");
+    closeResearchModal = document.getElementById("close-research-modal");
+
+    thesisModal = document.getElementById("thesis-modal");
+    thesisModalTitle = document.getElementById("thesis-modal-title");
+    thesisModalType = document.getElementById("thesis-modal-type");
+    thesisModalYear = document.getElementById("thesis-modal-year");
+    thesisModalTopic = document.getElementById("thesis-modal-topic");
+    closeThesisModal = document.getElementById("close-thesis-modal");
+
     // Project cards
     document.querySelectorAll(".project-card").forEach((card) => {
       card.addEventListener("click", () => {
@@ -951,17 +965,21 @@ const theses = [
     });
 
     // Close project modal
-    closeModal.addEventListener("click", hideModal);
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        hideModal();
-      }
-    });
+    if (closeModal) {
+      closeModal.addEventListener("click", hideModal);
+    }
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          hideModal();
+        }
+      });
+    }
 
-    // Research area items - FIXED: Removed the extra }); and properly set up the event listeners
+    // Research area items
     document.querySelectorAll(".research-area-item").forEach((item) => {
       item.addEventListener("click", () => {
-        const areaIndex = item.dataset.areaIndex;
+        const areaIndex = parseInt(item.dataset.areaIndex);
         const researchArea = researchExperiences[areaIndex];
         if (researchArea) {
           showResearchModal(researchArea);
@@ -970,17 +988,21 @@ const theses = [
     });
 
     // Close research modal
-    closeResearchModal.addEventListener("click", hideResearchModal);
-    researchModal.addEventListener("click", (e) => {
-      if (e.target === researchModal) {
-        hideResearchModal();
-      }
-    });
+    if (closeResearchModal) {
+      closeResearchModal.addEventListener("click", hideResearchModal);
+    }
+    if (researchModal) {
+      researchModal.addEventListener("click", (e) => {
+        if (e.target === researchModal) {
+          hideResearchModal();
+        }
+      });
+    }
 
     // Thesis items
     document.querySelectorAll(".thesis-item").forEach((item) => {
       item.addEventListener("click", () => {
-        const thesisIndex = item.dataset.thesisIndex;
+        const thesisIndex = parseInt(item.dataset.thesisIndex);
         const thesis = theses[thesisIndex];
         if (thesis) {
           showThesisModal(thesis);
@@ -989,38 +1011,37 @@ const theses = [
     });
 
     // Close thesis modal
-    closeThesisModal.addEventListener("click", hideThesisModal);
-    thesisModal.addEventListener("click", (e) => {
-      if (e.target === thesisModal) {
-        hideThesisModal();
-      }
-    });
+    if (closeThesisModal) {
+      closeThesisModal.addEventListener("click", hideThesisModal);
+    }
+    if (thesisModal) {
+      thesisModal.addEventListener("click", (e) => {
+        if (e.target === thesisModal) {
+          hideThesisModal();
+        }
+      });
+    }
 
     // Escape key closes any open modal
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        if (modal.classList.contains("active")) {
+        if (modal && modal.classList.contains("active")) {
           hideModal();
         }
-        if (researchModal.classList.contains("active")) {
+        if (researchModal && researchModal.classList.contains("active")) {
           hideResearchModal();
         }
-        if (thesisModal.classList.contains("active")) {
+        if (thesisModal && thesisModal.classList.contains("active")) {
           hideThesisModal();
         }
       }
     });
   }
 
-  // Better event listener setup - wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  setupEventListeners();
-});
-
-// Fallback if DOMContentLoaded already fired
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupEventListeners);
-} else {
-  setupEventListeners();
-}
+  // Setup event listeners when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupEventListeners);
+  } else {
+    setupEventListeners();
+  }
 </script>
