@@ -264,11 +264,11 @@ const projects = [
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
               {projects.map((project, index) => (
                 <div
-                  class="project-card group relative bg-black/15 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col min-h-48"
+                  class="project-card group relative bg-black/15 backdrop-blur-sm rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-500/70 flex flex-col h-80"
                   data-project-id={project.id}
                   key={index}
                 >
-                  <!-- Image container - now responsive height -->
+                  <!-- Image container - fixed height -->
                   <div class="h-32 relative overflow-hidden flex-shrink-0">
                     <img
                       src={project.image}
@@ -283,12 +283,11 @@ const projects = [
                       </p>
                     </div>
                   </div>
-
-                  <!-- Content area - now expands based on content -->
-                  <div class="p-3 flex-1 flex flex-col bg-black/10 backdrop-blur-sm">
-                    <!-- Show all tags, not just first 3 -->
+                  <!-- Content area - controlled height -->
+                  <div class="p-3 flex-1 flex flex-col bg-black/10 backdrop-blur-sm overflow-hidden">
+                    <!-- Tags - limit to 3 -->
                     <div class="flex flex-wrap gap-1 mb-3">
-                      {project.tags.map((tag, i) => (
+                      {project.tags.slice(0, 3).map((tag, i) => (
                         <span
                           class="px-2 py-0.5 bg-slate-800/80 text-teal-300 rounded-full text-xs font-medium backdrop-blur-sm"
                           key={i}
@@ -296,17 +295,22 @@ const projects = [
                           {tag}
                         </span>
                       ))}
+                      {project.tags.length > 3 && (
+                        <span class="px-2 py-0.5 bg-slate-600/80 text-gray-300 rounded-full text-xs font-medium backdrop-blur-sm">
+                          +{project.tags.length - 3}
+                        </span>
+                      )}
                     </div>
-                    
-                    <!-- Description preview - expandable -->
-                    <div class="mb-3 flex-1">
-                      <p class="text-xs text-gray-300 leading-relaxed">
-                        {project.description.length > 120 
-                          ? project.description.substring(0, 120) + "..." 
-                          : project.description}
+                                        
+                    <!-- Description preview - fixed height -->
+                    <div class="mb-3 flex-1 overflow-hidden">
+                      <p class="text-xs text-gray-300 leading-relaxed line-clamp-3">
+                        {project.description.length > 100
+                           ? project.description.substring(0, 100) + "..."
+                           : project.description}
                       </p>
                     </div>
-                    
+                                        
                     <div class="flex items-center justify-between text-xs text-gray-300 mt-auto">
                       <span>{project.readTime}</span>
                       <svg
