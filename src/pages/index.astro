@@ -950,63 +950,100 @@ const researchExperiences = [
 ];
 
   function setupEventListeners() {
-    // Get modal elements
-    thesisModal = document.getElementById("thesis-modal");
-    thesisModalTitle = document.getElementById("thesis-modal-title");
-    thesisModalType = document.getElementById("thesis-modal-type");
-    thesisModalYear = document.getElementById("thesis-modal-year");
-    thesisModalTopic = document.getElementById("thesis-modal-topic");
-    thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
-    thesisModalHypotheses = document.getElementById("thesis-modal-hypotheses");
-    thesisModalTasks = document.getElementById("thesis-modal-tasks");
-    thesisModalChallenges = document.getElementById("thesis-modal-challenges");
-    thesisModalContributions = document.getElementById("thesis-modal-contributions");
-    thesisModalImages = document.getElementById("thesis-modal-images");
-    closeThesisModal = document.getElementById("close-thesis-modal");
+  // Get ALL modal elements (including project modal elements that were missing)
+  modal = document.getElementById("project-modal");
+  modalTitle = document.getElementById("modal-title");
+  modalImage = document.getElementById("modal-image");
+  modalDescription = document.getElementById("modal-description");
+  modalTechnologies = document.getElementById("modal-technologies");
+  modalChallenges = document.getElementById("modal-challenges");
+  modalOutcomes = document.getElementById("modal-outcomes");
+  modalLinks = document.getElementById("modal-links");
+  closeModal = document.getElementById("close-modal");
 
-    researchModal = document.getElementById("research-modal");
-    researchModalTitle = document.getElementById("research-modal-title");
-    researchModalDescription = document.getElementById("research-modal-description");
-    researchModalTasks = document.getElementById("research-modal-tasks");
-    researchModalChallenges = document.getElementById("research-modal-challenges");
-    researchModalContributions = document.getElementById("research-modal-contributions");
-    closeResearchModal = document.getElementById("close-research-modal");
+  // Research modal elements
+  researchModal = document.getElementById("research-modal");
+  researchModalTitle = document.getElementById("research-modal-title");
+  researchModalDescription = document.getElementById("research-modal-description");
+  researchModalTasks = document.getElementById("research-modal-tasks");
+  researchModalChallenges = document.getElementById("research-modal-challenges");
+  researchModalContributions = document.getElementById("research-modal-contributions");
+  closeResearchModal = document.getElementById("close-research-modal");
 
-    // Thesis items
-    document.querySelectorAll(".thesis-item").forEach((item) => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
-            const thesisIndex = parseInt(item.dataset.thesisIndex);
-            const thesis = theses[thesisIndex];
-            if (thesis) showThesisModal(thesis);
-        });
+  // Thesis modal elements
+  thesisModal = document.getElementById("thesis-modal");
+  thesisModalTitle = document.getElementById("thesis-modal-title");
+  thesisModalType = document.getElementById("thesis-modal-type");
+  thesisModalYear = document.getElementById("thesis-modal-year");
+  thesisModalTopic = document.getElementById("thesis-modal-topic");
+  closeThesisModal = document.getElementById("close-thesis-modal");
+
+  // PROJECT CARD EVENT LISTENERS
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      // Prevent opening modal if clicking on GitHub/Demo links
+      if (e.target.closest('a')) {
+        return;
+      }
+      
+      const projectId = card.dataset.projectId;
+      const project = projectsData[projectId];
+      if (project) {
+        showModal(project);
+      }
     });
+  });
 
-    // Research area items
-    document.querySelectorAll(".research-area-item").forEach((item) => {
-        item.addEventListener("click", (e) => {
-            e.preventDefault();
-            const areaIndex = parseInt(item.dataset.areaIndex);
-            const researchArea = researchExperiences[areaIndex];
-            if (researchArea) showResearchModal(researchArea);
-        });
+  // Thesis items
+  document.querySelectorAll(".thesis-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      const thesisIndex = parseInt(item.dataset.thesisIndex);
+      const thesis = theses[thesisIndex];
+      if (thesis) showThesisModal(thesis);
     });
+  });
 
-    // Close buttons
-    if (closeThesisModal) {
-        closeThesisModal.addEventListener("click", hideThesisModal);
+  // Research area items
+  document.querySelectorAll(".research-area-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      const areaIndex = parseInt(item.dataset.areaIndex);
+      const researchArea = researchExperiences[areaIndex];
+      if (researchArea) showResearchModal(researchArea);
+    });
+  });
+
+  // Close button event listeners
+  if (closeModal) {
+    closeModal.addEventListener("click", hideModal);
+  }
+  if (closeThesisModal) {
+    closeThesisModal.addEventListener("click", hideThesisModal);
+  }
+  if (closeResearchModal) {
+    closeResearchModal.addEventListener("click", hideResearchModal);
+  }
+
+  // Click outside to close modals
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) hideModal();
+  });
+  thesisModal?.addEventListener("click", (e) => {
+    if (e.target === thesisModal) hideThesisModal();
+  });
+  researchModal?.addEventListener("click", (e) => {
+    if (e.target === researchModal) hideResearchModal();
+  });
+
+  // Escape key to close modals
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      hideModal();
+      hideThesisModal();
+      hideResearchModal();
     }
-    if (closeResearchModal) {
-        closeResearchModal.addEventListener("click", hideResearchModal);
-    }
-
-    // Click outside to close
-    thesisModal?.addEventListener("click", (e) => {
-        if (e.target === thesisModal) hideThesisModal();
-    });
-    researchModal?.addEventListener("click", (e) => {
-        if (e.target === researchModal) hideResearchModal();
-    });
+  });
 }
 
   // Setup event listeners
