@@ -484,7 +484,7 @@ const projects = [
       class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
     >
       <div
-        class="bg-black/90 border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+        class="bg-black/90 border border-gray-700 rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto"
       >
         <div
           class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between"
@@ -511,45 +511,119 @@ const projects = [
           </button>
         </div>
         <div class="p-6">
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-3">Type</h3>
-              <p id="thesis-modal-type" class="text-gray-300 text-lg"></p>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column: Core Academic Information -->
+            <div class="lg:col-span-2 space-y-6">
+              <!-- Essential Details -->
+              <div class="grid grid-cols-2 gap-4 p-4 bg-white/5 rounded-lg border border-gray-700/50">
+                <div>
+                  <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Degree</h3>
+                  <p id="thesis-modal-type" class="text-white font-medium"></p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Year</h3>
+                  <p id="thesis-modal-year" class="text-white font-medium"></p>
+                </div>
+              </div>
+
+              <!-- Research Focus -->
+              <div>
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Research Topic</h3>
+                <p id="thesis-modal-topic" class="text-gray-300 leading-relaxed text-base"></p>
+              </div>
+
+              <!-- Research Questions -->
+              <div id="thesis-research-questions-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Research Questions</h3>
+                <p id="thesis-modal-research-questions" class="text-gray-300 leading-relaxed"></p>
+              </div>
+
+              <!-- Hypotheses -->
+              <div id="thesis-hypotheses-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Hypotheses</h3>
+                <p id="thesis-modal-hypotheses" class="text-gray-300 leading-relaxed"></p>
+              </div>
+
+              <!-- Methodology -->
+              <div id="thesis-tasks-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Methodology & Key Tasks</h3>
+                <ul id="thesis-modal-tasks" class="space-y-2 text-gray-300"></ul>
+              </div>
+
+              <!-- Challenges & Limitations -->
+              <div id="thesis-challenges-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Challenges & Limitations</h3>
+                <ul id="thesis-modal-challenges" class="space-y-2 text-gray-300"></ul>
+              </div>
+
+              <!-- Contributions & Impact -->
+              <div id="thesis-contributions-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Key Contributions</h3>
+                <ul id="thesis-modal-contributions" class="space-y-2 text-gray-300"></ul>
+              </div>
             </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-3">Year</h3>
-              <p id="thesis-modal-year" class="text-gray-300 text-lg"></p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold text-white mb-3">Topic</h3>
-              <p
-                id="thesis-modal-topic"
-                class="text-gray-300 leading-relaxed"
-              ></p>
-            </div>
-            <div id="thesis-research-questions-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Research Questions</h3>
-              <p id="thesis-modal-research-questions" class="text-gray-300 leading-relaxed"></p>
-            </div>
-            <div id="thesis-hypotheses-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Hypotheses</h3>
-              <p id="thesis-modal-hypotheses" class="text-gray-300 leading-relaxed"></p>
-            </div>
-            <div id="thesis-tasks-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Key Tasks</h3>
-              <ul id="thesis-modal-tasks" class="space-y-2 text-gray-300"></ul>
-            </div>
-            <div id="thesis-challenges-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Challenges</h3>
-              <ul id="thesis-modal-challenges" class="space-y-2 text-gray-300"></ul>
-            </div>
-            <div id="thesis-contributions-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Contributions</h3>
-              <ul id="thesis-modal-contributions" class="space-y-2 text-gray-300"></ul>
-            </div>
-            <div id="thesis-images-section" style="display: none;">
-              <h3 class="text-lg font-semibold text-white mb-3">Images</h3>
-              <div id="thesis-modal-images" class="space-y-4"></div>
+
+            <!-- Right Column: Visual Evidence -->
+            <div class="lg:col-span-1">
+              <div id="thesis-images-section" style="display: none;">
+                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Research Visualizations</h3>
+                
+                <!-- Compact Gallery -->
+                <div class="bg-black/40 rounded-lg border border-gray-700/50 overflow-hidden">
+                  <!-- Main Display -->
+                  <div class="relative h-48 bg-gray-900">
+                    <img 
+                      id="gallery-main-image" 
+                      src="" 
+                      alt="" 
+                      class="w-full h-full object-contain transition-opacity duration-200"
+                    />
+                    
+                    <!-- Minimal Navigation -->
+                    <button 
+                      id="gallery-prev" 
+                      class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white rounded p-1.5 transition-colors opacity-0 group-hover:opacity-100"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                      </svg>
+                    </button>
+                    <button 
+                      id="gallery-next" 
+                      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white rounded p-1.5 transition-colors opacity-0 group-hover:opacity-100"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                      </svg>
+                    </button>
+                    
+                    <!-- Counter -->
+                    <div class="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                      <span id="gallery-counter">1/1</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Thumbnail Navigation -->
+                  <div class="p-3">
+                    <div id="gallery-thumbnails" class="flex gap-1.5 overflow-x-auto">
+                      <!-- Thumbnails inserted here -->
+                    </div>
+                  </div>
+                  
+                  <!-- Caption -->
+                  <div class="px-3 pb-3 border-t border-gray-700/50 pt-3">
+                    <p id="gallery-caption" class="text-xs text-gray-400 text-center leading-relaxed"></p>
+                  </div>
+                </div>
+
+                <!-- Additional Context -->
+                <div class="mt-4 p-3 bg-blue-900/20 border border-blue-700/30 rounded-lg">
+                  <p class="text-xs text-blue-300 leading-relaxed">
+                    <span class="font-semibold">Visual Evidence:</span> These figures support the research methodology and demonstrate key findings from the analysis.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -604,6 +678,70 @@ const projects = [
       opacity: 1;
       transform: translateY(0);
     }
+  }
+  
+  /* Compact gallery styles */
+  .gallery-container {
+    transition: all 0.3s ease;
+  }
+
+  .gallery-container:hover .gallery-nav {
+    opacity: 1;
+  }
+
+  #gallery-thumbnails {
+    scrollbar-width: thin;
+    scrollbar-color: #4B5563 transparent;
+  }
+
+  #gallery-thumbnails::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  #gallery-thumbnails::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 2px;
+  }
+
+  .gallery-thumbnail {
+    width: 40px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+  }
+
+  .gallery-thumbnail:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  .gallery-thumbnail.active {
+    opacity: 1;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  }
+
+  /* Academic content styling */
+  .thesis-modal h3 {
+    position: relative;
+  }
+
+  .thesis-modal li {
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .thesis-modal li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #6B7280;
+    font-weight: bold;
   }
 </style>
 
@@ -920,16 +1058,18 @@ const projects = [
   // Thesis Modal show
   function showThesisModal(thesis) {
     if (!thesisModal) return;
-        
+            
+    // Basic information
     thesisModalTitle.textContent = thesis.title;
     thesisModalType.textContent = thesis.type;
     thesisModalYear.textContent = thesis.year;
     thesisModalTopic.textContent = thesis.topic;
 
-    // Handle optional fields - show/hide sections based on data availability
+    // Handle all optional fields - show/hide sections based on data availability
     
     // Research Questions
     const researchQuestionsSection = document.getElementById("thesis-research-questions-section");
+    const thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
     if (thesis.research_questions && thesis.research_questions.trim()) {
       thesisModalResearchQuestions.textContent = thesis.research_questions;
       researchQuestionsSection.style.display = "block";
@@ -939,6 +1079,7 @@ const projects = [
 
     // Hypotheses
     const hypothesesSection = document.getElementById("thesis-hypotheses-section");
+    const thesisModalHypotheses = document.getElementById("thesis-modal-hypotheses");
     if (thesis.hypotheses && thesis.hypotheses.trim()) {
       thesisModalHypotheses.textContent = thesis.hypotheses;
       hypothesesSection.style.display = "block";
@@ -946,8 +1087,9 @@ const projects = [
       hypothesesSection.style.display = "none";
     }
 
-    // Tasks
+    // Tasks/Methodology
     const tasksSection = document.getElementById("thesis-tasks-section");
+    const thesisModalTasks = document.getElementById("thesis-modal-tasks");
     if (thesis.tasks && thesis.tasks.length > 0) {
       thesisModalTasks.innerHTML = "";
       thesis.tasks.forEach((task) => {
@@ -963,6 +1105,7 @@ const projects = [
 
     // Challenges
     const challengesSection = document.getElementById("thesis-challenges-section");
+    const thesisModalChallenges = document.getElementById("thesis-modal-challenges");
     if (thesis.challenges && thesis.challenges.length > 0) {
       thesisModalChallenges.innerHTML = "";
       thesis.challenges.forEach((challenge) => {
@@ -978,6 +1121,7 @@ const projects = [
 
     // Contributions
     const contributionsSection = document.getElementById("thesis-contributions-section");
+    const thesisModalContributions = document.getElementById("thesis-modal-contributions");
     if (thesis.contributions && thesis.contributions.length > 0) {
       thesisModalContributions.innerHTML = "";
       thesis.contributions.forEach((contribution) => {
@@ -991,19 +1135,12 @@ const projects = [
       contributionsSection.style.display = "none";
     }
 
-    // Images
+    // Compact gallery setup
     const imagesSection = document.getElementById("thesis-images-section");
     if (thesis.images && thesis.images.length > 0) {
-      thesisModalImages.innerHTML = "";
-      thesis.images.forEach((image) => {
-        const div = document.createElement("div");
-        div.className = "text-center";
-        div.innerHTML = `
-          <img src="${image.src}" alt="${image.caption}" class="w-full max-w-md mx-auto rounded-lg mb-2" />
-          <p class="text-sm text-gray-400 italic">${image.caption}</p>
-        `;
-        thesisModalImages.appendChild(div);
-      });
+      galleryImages = thesis.images;
+      currentImageIndex = 0;
+      setupCompactGallery();
       imagesSection.style.display = "block";
     } else {
       imagesSection.style.display = "none";
@@ -1052,6 +1189,75 @@ const researchExperiences = [
     ]
   }
 ];
+
+function toggleSection(sectionId, data, contentId, type = "text") {
+    const section = document.getElementById(sectionId);
+    const content = document.getElementById(contentId);
+    
+    if (data && (type === "text" ? data.trim() : data.length > 0)) {
+      if (type === "list") {
+        content.innerHTML = "";
+        data.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          li.className = "text-gray-300";
+          content.appendChild(li);
+        });
+      } else {
+        content.textContent = data;
+      }
+      section.style.display = "block";
+    } else {
+      section.style.display = "none";
+    }
+  }
+
+  function setupCompactGallery() {
+    const mainImage = document.getElementById("gallery-main-image");
+    const thumbnailsContainer = document.getElementById("gallery-thumbnails");
+    const caption = document.getElementById("gallery-caption");
+    const counter = document.getElementById("gallery-counter");
+    const prevBtn = document.getElementById("gallery-prev");
+    const nextBtn = document.getElementById("gallery-next");
+    
+    // Clear and populate thumbnails
+    thumbnailsContainer.innerHTML = "";
+    galleryImages.forEach((image, index) => {
+      const thumb = document.createElement("img");
+      thumb.src = image.src;
+      thumb.alt = image.caption;
+      thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+      thumb.addEventListener("click", () => showImage(index));
+      thumbnailsContainer.appendChild(thumb);
+    });
+    
+    // Setup navigation
+    prevBtn.onclick = () => showImage(currentImageIndex > 0 ? currentImageIndex - 1 : galleryImages.length - 1);
+    nextBtn.onclick = () => showImage(currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0);
+    
+    // Show first image
+    showImage(0);
+    
+    // Handle single image
+    if (galleryImages.length <= 1) {
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+    }
+  }
+
+  function showImage(index) {
+    currentImageIndex = index;
+    const image = galleryImages[index];
+    
+    document.getElementById("gallery-main-image").src = image.src;
+    document.getElementById("gallery-caption").textContent = image.caption;
+    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
+    
+    // Update thumbnails
+    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
+  }
 
   function setupEventListeners() {
     // Get ALL modal elements (including project modal elements)
