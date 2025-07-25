@@ -909,6 +909,13 @@ const projects = [
     researchModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
+  
+  // Thesis Modal hide
+  function hideThesisModal() {
+    if (!thesisModal) return;
+   thesisModal.classList.remove("active");
+   document.body.style.overflow = "auto";
+  }
 
   // Thesis Modal show
   function showThesisModal(thesis) {
