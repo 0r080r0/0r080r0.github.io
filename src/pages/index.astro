@@ -1201,9 +1201,10 @@ const projects = [
 
   // Thesis Modal show
   function showThesisModal(thesis) {
-    //const projectModal = document.getElementById("project-modal");
-    //if (projectModal) projectModal.classList.remove("active");
-  
+    const projectModal = document.getElementById("project-modal");
+    if (projectModal) projectModal.classList.remove("active");
+    
+    const thesisModal = document.getElementById("thesis-modal");
     if (!thesisModal) return;
 
     // Basic information
