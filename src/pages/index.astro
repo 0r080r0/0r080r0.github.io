@@ -1335,18 +1335,22 @@ const projects = [
       const newNextBtn = nextBtn.cloneNode(true);
       prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
       nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-            
+           
       newPrevBtn.addEventListener("click", previousImage);
       newNextBtn.addEventListener("click", nextImage);
-    }
-
-    // Show/hide navigation based on image count
-    if (galleryImages.length <= 1) {
-      if (prevBtn) prevBtn.style.display = "none";
-      if (nextBtn) nextBtn.style.display = "none";
+     
+      // Show/hide navigation based on image count (use new button references)
+      if (galleryImages.length <= 1) {
+        newPrevBtn.style.display = "none";
+        newNextBtn.style.display = "none";
+      } else {
+        newPrevBtn.style.display = "block";
+        newNextBtn.style.display = "block";
+      }
     } else {
-      if (prevBtn) prevBtn.style.display = "block";
-      if (nextBtn) nextBtn.style.display = "block";
+      // Fallback if buttons don't exist
+      if (prevBtn) prevBtn.addEventListener("click", previousImage);
+      if (nextBtn) nextBtn.addEventListener("click", nextImage);
     }
 
     // Show first image
