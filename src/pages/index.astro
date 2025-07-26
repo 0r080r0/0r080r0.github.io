@@ -381,6 +381,14 @@ const projects = [
 
         <div class="p-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <img
+                id="modal-image"
+                class="w-full h-64 object-cover rounded-lg mb-4"
+              />
+              <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
+            </div>
+
             <div class="space-y-6">
               <div>
                 <h3 class="text-lg font-semibold text-white mb-3">
@@ -1193,6 +1201,9 @@ const projects = [
 
   // Thesis Modal show
   function showThesisModal(thesis) {
+    const projectModal = document.getElementById("project-modal");
+    if (projectModal) projectModal.classList.remove("active");
+  
     if (!thesisModal) return;
 
     // Basic information
