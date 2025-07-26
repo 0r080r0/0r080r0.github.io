@@ -958,58 +958,102 @@ const projects = [
   };
 
   const theses = [
-  {
-    title: "BSc Thesis",
-    year: "2021",
-    type: "Bachelor in Psychology",
-    focus: "Performance Psychology",
-    topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
-  },
-  {
-    title: "MSc Thesis",
-    year: "2023",
-    type: "Master in Psychological Science",
-    focus: "Neuro Motor Rehabilitation",
-    topic: "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
-    research_questions: "",
-    hypotheses: "",
-    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-    challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
-    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
-    images: [
-      {
-        src: "/assets/motricity.png",
-        caption: "Music-Motricity Model: Conceptual framework showing how music listening affects motor rehabilitation"
-      },
-      {
-        src: "/assets/flowchart.png",
-        caption: "PRISMA Flow Chart: Systematic literature search and study selection process"
-      },
-      {
-        src: "/assets/walk.png",
-        caption: "Walking Performance: Meta-analysis results showing effect sizes across studies"
-      },
-      {
-        src: "/assets/updrs.png",
-        caption: "UPDRS-III Scores: Unified Parkinson's Disease Rating Scale motor examination results"
-      },
-      {
-        src: "/assets/cadence.png",
-        caption: "Gait Cadence Analysis: Statistical analysis of walking rhythm improvements"
-      }
-    ]
-  },
-];
+    {
+      title: "BSc Thesis",
+      year: "2021",
+      type: "Bachelor in Psychology",
+      focus: "Performance Psychology",
+      topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
+    },
+    {
+      title: "MSc Thesis",
+      year: "2023",
+      type: "Master in Psychological Science",
+      focus: "Neuro Motor Rehabilitation",
+      topic: "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
+      research_questions: "",
+      hypotheses: "",
+      tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+      challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
+      contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
+      images: [
+        {
+          src: "/assets/motricity.png",
+          caption: "Music-Motricity Model: Conceptual framework showing how music listening affects motor rehabilitation"
+        },
+        {
+          src: "/assets/flowchart.png",
+          caption: "PRISMA Flow Chart: Systematic literature search and study selection process"
+        },
+        {
+          src: "/assets/walk.png",
+          caption: "Walking Performance: Meta-analysis results showing effect sizes across studies"
+        },
+        {
+          src: "/assets/updrs.png",
+          caption: "UPDRS-III Scores: Unified Parkinson's Disease Rating Scale motor examination results"
+        },
+        {
+          src: "/assets/cadence.png",
+          caption: "Gait Cadence Analysis: Statistical analysis of walking rhythm improvements"
+        }
+      ]
+    },
+  ];
+
+  // Research Experience Array
+  const researchExperiences = [
+    {
+      title: "BSc Research Assistant - Experimental Neuroscience",
+      description: "Worked as a research assistant in experimental neuroscience, contributing to studies investigating neural mechanisms and cognitive processes in audiovisual working memory.",
+      tasks: [
+        "Assisted with experimental setup, preparation of the lab and calibration of the EEG equipment",
+        "Collected and analysed neurophysiological data using MATLAB",
+        "Supported participant recruitment and data management"
+      ],
+      challenges: [
+        "Learning complex neurophysiological measurement techniques",
+        "Ensuring experimental protocols were followed precisely"
+      ],
+      contributions: [
+        "Contributed to data collection and data analysis in MATLAB for published research",
+        "Developed skills in experimental neuroscience methods (EEG)",
+        "Gained experience in research ethics and participant safety"
+      ]
+    },
+    {
+      title: "MSc Research Practicum - Meta-Analysis",
+      description: "Contributed to a comprehensive meta-analysis examining the effects of music listening on cognitive and physical performance across various populations and contexts.",
+      tasks: [
+        "Systematic literature search across multiple databases",
+        "Creation of a coding scheme and coding sheet",
+        "Study selection and quality assessment using standardised criteria"
+      ],
+      challenges: [
+        "Determining key selection criteria for articles",
+        "Independent rater coding of articles",
+        "Discussion of articles with different independent rater codings for inclusion"
+      ],
+      contributions: [
+        "Identified gaps in current research for future investigation",
+        "Developed expertise in systematic review methodology"
+      ]
+    }
+  ];
 
   // Modal elements - declared but will be assigned in setupEventListeners
   let modal, modalTitle, modalImage, modalDescription, modalTechnologies, modalChallenges, modalOutcomes, modalLinks, closeModal;
   let researchModal, researchModalTitle, researchModalDescription, researchModalTasks, researchModalChallenges, researchModalContributions, closeResearchModal;
   let thesisModal, thesisModalTitle, thesisModalType, thesisModalYear, thesisModalTopic, closeThesisModal;
 
+  // Gallery variables
+  let galleryImages = [];
+  let currentImageIndex = 0;
+
   // Handler to show Project Modal
   function showModal(project) {
     if (!modal || !modalTitle) return; // Safety check
-    
+
     modalTitle.textContent = project.title;
     modalImage.src = project.image;
     modalImage.alt = project.title;
@@ -1088,7 +1132,7 @@ const projects = [
   // Research Modal show
   function showResearchModal(researchArea) {
     if (!researchModal) return;
-    
+
     researchModalTitle.textContent = researchArea.title;
     researchModalDescription.textContent = researchArea.description;
 
@@ -1129,18 +1173,18 @@ const projects = [
     researchModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
-  
+
   // Thesis Modal hide
   function hideThesisModal() {
     if (!thesisModal) return;
-   thesisModal.classList.remove("active");
-   document.body.style.overflow = "auto";
+    thesisModal.classList.remove("active");
+    document.body.style.overflow = "auto";
   }
 
   // Thesis Modal show
   function showThesisModal(thesis) {
     if (!thesisModal) return;
-            
+
     // Basic information
     thesisModalTitle.textContent = thesis.title;
     thesisModalType.textContent = thesis.type;
@@ -1148,7 +1192,7 @@ const projects = [
     thesisModalTopic.textContent = thesis.topic;
 
     // Handle all optional fields - show/hide sections based on data availability
-    
+
     // Research Questions
     const researchQuestionsSection = document.getElementById("thesis-research-questions-section");
     const thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
@@ -1232,68 +1276,6 @@ const projects = [
     document.body.style.overflow = "hidden";
   }
 
-  // Research Experience Array
-const researchExperiences = [
-  {
-    title: "BSc Research Assistant - Experimental Neuroscience",
-    description: "Worked as a research assistant in experimental neuroscience, contributing to studies investigating neural mechanisms and cognitive processes in audiovisual working memory.",
-    tasks: [
-      "Assisted with experimental setup, preparation of the lab and calibration of the EEG equipment",
-      "Collected and analysed neurophysiological data using MATLAB",
-      "Supported participant recruitment and data management"
-    ],
-    challenges: [
-      "Learning complex neurophysiological measurement techniques",
-      "Ensuring experimental protocols were followed precisely"
-    ],
-    contributions: [
-      "Contributed to data collection and data analysis in MATLAB for published research",
-      "Developed skills in experimental neuroscience methods (EEG)",
-      "Gained experience in research ethics and participant safety"
-    ]
-  },
-  {
-    title: "MSc Research Practicum - Meta-Analysis",
-    description: "Contributed to a comprehensive meta-analysis examining the effects of music listening on cognitive and physical performance across various populations and contexts.",
-    tasks: [
-      "Systematic literature search across multiple databases",
-      "Creation of a coding scheme and coding sheet",
-      "Study selection and quality assessment using standardised criteria"
-    ],
-    challenges: [
-      "Determining key selection criteria for articles",
-      "Independent rater coding of articles",
-      "Discussion of articles with different independent rater codings for inclusion"
-    ],
-    contributions: [
-      "Identified gaps in current research for future investigation",
-      "Developed expertise in systematic review methodology"
-    ]
-  }
-];
-
-function toggleSection(sectionId, data, contentId, type = "text") {
-    const section = document.getElementById(sectionId);
-    const content = document.getElementById(contentId);
-    
-    if (data && (type === "text" ? data.trim() : data.length > 0)) {
-      if (type === "list") {
-        content.innerHTML = "";
-        data.forEach((item) => {
-          const li = document.createElement("li");
-          li.textContent = item;
-          li.className = "text-gray-300";
-          content.appendChild(li);
-        });
-      } else {
-        content.textContent = data;
-      }
-      section.style.display = "block";
-    } else {
-      section.style.display = "none";
-    }
-  }
-
   function setupCompactGallery() {
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
@@ -1301,7 +1283,9 @@ function toggleSection(sectionId, data, contentId, type = "text") {
     const counter = document.getElementById("gallery-counter");
     const prevBtn = document.getElementById("gallery-prev");
     const nextBtn = document.getElementById("gallery-next");
-    
+
+    if (!mainImage || !thumbnailsContainer) return;
+
     // Clear and populate thumbnails
     thumbnailsContainer.innerHTML = "";
     galleryImages.forEach((image, index) => {
@@ -1312,21 +1296,29 @@ function toggleSection(sectionId, data, contentId, type = "text") {
       thumb.addEventListener("click", () => showImage(index));
       thumbnailsContainer.appendChild(thumb);
     });
-    
+
     // Setup navigation with proper event listeners
-    prevBtn.addEventListener("click", previousImage);
-    nextBtn.addEventListener("click", nextImage);
-    
+    if (prevBtn && nextBtn) {
+      // Remove any existing event listeners
+      const newPrevBtn = prevBtn.cloneNode(true);
+      const newNextBtn = nextBtn.cloneNode(true);
+      prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+      nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+      
+      newPrevBtn.addEventListener("click", previousImage);
+      newNextBtn.addEventListener("click", nextImage);
+    }
+
     // Show first image
     showImage(0);
-    
+
     // Show/hide navigation based on image count
     if (galleryImages.length <= 1) {
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "none";
+      if (prevBtn) prevBtn.style.display = "none";
+      if (nextBtn) nextBtn.style.display = "none";
     } else {
-      prevBtn.style.display = "block";
-      nextBtn.style.display = "block";
+      if (prevBtn) prevBtn.style.display = "block";
+      if (nextBtn) nextBtn.style.display = "block";
     }
   }
 
@@ -1342,90 +1334,28 @@ function toggleSection(sectionId, data, contentId, type = "text") {
 
   function showImage(index) {
     if (index < 0 || index >= galleryImages.length) return;
-    
+
     currentImageIndex = index;
     const image = galleryImages[index];
-    
+
     // Update main image with fade effect
     const mainImage = document.getElementById("gallery-main-image");
-    mainImage.style.opacity = "0";
-    
-    setTimeout(() => {
-      mainImage.src = image.src;
-      mainImage.alt = image.caption;
-      mainImage.style.opacity = "1";
-    }, 150);
-    
+    if (mainImage) {
+      mainImage.style.opacity = "0";
+
+      setTimeout(() => {
+        mainImage.src = image.src;
+        mainImage.alt = image.caption;
+        mainImage.style.opacity = "1";
+      }, 150);
+    }
+
     // Update caption and counter
-    document.getElementById("gallery-caption").textContent = image.caption;
-    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
-    
-    // Update active thumbnail
-    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
-      thumb.classList.toggle("active", i === index);
-    });
-  } currentImageIndex - 1 : galleryImages.length - 1;
-    showImage(newIndex);
-  }
+    const caption = document.getElementById("gallery-caption");
+    const counter = document.getElementById("gallery-counter");
+    if (caption) caption.textContent = image.caption;
+    if (counter) counter.textContent = `${index + 1}/${galleryImages.length}`;
 
-  function nextImage() {
-    const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
-    showImage(newIndex);
-  }
-
-  function showImage(index) {
-    if (index < 0 || index >= galleryImages.length) return;
-    
-    currentImageIndex = index;
-    const image = galleryImages[index];
-    
-    // Update main image with fade effect
-    const mainImage = document.getElementById("gallery-main-image");
-    mainImage.style.opacity = "0";
-    
-    setTimeout(() => {
-      mainImage.src = image.src;
-      mainImage.alt = image.caption;
-      mainImage.style.opacity = "1";
-    }, 150);
-    
-    // Update caption and counter
-    document.getElementById("gallery-caption").textContent = image.caption;
-    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
-    
-    // Update active thumbnail
-    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
-      thumb.classList.toggle("active", i === index);
-    });
-  } currentImageIndex - 1 : galleryImages.length - 1;
-    showImage(newIndex);
-  }
-
-  function nextImage() {
-    const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
-    showImage(newIndex);
-  }
-
-  function showImage(index) {
-    if (index < 0 || index >= galleryImages.length) return;
-    
-    currentImageIndex = index;
-    const image = galleryImages[index];
-    
-    // Update main image with fade effect
-    const mainImage = document.getElementById("gallery-main-image");
-    mainImage.style.opacity = "0";
-    
-    setTimeout(() => {
-      mainImage.src = image.src;
-      mainImage.alt = image.caption;
-      mainImage.style.opacity = "1";
-    }, 150);
-    
-    // Update caption and counter
-    document.getElementById("gallery-caption").textContent = image.caption;
-    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
-    
     // Update active thumbnail
     document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
       thumb.classList.toggle("active", i === index);
@@ -1459,12 +1389,6 @@ function toggleSection(sectionId, data, contentId, type = "text") {
     thesisModalType = document.getElementById("thesis-modal-type");
     thesisModalYear = document.getElementById("thesis-modal-year");
     thesisModalTopic = document.getElementById("thesis-modal-topic");
-    thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
-    thesisModalHypotheses = document.getElementById("thesis-modal-hypotheses");
-    thesisModalTasks = document.getElementById("thesis-modal-tasks");
-    thesisModalChallenges = document.getElementById("thesis-modal-challenges");
-    thesisModalContributions = document.getElementById("thesis-modal-contributions");
-    thesisModalImages = document.getElementById("thesis-modal-images");
     closeThesisModal = document.getElementById("close-thesis-modal");
 
     // PROJECT CARD EVENT LISTENERS
@@ -1474,7 +1398,7 @@ function toggleSection(sectionId, data, contentId, type = "text") {
         if (e.target.closest('a')) {
           return;
         }
-        
+
         const projectId = card.dataset.projectId;
         const project = projectsData[projectId];
         if (project) {
@@ -1537,7 +1461,7 @@ function toggleSection(sectionId, data, contentId, type = "text") {
 
   // Setup event listeners
   document.addEventListener('DOMContentLoaded', setupEventListeners);
-  
+
   // Add keyboard navigation for gallery
   document.addEventListener("keydown", (e) => {
     if (thesisModal && thesisModal.classList.contains("active") && galleryImages && galleryImages.length > 1) {
