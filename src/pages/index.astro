@@ -1312,16 +1312,17 @@ const projects = [
       console.log("Missing gallery elements");
       return;
     }
-
+    
     console.log("Before clearing - thumbnails count:", thumbnailsContainer.children.length);
     
     // AGGRESSIVELY clear everything
     while (thumbnailsContainer.firstChild) {
       thumbnailsContainer.removeChild(thumbnailsContainer.firstChild);
     }
-    
+
     mainImage.src = "";
     mainImage.alt = "";
+    mainImage.style.opacity = "1";
     if (caption) caption.textContent = "";
     if (counter) counter.textContent = "";
 
