@@ -1,8 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  </head>
 
 const projects = [
   {
@@ -140,6 +137,10 @@ const projects = [
 ];
 
 ---
+
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
 
 <Layout title="Evangelia Karakoliou - PhD Portfolio">
   <main class="h-screen bg-black flex overflow-hidden relative">
@@ -325,7 +326,7 @@ const projects = [
         href={project.demoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center gap-1 px-2 py-1 bg-green-800/80 text-green-200 rounded text-xs hover:bg-green-700/80 transition-colors"
+        class="flex items-center gap-1 px-2 py-1 bg-[#f5a623]/80 text-white rounded text-xs hover:bg-[#d48806]/90 transition-colors"
         onclick="event.stopPropagation()"
       >
         <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
