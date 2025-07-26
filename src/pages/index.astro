@@ -1294,13 +1294,32 @@ const projects = [
     } else {
       imagesSection.style.display = "none";
     }
+    
+    // Compact gallery setup
+    const imagesSection = document.getElementById("thesis-images-section");
+    if (thesis.images && thesis.images.length > 0) {
+      console.log("Setting up gallery with images:", thesis.images);
+      galleryImages = thesis.images;
+      currentImageIndex = 0;
+  
+    // Clear the entire images section first
+    const galleryContainer = imagesSection.querySelector('.bg-black\\/40');
+    if (galleryContainer) {
+      console.log("Found gallery container, clearing it");
+      galleryContainer.innerHTML = '';
+    }
+  
+    setupCompactGallery();
+    imagesSection.style.display = "block";
+  } else {
+    imagesSection.style.display = "none";
+  }
 
     thesisModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
   function setupCompactGallery() {
-    console.log("setupCompactGallery called");
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
     const caption = document.getElementById("gallery-caption");
@@ -1309,11 +1328,8 @@ const projects = [
     const nextBtn = document.getElementById("gallery-next");
 
     if (!mainImage || !thumbnailsContainer) {
-      console.log("Missing gallery elements");
       return;
     }
-    
-    console.log("Before clearing - thumbnails count:", thumbnailsContainer.children.length);
     
     // AGGRESSIVELY clear everything
     while (thumbnailsContainer.firstChild) {
@@ -1326,16 +1342,11 @@ const projects = [
     if (caption) caption.textContent = "";
     if (counter) counter.textContent = "";
 
-    console.log("After clearing - thumbnails count:", thumbnailsContainer.children.length);
-
     // Reset current image index
     currentImageIndex = 0;
 
-    console.log("About to create", galleryImages.length, "thumbnails");
-    
     // Populate thumbnails
     galleryImages.forEach((image, index) => {
-      console.log("Creating thumbnail", index);
       const thumb = document.createElement("img");
       thumb.src = image.src;
       thumb.alt = image.caption;
@@ -1343,8 +1354,6 @@ const projects = [
       thumb.addEventListener("click", () => showImage(index));
       thumbnailsContainer.appendChild(thumb);
     });
-
-    console.log("Final thumbnails count:", thumbnailsContainer.children.length);
 
     // Setup navigation with clean event listeners
     if (prevBtn && nextBtn) {
