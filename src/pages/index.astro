@@ -484,12 +484,12 @@ const projects = [
       class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4"
     >
       <div
-        class="bg-black/90 border border-gray-700 rounded-2xl max-w-6xl w-full max-h-[90vh] overflow-y-auto"
+        class="bg-black/90 border border-gray-700 rounded-2xl max-w-7xl w-full max-h-[90vh] overflow-y-auto"
       >
         <div
           class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between"
         >
-          <h2 id="thesis-modal-title" class="text-2xl font-semibold text-white"></h2>
+          <h2 id="thesis-modal-title" class="text-2xl font-light text-white font-inter"></h2>
           <button
             id="close-thesis-modal"
             class="text-gray-400 hover:text-white transition-colors"
@@ -511,116 +511,117 @@ const projects = [
           </button>
         </div>
         <div class="p-6">
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- 2-Column Layout: 50% content, 50% gallery -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            <!-- Left Column: Core Academic Information -->
-            <div class="lg:col-span-2 space-y-6">
+            <!-- Left Column: Academic Information -->
+            <div class="space-y-6">
               <!-- Essential Details -->
               <div class="grid grid-cols-2 gap-4 p-4 bg-white/5 rounded-lg border border-gray-700/50">
                 <div>
-                  <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Degree</h3>
-                  <p id="thesis-modal-type" class="text-white font-medium"></p>
+                  <h3 class="text-xs font-medium text-gray-400 uppercase tracking-wide mb-1 font-inter">Degree</h3>
+                  <p id="thesis-modal-type" class="text-white font-light font-inter text-sm"></p>
                 </div>
                 <div>
-                  <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">Year</h3>
-                  <p id="thesis-modal-year" class="text-white font-medium"></p>
+                  <h3 class="text-xs font-medium text-gray-400 uppercase tracking-wide mb-1 font-inter">Year</h3>
+                  <p id="thesis-modal-year" class="text-white font-light font-inter text-sm"></p>
                 </div>
               </div>
 
               <!-- Research Focus -->
               <div>
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Research Topic</h3>
-                <p id="thesis-modal-topic" class="text-gray-300 leading-relaxed text-base"></p>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Research Topic</h3>
+                <p id="thesis-modal-topic" class="text-gray-300 leading-relaxed text-sm font-inter font-light"></p>
               </div>
 
               <!-- Research Questions -->
               <div id="thesis-research-questions-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Research Questions</h3>
-                <p id="thesis-modal-research-questions" class="text-gray-300 leading-relaxed"></p>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Research Questions</h3>
+                <p id="thesis-modal-research-questions" class="text-gray-300 leading-relaxed text-sm font-inter font-light"></p>
               </div>
 
               <!-- Hypotheses -->
               <div id="thesis-hypotheses-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Hypotheses</h3>
-                <p id="thesis-modal-hypotheses" class="text-gray-300 leading-relaxed"></p>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Hypotheses</h3>
+                <p id="thesis-modal-hypotheses" class="text-gray-300 leading-relaxed text-sm font-inter font-light"></p>
               </div>
 
               <!-- Methodology -->
               <div id="thesis-tasks-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Methodology & Key Tasks</h3>
-                <ul id="thesis-modal-tasks" class="space-y-2 text-gray-300"></ul>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Methodology & Key Tasks</h3>
+                <ul id="thesis-modal-tasks" class="space-y-2 text-gray-300 text-sm font-inter font-light"></ul>
               </div>
 
               <!-- Challenges & Limitations -->
               <div id="thesis-challenges-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Challenges & Limitations</h3>
-                <ul id="thesis-modal-challenges" class="space-y-2 text-gray-300"></ul>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Challenges & Limitations</h3>
+                <ul id="thesis-modal-challenges" class="space-y-2 text-gray-300 text-sm font-inter font-light"></ul>
               </div>
 
               <!-- Contributions & Impact -->
               <div id="thesis-contributions-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-3 border-b border-gray-700 pb-2">Key Contributions</h3>
-                <ul id="thesis-modal-contributions" class="space-y-2 text-gray-300"></ul>
+                <h3 class="text-base font-medium text-white mb-3 border-b border-gray-700 pb-2 font-inter">Key Contributions</h3>
+                <ul id="thesis-modal-contributions" class="space-y-2 text-gray-300 text-sm font-inter font-light"></ul>
               </div>
             </div>
 
-            <!-- Right Column: Visual Evidence -->
-            <div class="lg:col-span-1">
+            <!-- Right Column: Large Gallery (50% width) -->
+            <div>
               <div id="thesis-images-section" style="display: none;">
-                <h3 class="text-lg font-semibold text-white mb-4 border-b border-gray-700 pb-2">Research Visualisations</h3>
+                <h3 class="text-base font-medium text-white mb-4 border-b border-gray-700 pb-2 font-inter">Research Visualizations</h3>
                 
-                <!-- Compact Gallery -->
+                <!-- Large Gallery -->
                 <div class="bg-black/40 rounded-lg border border-gray-700/50 overflow-hidden">
-                  <!-- Main Display -->
-                  <div class="relative h-48 bg-gray-900">
+                  <!-- Main Display - Much Larger -->
+                  <div class="relative h-96 bg-gray-900 group">
                     <img 
                       id="gallery-main-image" 
                       src="" 
                       alt="" 
-                      class="w-full h-full object-contain transition-opacity duration-200"
+                      class="w-full h-full object-contain transition-all duration-300"
                     />
                     
-                    <!-- Minimal Navigation -->
+                    <!-- Navigation Arrows -->
                     <button 
                       id="gallery-prev" 
-                      class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white rounded p-1.5 transition-colors opacity-0 group-hover:opacity-100"
+                      class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/80 hover:bg-black/95 text-white rounded-full p-3 transition-all duration-200 opacity-0 group-hover:opacity-100"
                     >
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                       </svg>
                     </button>
                     <button 
                       id="gallery-next" 
-                      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white rounded p-1.5 transition-colors opacity-0 group-hover:opacity-100"
+                      class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/80 hover:bg-black/95 text-white rounded-full p-3 transition-all duration-200 opacity-0 group-hover:opacity-100"
                     >
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                       </svg>
                     </button>
                     
                     <!-- Counter -->
-                    <div class="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                    <div class="absolute top-4 right-4 bg-black/80 text-white px-3 py-1.5 rounded-full text-xs font-inter">
                       <span id="gallery-counter">1/1</span>
                     </div>
                   </div>
                   
-                  <!-- Thumbnail Navigation -->
-                  <div class="p-3">
-                    <div id="gallery-thumbnails" class="flex gap-1.5 overflow-x-auto">
+                  <!-- Thumbnail Navigation Strip -->
+                  <div class="p-4 bg-black/20">
+                    <div id="gallery-thumbnails" class="flex gap-2 overflow-x-auto pb-2">
                       <!-- Thumbnails inserted here -->
                     </div>
                   </div>
                   
                   <!-- Caption -->
-                  <div class="px-3 pb-3 border-t border-gray-700/50 pt-3">
-                    <p id="gallery-caption" class="text-xs text-gray-400 text-center leading-relaxed"></p>
+                  <div class="px-4 pb-4 border-t border-gray-700/50 pt-4">
+                    <p id="gallery-caption" class="text-sm text-gray-300 text-center leading-relaxed font-inter font-light"></p>
                   </div>
                 </div>
 
                 <!-- Additional Context -->
                 <div class="mt-4 p-3 bg-blue-900/20 border border-blue-700/30 rounded-lg">
-                  <p class="text-xs text-blue-300 leading-relaxed">
-                    <span class="font-semibold">Visual Evidence:</span> These figures support the research methodology and demonstrate key findings from the analysis.
+                  <p class="text-xs text-blue-300 leading-relaxed font-inter font-light">
+                    <span class="font-medium">Visual Evidence:</span> These figures support the research methodology and demonstrate key findings from the analysis.
                   </p>
                 </div>
               </div>
@@ -742,6 +743,88 @@ const projects = [
     left: 0;
     color: #6B7280;
     font-weight: bold;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+  /* Font styling for sidebar and cards */
+  .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Sidebar styling */
+  aside {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  aside h3 {
+    font-size: 10px !important;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  aside .text-xs {
+    font-size: 11px !important;
+    font-weight: 300;
+  }
+
+  aside .text-gray-400 {
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+
+  /* Project cards styling */
+  .project-card h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+  }
+
+  .project-card .text-xs {
+    font-size: 10px !important;
+    font-weight: 300 !important;
+  }
+
+  .project-card span {
+    font-size: 9px !important;
+    font-weight: 300 !important;
+  }
+
+  /* Enhanced gallery specific styles - override original */
+  .gallery-thumbnail {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+
+  .gallery-thumbnail:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+
+  .gallery-thumbnail.active {
+    opacity: 1;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Different colors for different list types */
+  #thesis-modal-tasks li::before {
+    color: #60A5FA;
+  }
+
+  #thesis-modal-challenges li::before {
+    color: #F87171;
+  }
+
+  #thesis-modal-contributions li::before {
+    color: #34D399;
   }
 </style>
 
@@ -875,49 +958,48 @@ const projects = [
   };
 
   const theses = [
-    {
-      title: "BSc Thesis",
-      year: "2021",
-      type: "Bachelor in Psychology",
-      focus: "Performance Psychology",
-      topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
-    },
-    {
-      title: "MSc Thesis",
-      year: "2023",
-      type: "Master in Psychological Science",
-      focus: "Neuro Motor Rehabilitation",
-      topic:
-        "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
-      research_questions: "",
-      hypotheses: "",
-      tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-      challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
-      contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
-      images: [
-        {
-          src: "/assets/motricity.png",
-          caption: "Music-Motricity-Model"
-        },
-        {
-          src: "/assets/flowchart.png",
-          caption: "Flow chart of the literature search"
-        },
-        {
-          src: "/assets/walk.png",
-          caption: "Univariate meta-analysis of walking"
-        },
-        {
-          src: "/assets/updrs.png",
-          caption: "Univariate meta-analysis of the UPDRS-III"
-        },
-        {
-          src: "/assets/cadence.png",
-          caption: "Univariate meta-analysis of Cadence"
-        }
-      ]
-    },
-  ];
+  {
+    title: "BSc Thesis",
+    year: "2021",
+    type: "Bachelor in Psychology",
+    focus: "Performance Psychology",
+    topic: "Online Experiment: The role of mental toughness on the relationship between goal focus and peak performance",
+  },
+  {
+    title: "MSc Thesis",
+    year: "2023",
+    type: "Master in Psychological Science",
+    focus: "Neuro Motor Rehabilitation",
+    topic: "Meta-Analysis: Music listening effects on motor rehabilitation in Parkinson's Disease",
+    research_questions: "",
+    hypotheses: "",
+    tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
+    challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
+    contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
+    images: [
+      {
+        src: "/assets/motricity.png",
+        caption: "Music-Motricity Model: Conceptual framework showing how music listening affects motor rehabilitation"
+      },
+      {
+        src: "/assets/flowchart.png",
+        caption: "PRISMA Flow Chart: Systematic literature search and study selection process"
+      },
+      {
+        src: "/assets/walk.png",
+        caption: "Walking Performance: Meta-analysis results showing effect sizes across studies"
+      },
+      {
+        src: "/assets/updrs.png",
+        caption: "UPDRS-III Scores: Unified Parkinson's Disease Rating Scale motor examination results"
+      },
+      {
+        src: "/assets/cadence.png",
+        caption: "Gait Cadence Analysis: Statistical analysis of walking rhythm improvements"
+      }
+    ]
+  },
+];
 
   // Modal elements - declared but will be assigned in setupEventListeners
   let modal, modalTitle, modalImage, modalDescription, modalTechnologies, modalChallenges, modalOutcomes, modalLinks, closeModal;
@@ -1231,29 +1313,120 @@ function toggleSection(sectionId, data, contentId, type = "text") {
       thumbnailsContainer.appendChild(thumb);
     });
     
-    // Setup navigation
-    prevBtn.onclick = () => showImage(currentImageIndex > 0 ? currentImageIndex - 1 : galleryImages.length - 1);
-    nextBtn.onclick = () => showImage(currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0);
+    // Setup navigation with proper event listeners
+    prevBtn.addEventListener("click", previousImage);
+    nextBtn.addEventListener("click", nextImage);
     
     // Show first image
     showImage(0);
     
-    // Handle single image
+    // Show/hide navigation based on image count
     if (galleryImages.length <= 1) {
       prevBtn.style.display = "none";
       nextBtn.style.display = "none";
+    } else {
+      prevBtn.style.display = "block";
+      nextBtn.style.display = "block";
     }
   }
 
+  function previousImage() {
+    const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : galleryImages.length - 1;
+    showImage(newIndex);
+  }
+
+  function nextImage() {
+    const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
+    showImage(newIndex);
+  }
+
   function showImage(index) {
+    if (index < 0 || index >= galleryImages.length) return;
+    
     currentImageIndex = index;
     const image = galleryImages[index];
     
-    document.getElementById("gallery-main-image").src = image.src;
+    // Update main image with fade effect
+    const mainImage = document.getElementById("gallery-main-image");
+    mainImage.style.opacity = "0";
+    
+    setTimeout(() => {
+      mainImage.src = image.src;
+      mainImage.alt = image.caption;
+      mainImage.style.opacity = "1";
+    }, 150);
+    
+    // Update caption and counter
     document.getElementById("gallery-caption").textContent = image.caption;
     document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
     
-    // Update thumbnails
+    // Update active thumbnail
+    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
+  } currentImageIndex - 1 : galleryImages.length - 1;
+    showImage(newIndex);
+  }
+
+  function nextImage() {
+    const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
+    showImage(newIndex);
+  }
+
+  function showImage(index) {
+    if (index < 0 || index >= galleryImages.length) return;
+    
+    currentImageIndex = index;
+    const image = galleryImages[index];
+    
+    // Update main image with fade effect
+    const mainImage = document.getElementById("gallery-main-image");
+    mainImage.style.opacity = "0";
+    
+    setTimeout(() => {
+      mainImage.src = image.src;
+      mainImage.alt = image.caption;
+      mainImage.style.opacity = "1";
+    }, 150);
+    
+    // Update caption and counter
+    document.getElementById("gallery-caption").textContent = image.caption;
+    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
+    
+    // Update active thumbnail
+    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
+  } currentImageIndex - 1 : galleryImages.length - 1;
+    showImage(newIndex);
+  }
+
+  function nextImage() {
+    const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
+    showImage(newIndex);
+  }
+
+  function showImage(index) {
+    if (index < 0 || index >= galleryImages.length) return;
+    
+    currentImageIndex = index;
+    const image = galleryImages[index];
+    
+    // Update main image with fade effect
+    const mainImage = document.getElementById("gallery-main-image");
+    mainImage.style.opacity = "0";
+    
+    setTimeout(() => {
+      mainImage.src = image.src;
+      mainImage.alt = image.caption;
+      mainImage.style.opacity = "1";
+    }, 150);
+    
+    // Update caption and counter
+    document.getElementById("gallery-caption").textContent = image.caption;
+    document.getElementById("gallery-counter").textContent = `${index + 1}/${galleryImages.length}`;
+    
+    // Update active thumbnail
     document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
       thumb.classList.toggle("active", i === index);
     });
@@ -1364,4 +1537,17 @@ function toggleSection(sectionId, data, contentId, type = "text") {
 
   // Setup event listeners
   document.addEventListener('DOMContentLoaded', setupEventListeners);
+  
+  // Add keyboard navigation for gallery
+  document.addEventListener("keydown", (e) => {
+    if (thesisModal && thesisModal.classList.contains("active") && galleryImages && galleryImages.length > 1) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        previousImage();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        nextImage();
+      }
+    }
+  });
 </script>
