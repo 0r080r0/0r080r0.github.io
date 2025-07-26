@@ -1299,6 +1299,7 @@ const projects = [
   }
 
   function setupCompactGallery() {
+    console.log("setupCompactGallery called");
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
     const caption = document.getElementById("gallery-caption");
@@ -1306,20 +1307,33 @@ const projects = [
     const prevBtn = document.getElementById("gallery-prev");
     const nextBtn = document.getElementById("gallery-next");
 
-    if (!mainImage || !thumbnailsContainer) return;
+    if (!mainImage || !thumbnailsContainer) {
+      console.log("Missing gallery elements");
+      return;
+    }
 
-    // PROPERLY clear any existing content first
-    thumbnailsContainer.innerHTML = "";
+    console.log("Before clearing - thumbnails count:", thumbnailsContainer.children.length);
+    
+    // AGGRESSIVELY clear everything
+    while (thumbnailsContainer.firstChild) {
+      thumbnailsContainer.removeChild(thumbnailsContainer.firstChild);
+    }
+    
     mainImage.src = "";
     mainImage.alt = "";
     if (caption) caption.textContent = "";
     if (counter) counter.textContent = "";
 
+    console.log("After clearing - thumbnails count:", thumbnailsContainer.children.length);
+
     // Reset current image index
     currentImageIndex = 0;
 
-    // Populate thumbnails ONLY ONCE
+    console.log("About to create", galleryImages.length, "thumbnails");
+    
+    // Populate thumbnails
     galleryImages.forEach((image, index) => {
+      console.log("Creating thumbnail", index);
       const thumb = document.createElement("img");
       thumb.src = image.src;
       thumb.alt = image.caption;
@@ -1328,9 +1342,10 @@ const projects = [
       thumbnailsContainer.appendChild(thumb);
     });
 
+    console.log("Final thumbnails count:", thumbnailsContainer.children.length);
+
     // Setup navigation with clean event listeners
     if (prevBtn && nextBtn) {
-      // Remove any existing event listeners by cloning
       const newPrevBtn = prevBtn.cloneNode(true);
       const newNextBtn = nextBtn.cloneNode(true);
       prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
@@ -1349,7 +1364,7 @@ const projects = [
       if (nextBtn) nextBtn.style.display = "block";
     }
 
-    // Show first image ONLY ONCE at the end
+    // Show first image
     if (galleryImages.length > 0) {
       showImage(0);
     }
