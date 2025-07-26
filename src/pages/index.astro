@@ -1283,17 +1283,6 @@ const projects = [
     } else {
       contributionsSection.style.display = "none";
     }
-
-    // Compact gallery setup
-    const imagesSection = document.getElementById("thesis-images-section");
-    if (thesis.images && thesis.images.length > 0) {
-      galleryImages = thesis.images;
-      currentImageIndex = 0;
-      setupCompactGallery();
-      imagesSection.style.display = "block";
-    } else {
-      imagesSection.style.display = "none";
-    }
     
     // Compact gallery setup
     const imagesSection = document.getElementById("thesis-images-section");
@@ -1303,7 +1292,7 @@ const projects = [
       currentImageIndex = 0;
   
     // Clear the entire images section first
-    const galleryContainer = imagesSection.querySelector('.bg-black\\/40');
+    const galleryContainer = document.querySelector('#thesis-modal .bg-black\\/40');
     if (galleryContainer) {
       console.log("Found gallery container, clearing it");
       galleryContainer.innerHTML = '';
@@ -1331,16 +1320,8 @@ const projects = [
       return;
     }
     
-    // AGGRESSIVELY clear everything
-    while (thumbnailsContainer.firstChild) {
-      thumbnailsContainer.removeChild(thumbnailsContainer.firstChild);
-    }
-
-    mainImage.src = "";
-    mainImage.alt = "";
-    mainImage.style.opacity = "1";
-    if (caption) caption.textContent = "";
-    if (counter) counter.textContent = "";
+    // Clear only thumbnails, not the entire gallery structure
+    thumbnailsContainer.innerHTML = "";
 
     // Reset current image index
     currentImageIndex = 0;
@@ -1527,9 +1508,6 @@ const projects = [
     });
   }
 
-  // Setup event listeners
-  document.addEventListener('DOMContentLoaded', setupEventListeners);
-
   // Add keyboard navigation for gallery
   document.addEventListener("keydown", (e) => {
     if (thesisModal && thesisModal.classList.contains("active") && galleryImages && galleryImages.length > 1) {
@@ -1542,4 +1520,7 @@ const projects = [
       }
     }
   });
+  
+  // Setup event listeners
+  setTimeout(setupEventListeners, 100);
 </script>
