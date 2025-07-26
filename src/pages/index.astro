@@ -1291,13 +1291,6 @@ const projects = [
       galleryImages = thesis.images;
       currentImageIndex = 0;
   
-    // Clear the entire images section first
-    const galleryContainer = document.querySelector('#thesis-modal .bg-black\\/40');
-    if (galleryContainer) {
-      console.log("Found gallery container, clearing it");
-      galleryContainer.innerHTML = '';
-    }
-  
     setupCompactGallery();
     imagesSection.style.display = "block";
   } else {
