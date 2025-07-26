@@ -1201,6 +1201,7 @@ const projects = [
 
   // Thesis Modal show
   function showThesisModal(thesis) {
+    console.log("showThesisModal called with:", thesis);
     const projectModal = document.getElementById("project-modal");
     if (projectModal) projectModal.classList.remove("active");
     
@@ -1457,11 +1458,20 @@ const projects = [
 
     // Thesis items
     document.querySelectorAll(".thesis-item").forEach((item) => {
+      console.log("Found thesis item:", item);
       item.addEventListener("click", (e) => {
+        console.log("Thesis item clicked!");
         e.preventDefault();
         const thesisIndex = parseInt(item.dataset.thesisIndex);
+        console.log("Thesis index:", thesisIndex);
         const thesis = theses[thesisIndex];
-        if (thesis) showThesisModal(thesis);
+        console.log("Thesis data:", thesis);
+        if (thesis) {
+          console.log("Calling showThesisModal");
+          showThesisModal(thesis);
+        } else {
+          console.log("No thesis found for index:", thesisIndex);
+        }
       });
     });
 
