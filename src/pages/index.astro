@@ -1308,14 +1308,17 @@ const projects = [
 
     if (!mainImage || !thumbnailsContainer) return;
 
-    // Clear any existing content first
+    // PROPERLY clear any existing content first
     thumbnailsContainer.innerHTML = "";
     mainImage.src = "";
     mainImage.alt = "";
     if (caption) caption.textContent = "";
     if (counter) counter.textContent = "";
 
-    // Populate thumbnails
+    // Reset current image index
+    currentImageIndex = 0;
+
+    // Populate thumbnails ONLY ONCE
     galleryImages.forEach((image, index) => {
       const thumb = document.createElement("img");
       thumb.src = image.src;
@@ -1332,7 +1335,7 @@ const projects = [
       const newNextBtn = nextBtn.cloneNode(true);
       prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
       nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-      
+            
       newPrevBtn.addEventListener("click", previousImage);
       newNextBtn.addEventListener("click", nextImage);
     }
