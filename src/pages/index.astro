@@ -1302,6 +1302,8 @@ const projects = [
   }
 
   function setupCompactGallery() {
+    console.log("setupCompactGallery called, current thumbnails:", document.querySelectorAll('.gallery-thumbnail').length);
+
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
     const caption = document.getElementById("gallery-caption");
