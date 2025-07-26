@@ -1316,7 +1316,11 @@ const projects = [
     }
     
     // Clear only thumbnails, not the entire gallery structure
-    thumbnailsContainer.innerHTML = "";
+    if (thumbnailsContainer) {
+      while (thumbnailsContainer.firstChild) {
+        thumbnailsContainer.removeChild(thumbnailsContainer.firstChild);
+      }
+    }
 
     // Reset current image index
     currentImageIndex = 0;
