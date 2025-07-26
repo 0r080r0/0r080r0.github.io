@@ -1286,8 +1286,14 @@ const projects = [
 
     if (!mainImage || !thumbnailsContainer) return;
 
-    // Clear and populate thumbnails
+    // Clear any existing content first
     thumbnailsContainer.innerHTML = "";
+    mainImage.src = "";
+    mainImage.alt = "";
+    if (caption) caption.textContent = "";
+    if (counter) counter.textContent = "";
+
+    // Populate thumbnails
     galleryImages.forEach((image, index) => {
       const thumb = document.createElement("img");
       thumb.src = image.src;
@@ -1297,9 +1303,9 @@ const projects = [
       thumbnailsContainer.appendChild(thumb);
     });
 
-    // Setup navigation with proper event listeners
+    // Setup navigation with clean event listeners
     if (prevBtn && nextBtn) {
-      // Remove any existing event listeners
+      // Remove any existing event listeners by cloning
       const newPrevBtn = prevBtn.cloneNode(true);
       const newNextBtn = nextBtn.cloneNode(true);
       prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
@@ -1309,9 +1315,6 @@ const projects = [
       newNextBtn.addEventListener("click", nextImage);
     }
 
-    // Show first image
-    showImage(0);
-
     // Show/hide navigation based on image count
     if (galleryImages.length <= 1) {
       if (prevBtn) prevBtn.style.display = "none";
@@ -1319,6 +1322,11 @@ const projects = [
     } else {
       if (prevBtn) prevBtn.style.display = "block";
       if (nextBtn) nextBtn.style.display = "block";
+    }
+
+    // Show first image ONLY ONCE at the end
+    if (galleryImages.length > 0) {
+      showImage(0);
     }
   }
 
