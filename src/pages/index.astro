@@ -1192,23 +1192,70 @@ const projects = [
     document.body.style.overflow = "auto";
   }
 
-  // Thesis Modal hide
-  function hideThesisModal() {
-    if (!thesisModal) return;
-    thesisModal.classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
-
   // Thesis Modal show
   function showThesisModal(thesis) {
     console.log("showThesisModal called with:", thesis);
     
+    console.log("=== GALLERY DIAGNOSTIC START ===");
+    
+    // 1. Check for duplicate HTML elements BEFORE any JavaScript runs
+    const allImages = document.querySelectorAll('img');
+    const imagesBySource = {};
+    
+    allImages.forEach((img, index) => {
+      const src = img.src;
+      if (!imagesBySource[src]) {
+        imagesBySource[src] = [];
+      }
+      imagesBySource[src].push({
+        element: img,
+        index: index,
+        parent: img.parentElement?.className || 'unknown',
+        id: img.id || 'no-id',
+        className: img.className || 'no-class'
+      });
+    });
+    
+    // Report duplicates
+    Object.keys(imagesBySource).forEach(src => {
+      if (imagesBySource[src].length > 1) {
+        console.warn(`🚨 DUPLICATE IMAGE FOUND: ${src}`);
+        imagesBySource[src].forEach((imgInfo, i) => {
+          console.log(`  Copy ${i + 1}:`, {
+            parent: imgInfo.parent,
+            id: imgInfo.id,
+            className: imgInfo.className,
+            visible: imgInfo.element.offsetParent !== null
+          });
+        });
+      }
+    });
+    
+    // 2. Check gallery container state BEFORE setup
+    const galleryContainer = document.getElementById("gallery-thumbnails");
+    const mainImage = document.getElementById("gallery-main-image");
+    
+    console.log("Gallery container children BEFORE setup:", galleryContainer?.children.length || 0);
+    console.log("Main image src BEFORE setup:", mainImage?.src || 'empty');
+    
+    // 3. Check for CSS issues that might cause visual duplication
+    const imagesSection = document.getElementById("thesis-images-section");
+    if (imagesSection) {
+      const computedStyle = window.getComputedStyle(imagesSection);
+      console.log("Images section CSS:", {
+        display: computedStyle.display,
+        position: computedStyle.position,
+        zIndex: computedStyle.zIndex,
+        overflow: computedStyle.overflow
+      });
+    }
+        
     // Close any other open modals first
     const projectModal = document.getElementById("project-modal");
     const researchModal = document.getElementById("research-modal");
     if (projectModal) projectModal.classList.remove("active");
     if (researchModal) researchModal.classList.remove("active");
-    
+        
     const thesisModal = document.getElementById("thesis-modal");
     if (!thesisModal) return;
 
@@ -1219,7 +1266,6 @@ const projects = [
     thesisModalTopic.textContent = thesis.topic;
 
     // Handle all optional fields - show/hide sections based on data availability
-
     // Research Questions
     const researchQuestionsSection = document.getElementById("thesis-research-questions-section");
     const thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
@@ -1287,32 +1333,63 @@ const projects = [
     } else {
       contributionsSection.style.display = "none";
     }
-    
+        
     // Compact gallery setup
     // CRITICAL: Clear previous gallery state before setting up new one
-    const imagesSection = document.getElementById("thesis-images-section");
-    
+    // const imagesSection = document.getElementById("thesis-images-section"); // Already declared above
+        
     // Reset gallery state
     galleryImages = [];
     currentImageIndex = 0;
-    
+        
     if (thesis.images && thesis.images.length > 0) {
       console.log("Setting up gallery with images:", thesis.images);
-      
+            
       // IMPORTANT: Create a fresh copy of the images array
       galleryImages = [...thesis.images]; // Spread operator creates new array
       currentImageIndex = 0;
-      
+            
       // Small delay to ensure DOM is ready
       setTimeout(() => {
         setupCompactGallery();
+        
+        // 4. Check state AFTER setup (diagnostic continuation)
+        setTimeout(() => {
+          console.log("Gallery container children AFTER setup:", galleryContainer?.children.length || 0);
+          console.log("Main image src AFTER setup:", mainImage?.src || 'empty');
+          
+          // Check for visual duplicates by position
+          const visibleImages = Array.from(document.querySelectorAll('img')).filter(img => 
+            img.offsetParent !== null && img.getBoundingClientRect().width > 0
+          );
+          
+          const positionMap = {};
+          visibleImages.forEach(img => {
+            const rect = img.getBoundingClientRect();
+            const key = `${Math.round(rect.top)}-${Math.round(rect.left)}`;
+            if (!positionMap[key]) positionMap[key] = [];
+            positionMap[key].push({
+              src: img.src,
+              className: img.className,
+              parent: img.parentElement?.className
+            });
+          });
+          
+          Object.keys(positionMap).forEach(position => {
+            if (positionMap[position].length > 1) {
+              console.warn(`🚨 OVERLAPPING IMAGES at position ${position}:`, positionMap[position]);
+            }
+          });
+          
+          console.log("=== GALLERY DIAGNOSTIC END ===");
+        }, 100);
       }, 50);
-      
+            
       imagesSection.style.display = "block";
     } else {
       // Hide gallery section if no images
       imagesSection.style.display = "none";
-      
+            
       // Clear any existing gallery content
       const thumbnailsContainer = document.getElementById("gallery-thumbnails");
       const mainImage = document.getElementById("gallery-main-image");
