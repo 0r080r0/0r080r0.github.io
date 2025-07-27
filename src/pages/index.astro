@@ -992,7 +992,7 @@ const projects = [
       research_questions: "",
       hypotheses: "",
       tasks: ["Meta-analytic review", "Effect size synthesis", "Clinical interpretation"],
-      challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardization", "Clinical significance"],
+      challenges: ["Study heterogeneity", "Small Study Effects", "Outcome standardisation", "Clinical significance"],
       contributions: ["Evidence synthesis", "Clinical recommendations", "Future research directions"],
       images: [
         {
@@ -1202,8 +1202,12 @@ const projects = [
   // Thesis Modal show
   function showThesisModal(thesis) {
     console.log("showThesisModal called with:", thesis);
+    
+    // Close any other open modals first
     const projectModal = document.getElementById("project-modal");
+    const researchModal = document.getElementById("research-modal");
     if (projectModal) projectModal.classList.remove("active");
+    if (researchModal) researchModal.classList.remove("active");
     
     const thesisModal = document.getElementById("thesis-modal");
     if (!thesisModal) return;
@@ -1285,25 +1289,46 @@ const projects = [
     }
     
     // Compact gallery setup
+    // CRITICAL: Clear previous gallery state before setting up new one
     const imagesSection = document.getElementById("thesis-images-section");
+    
+    // Reset gallery state
+    galleryImages = [];
+    currentImageIndex = 0;
+    
     if (thesis.images && thesis.images.length > 0) {
       console.log("Setting up gallery with images:", thesis.images);
-      galleryImages = thesis.images;
+      
+      // IMPORTANT: Create a fresh copy of the images array
+      galleryImages = [...thesis.images]; // Spread operator creates new array
       currentImageIndex = 0;
-  
-    setupCompactGallery();
-    imagesSection.style.display = "block";
-  } else {
-    imagesSection.style.display = "none";
-  }
+      
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        setupCompactGallery();
+      }, 50);
+      
+      imagesSection.style.display = "block";
+    } else {
+      // Hide gallery section if no images
+      imagesSection.style.display = "none";
+      
+      // Clear any existing gallery content
+      const thumbnailsContainer = document.getElementById("gallery-thumbnails");
+      const mainImage = document.getElementById("gallery-main-image");
+      if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
+      if (mainImage) {
+        mainImage.src = '';
+        mainImage.alt = '';
+      }
+    }
 
     thesisModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
-  function setupCompactGallery() {
+    function setupCompactGallery() {
     console.log("setupCompactGallery called, current thumbnails:", document.querySelectorAll('.gallery-thumbnail').length);
-
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
     const caption = document.getElementById("gallery-caption");
@@ -1312,57 +1337,89 @@ const projects = [
     const nextBtn = document.getElementById("gallery-next");
 
     if (!mainImage || !thumbnailsContainer) {
+      console.log("Gallery elements not found");
       return;
     }
+
+    // CRITICAL FIX: Completely clear and reset the gallery
+    // Clear thumbnails container
+    thumbnailsContainer.innerHTML = '';
     
-    // Clear only thumbnails, not the entire gallery structure
-    if (thumbnailsContainer) {
-      while (thumbnailsContainer.firstChild) {
-        thumbnailsContainer.removeChild(thumbnailsContainer.firstChild);
-      }
-    }
+    // Reset main image to prevent duplication
+    mainImage.src = '';
+    mainImage.alt = '';
+    
+    // Clear caption and counter
+    if (caption) caption.textContent = '';
+    if (counter) counter.textContent = '';
 
     // Reset current image index
     currentImageIndex = 0;
 
-    // Populate thumbnails
+    // Validate galleryImages array
+    if (!galleryImages || galleryImages.length === 0) {
+      console.log("No gallery images to display");
+      return;
+    }
+
+    // Remove any existing event listeners by cloning nodes (prevents duplicate listeners)
+    let cleanPrevBtn = prevBtn;
+    let cleanNextBtn = nextBtn;
+    
+    if (prevBtn) {
+      cleanPrevBtn = prevBtn.cloneNode(true);
+      prevBtn.parentNode.replaceChild(cleanPrevBtn, prevBtn);
+    }
+    
+    if (nextBtn) {
+      cleanNextBtn = nextBtn.cloneNode(true);
+      nextBtn.parentNode.replaceChild(cleanNextBtn, nextBtn);
+    }
+
+    // Create thumbnails (only once)
     galleryImages.forEach((image, index) => {
       const thumb = document.createElement("img");
       thumb.src = image.src;
       thumb.alt = image.caption;
       thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+      
+      // Add click listener
       thumb.addEventListener("click", () => showImage(index));
+      
+      // Append to container
       thumbnailsContainer.appendChild(thumb);
     });
 
-    // Setup navigation with clean event listeners
-    if (prevBtn && nextBtn) {
-      const newPrevBtn = prevBtn.cloneNode(true);
-      const newNextBtn = nextBtn.cloneNode(true);
-      prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-      nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-           
-      newPrevBtn.addEventListener("click", previousImage);
-      newNextBtn.addEventListener("click", nextImage);
-     
-      // Show/hide navigation based on image count (use new button references)
+    // Setup navigation buttons with clean event listeners
+    if (cleanPrevBtn && cleanNextBtn) {
+      cleanPrevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        previousImage();
+      });
+      
+      cleanNextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextImage();
+      });
+
+      // Show/hide navigation based on image count
       if (galleryImages.length <= 1) {
-        newPrevBtn.style.display = "none";
-        newNextBtn.style.display = "none";
+        cleanPrevBtn.style.display = "none";
+        cleanNextBtn.style.display = "none";
       } else {
-        newPrevBtn.style.display = "block";
-        newNextBtn.style.display = "block";
+        cleanPrevBtn.style.display = "block";
+        cleanNextBtn.style.display = "block";
       }
-    } else {
-      // Fallback if buttons don't exist
-      if (prevBtn) prevBtn.addEventListener("click", previousImage);
-      if (nextBtn) nextBtn.addEventListener("click", nextImage);
     }
 
-    // Show first image
+    // Show first image (this should happen only once)
     if (galleryImages.length > 0) {
       showImage(0);
     }
+
+    console.log("Gallery setup complete. Images loaded:", galleryImages.length);
   }
 
   function previousImage() {
@@ -1376,16 +1433,18 @@ const projects = [
   }
 
   function showImage(index) {
-    if (index < 0 || index >= galleryImages.length) return;
+    if (!galleryImages || index < 0 || index >= galleryImages.length) {
+      console.log("Invalid image index:", index);
+      return;
+    }
 
     currentImageIndex = index;
     const image = galleryImages[index];
-
+    
     // Update main image with fade effect
     const mainImage = document.getElementById("gallery-main-image");
     if (mainImage) {
       mainImage.style.opacity = "0";
-
       setTimeout(() => {
         mainImage.src = image.src;
         mainImage.alt = image.caption;
@@ -1396,7 +1455,8 @@ const projects = [
     // Update caption and counter
     const caption = document.getElementById("gallery-caption");
     const counter = document.getElementById("gallery-counter");
-    if (caption) caption.textContent = image.caption;
+    
+    if (caption) caption.textContent = image.caption || '';
     if (counter) counter.textContent = `${index + 1}/${galleryImages.length}`;
 
     // Update active thumbnail
