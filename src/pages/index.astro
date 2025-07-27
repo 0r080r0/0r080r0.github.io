@@ -1191,72 +1191,62 @@ const projects = [
     researchModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
+  
+  // Thesis Modal hide
+  function hideThesisModal() {
+    if (!thesisModal) return;
+    
+    // CRITICAL: Clear gallery state when closing modal
+    const thumbnailsContainer = document.getElementById("gallery-thumbnails");
+    const mainImage = document.getElementById("gallery-main-image");
+    const caption = document.getElementById("gallery-caption");
+    const counter = document.getElementById("gallery-counter");
+    
+    // Clear all gallery content
+    if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
+    if (mainImage) {
+      mainImage.src = '';
+      mainImage.alt = '';
+    }
+    if (caption) caption.textContent = '';
+    if (counter) counter.textContent = '';
+    
+    // Reset gallery state
+    galleryImages = [];
+    currentImageIndex = 0;
+    
+    // Close modal
+    thesisModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
 
+  // Thesis Modal show
   // Thesis Modal show
   function showThesisModal(thesis) {
     console.log("showThesisModal called with:", thesis);
     
-    console.log("=== GALLERY DIAGNOSTIC START ===");
-    
-    // 1. Check for duplicate HTML elements BEFORE any JavaScript runs
-    const allImages = document.querySelectorAll('img');
-    const imagesBySource = {};
-    
-    allImages.forEach((img, index) => {
-      const src = img.src;
-      if (!imagesBySource[src]) {
-        imagesBySource[src] = [];
-      }
-      imagesBySource[src].push({
-        element: img,
-        index: index,
-        parent: img.parentElement?.className || 'unknown',
-        id: img.id || 'no-id',
-        className: img.className || 'no-class'
-      });
-    });
-    
-    // Report duplicates
-    Object.keys(imagesBySource).forEach(src => {
-      if (imagesBySource[src].length > 1) {
-        console.warn(`🚨 DUPLICATE IMAGE FOUND: ${src}`);
-        imagesBySource[src].forEach((imgInfo, i) => {
-          console.log(`  Copy ${i + 1}:`, {
-            parent: imgInfo.parent,
-            id: imgInfo.id,
-            className: imgInfo.className,
-            visible: imgInfo.element.offsetParent !== null
-          });
-        });
-      }
-    });
-    
-    // 2. Check gallery container state BEFORE setup
-    const galleryContainer = document.getElementById("gallery-thumbnails");
-    const mainImage = document.getElementById("gallery-main-image");
-    
-    console.log("Gallery container children BEFORE setup:", galleryContainer?.children.length || 0);
-    console.log("Main image src BEFORE setup:", mainImage?.src || 'empty');
-    
-    // 3. Check for CSS issues that might cause visual duplication
-    const imagesSection = document.getElementById("thesis-images-section");
-    if (imagesSection) {
-      const computedStyle = window.getComputedStyle(imagesSection);
-      console.log("Images section CSS:", {
-        display: computedStyle.display,
-        position: computedStyle.position,
-        zIndex: computedStyle.zIndex,
-        overflow: computedStyle.overflow
-      });
-    }
-        
-    // Close any other open modals first
+    // CRITICAL: Close and clean up any other open modals first
     const projectModal = document.getElementById("project-modal");
     const researchModal = document.getElementById("research-modal");
-    if (projectModal) projectModal.classList.remove("active");
-    if (researchModal) researchModal.classList.remove("active");
-        
+    
+    if (projectModal && projectModal.classList.contains("active")) {
+      projectModal.classList.remove("active");
+    }
+    if (researchModal && researchModal.classList.contains("active")) {
+      researchModal.classList.remove("active");
+    }
+    
+    // If thesis modal is already open, clean it up first
     const thesisModal = document.getElementById("thesis-modal");
+    if (thesisModal && thesisModal.classList.contains("active")) {
+      hideThesisModal();
+      // Small delay to ensure cleanup is complete
+      setTimeout(() => {
+        showThesisModal(thesis);
+      }, 100);
+      return;
+    }
+    
     if (!thesisModal) return;
 
     // Basic information
@@ -1333,6 +1323,44 @@ const projects = [
     } else {
       contributionsSection.style.display = "none";
     }
+    
+    // Handle images section
+    const imagesSection = document.getElementById("thesis-images-section");
+    
+    // Reset gallery state completely
+    galleryImages = [];
+    currentImageIndex = 0;
+    
+    if (thesis.images && thesis.images.length > 0) {
+      console.log("Setting up gallery with images:", thesis.images);
+      
+      // IMPORTANT: Create a fresh copy of the images array
+      galleryImages = [...thesis.images]; // Spread operator creates new array
+      currentImageIndex = 0;
+      
+      // Setup gallery with a small delay
+      setTimeout(() => {
+        setupCompactGallery();
+      }, 50);
+      
+      imagesSection.style.display = "block";
+    } else {
+      // Hide gallery section if no images
+      imagesSection.style.display = "none";
+      
+      // Clear any existing gallery content
+      const thumbnailsContainer = document.getElementById("gallery-thumbnails");
+      const mainImage = document.getElementById("gallery-main-image");
+      if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
+      if (mainImage) {
+        mainImage.src = '';
+        mainImage.alt = '';
+      }
+    }
+
+    thesisModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
         
     // Compact gallery setup
     // CRITICAL: Clear previous gallery state before setting up new one
@@ -1417,6 +1445,88 @@ const projects = [
       console.log("Gallery elements not found");
       return;
     }
+
+    // CRITICAL FIX: Completely clear and reset the gallery
+    // Clear thumbnails container
+    thumbnailsContainer.innerHTML = '';
+    
+    // Reset main image to prevent duplication
+    mainImage.src = '';
+    mainImage.alt = '';
+    mainImage.style.opacity = '1';
+    
+    // Clear caption and counter
+    if (caption) caption.textContent = '';
+    if (counter) counter.textContent = '';
+
+    // Reset current image index
+    currentImageIndex = 0;
+
+    // Validate galleryImages array
+    if (!galleryImages || galleryImages.length === 0) {
+      console.log("No gallery images to display");
+      return;
+    }
+
+    // Remove any existing event listeners by cloning nodes (prevents duplicate listeners)
+    let cleanPrevBtn = prevBtn;
+    let cleanNextBtn = nextBtn;
+    
+    if (prevBtn) {
+      cleanPrevBtn = prevBtn.cloneNode(true);
+      prevBtn.parentNode.replaceChild(cleanPrevBtn, prevBtn);
+    }
+    
+    if (nextBtn) {
+      cleanNextBtn = nextBtn.cloneNode(true);
+      nextBtn.parentNode.replaceChild(cleanNextBtn, nextBtn);
+    }
+
+    // Create thumbnails (only once)
+    galleryImages.forEach((image, index) => {
+      const thumb = document.createElement("img");
+      thumb.src = image.src;
+      thumb.alt = image.caption;
+      thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+      
+      // Add click listener
+      thumb.addEventListener("click", () => showImage(index));
+      
+      // Append to container
+      thumbnailsContainer.appendChild(thumb);
+    });
+
+    // Setup navigation buttons with clean event listeners
+    if (cleanPrevBtn && cleanNextBtn) {
+      cleanPrevBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        previousImage();
+      });
+      
+      cleanNextBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextImage();
+      });
+
+      // Show/hide navigation based on image count
+      if (galleryImages.length <= 1) {
+        cleanPrevBtn.style.display = "none";
+        cleanNextBtn.style.display = "none";
+      } else {
+        cleanPrevBtn.style.display = "block";
+        cleanNextBtn.style.display = "block";
+      }
+    }
+
+    // Show first image (this should happen only once)
+    if (galleryImages.length > 0) {
+      showImage(0);
+    }
+
+    console.log("Gallery setup complete. Images loaded:", galleryImages.length);
+  }
 
     // CRITICAL FIX: Completely clear and reset the gallery
     // Clear thumbnails container
