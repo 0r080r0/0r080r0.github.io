@@ -974,14 +974,15 @@ const projects = [
         },
         {
           src: "/assets/process.png",
-          caption: "Process focus condition: Goal focus manipulation for the process focus condition. The quote „Focus on your progress, it's all about the journey." was presented above the picture. Participants were deliberately not asked to engage with the picture."
+          caption: "Process focus condition: Goal focus manipulation for the process focus condition. The quote „Focus on your progress, it's all about the journey.“ was presented above the picture. Participants were deliberately not asked to engage with the picture."
         },
         {
           src: "/assets/goal.png",
-          caption: "Goal focus condition: Goal focus manipulation for the outcome focus condition. The quote „Focus on your outcome, it's all about the final result" was displayed above the picture. Participants were willfully not asked to deal with the picture."
+          caption: "Goal focus condition: Goal focus manipulation for the outcome focus condition. The quote „Focus on your outcome, it's all about the final result“ was displayed above the picture. Participants were willfully not asked to deal with the picture."
         }
       ]
     },
+    
     {
       title: "MSc Thesis",
       year: "2023",
@@ -1194,27 +1195,6 @@ const projects = [
   // Thesis Modal hide
   function hideThesisModal() {
     if (!thesisModal) return;
-    
-    // CRITICAL: Clear gallery state when closing modal
-    const thumbnailsContainer = document.getElementById("gallery-thumbnails");
-    const mainImage = document.getElementById("gallery-main-image");
-    const caption = document.getElementById("gallery-caption");
-    const counter = document.getElementById("gallery-counter");
-    
-    // Clear all gallery content
-    if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
-    if (mainImage) {
-      mainImage.src = '';
-      mainImage.alt = '';
-    }
-    if (caption) caption.textContent = '';
-    if (counter) counter.textContent = '';
-    
-    // Reset gallery state
-    galleryImages = [];
-    currentImageIndex = 0;
-    
-    // Close modal
     thesisModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
@@ -1223,28 +1203,13 @@ const projects = [
   function showThesisModal(thesis) {
     console.log("showThesisModal called with:", thesis);
     
-    // CRITICAL: Close and clean up any other open modals first
+    // Close any other open modals first
     const projectModal = document.getElementById("project-modal");
     const researchModal = document.getElementById("research-modal");
+    if (projectModal) projectModal.classList.remove("active");
+    if (researchModal) researchModal.classList.remove("active");
     
-    if (projectModal && projectModal.classList.contains("active")) {
-      projectModal.classList.remove("active");
-    }
-    if (researchModal && researchModal.classList.contains("active")) {
-      researchModal.classList.remove("active");
-    }
-    
-    // If thesis modal is already open, clean it up first
     const thesisModal = document.getElementById("thesis-modal");
-    if (thesisModal && thesisModal.classList.contains("active")) {
-      hideThesisModal();
-      // Small delay to ensure cleanup is complete
-      setTimeout(() => {
-        showThesisModal(thesis);
-      }, 100);
-      return;
-    }
-    
     if (!thesisModal) return;
 
     // Basic information
@@ -1254,6 +1219,7 @@ const projects = [
     thesisModalTopic.textContent = thesis.topic;
 
     // Handle all optional fields - show/hide sections based on data availability
+
     // Research Questions
     const researchQuestionsSection = document.getElementById("thesis-research-questions-section");
     const thesisModalResearchQuestions = document.getElementById("thesis-modal-research-questions");
@@ -1321,11 +1287,12 @@ const projects = [
     } else {
       contributionsSection.style.display = "none";
     }
-
-    // Handle images section
+    
+    // Compact gallery setup
+    // CRITICAL: Clear previous gallery state before setting up new one
     const imagesSection = document.getElementById("thesis-images-section");
     
-    // Reset gallery state completely
+    // Reset gallery state
     galleryImages = [];
     currentImageIndex = 0;
     
@@ -1336,7 +1303,7 @@ const projects = [
       galleryImages = [...thesis.images]; // Spread operator creates new array
       currentImageIndex = 0;
       
-      // Setup gallery with a small delay
+      // Small delay to ensure DOM is ready
       setTimeout(() => {
         setupCompactGallery();
       }, 50);
@@ -1360,7 +1327,7 @@ const projects = [
     document.body.style.overflow = "hidden";
   }
 
-  function setupCompactGallery() {
+    function setupCompactGallery() {
     console.log("setupCompactGallery called, current thumbnails:", document.querySelectorAll('.gallery-thumbnail').length);
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
@@ -1381,7 +1348,6 @@ const projects = [
     // Reset main image to prevent duplication
     mainImage.src = '';
     mainImage.alt = '';
-    mainImage.style.opacity = '1';
     
     // Clear caption and counter
     if (caption) caption.textContent = '';
@@ -1535,6 +1501,7 @@ const projects = [
         if (e.target.closest('a')) {
           return;
         }
+
         const projectId = card.dataset.projectId;
         const project = projectsData[projectId];
         if (project) {
@@ -1616,7 +1583,7 @@ const projects = [
       }
     }
   });
-
+  
   // Setup event listeners
   setTimeout(setupEventListeners, 100);
 </script>
