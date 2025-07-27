@@ -974,11 +974,11 @@ const projects = [
         },
         {
           src: "/assets/process.png",
-          caption: "Process focus condition: Goal focus manipulation for the process focus condition. The quote „Focus on your progress, it's all about the journey.“ was presented above the picture. Participants were deliberately not asked to engage with the picture."
+          caption: "Process focus condition: Goal focus manipulation for the process focus condition. The quote „Focus on your progress, it's all about the journey." was presented above the picture. Participants were deliberately not asked to engage with the picture."
         },
         {
           src: "/assets/goal.png",
-          caption: "Goal focus condition: Goal focus manipulation for the outcome focus condition. The quote „Focus on your outcome, it's all about the final result“ was displayed above the picture. Participants were willfully not asked to deal with the picture."
+          caption: "Goal focus condition: Goal focus manipulation for the outcome focus condition. The quote „Focus on your outcome, it's all about the final result" was displayed above the picture. Participants were willfully not asked to deal with the picture."
         }
       ]
     },
@@ -1191,7 +1191,7 @@ const projects = [
     researchModal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
-  
+
   // Thesis Modal hide
   function hideThesisModal() {
     if (!thesisModal) return;
@@ -1360,78 +1360,8 @@ const projects = [
     thesisModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
-        
-    // Compact gallery setup
-    // CRITICAL: Clear previous gallery state before setting up new one
-    // const imagesSection = document.getElementById("thesis-images-section"); // Already declared above
-        
-    // Reset gallery state
-    galleryImages = [];
-    currentImageIndex = 0;
-        
-    if (thesis.images && thesis.images.length > 0) {
-      console.log("Setting up gallery with images:", thesis.images);
-            
-      // IMPORTANT: Create a fresh copy of the images array
-      galleryImages = [...thesis.images]; // Spread operator creates new array
-      currentImageIndex = 0;
-            
-      // Small delay to ensure DOM is ready
-      setTimeout(() => {
-        setupCompactGallery();
-        
-        // 4. Check state AFTER setup (diagnostic continuation)
-        setTimeout(() => {
-          console.log("Gallery container children AFTER setup:", galleryContainer?.children.length || 0);
-          console.log("Main image src AFTER setup:", mainImage?.src || 'empty');
-          
-          // Check for visual duplicates by position
-          const visibleImages = Array.from(document.querySelectorAll('img')).filter(img => 
-            img.offsetParent !== null && img.getBoundingClientRect().width > 0
-          );
-          
-          const positionMap = {};
-          visibleImages.forEach(img => {
-            const rect = img.getBoundingClientRect();
-            const key = `${Math.round(rect.top)}-${Math.round(rect.left)}`;
-            if (!positionMap[key]) positionMap[key] = [];
-            positionMap[key].push({
-              src: img.src,
-              className: img.className,
-              parent: img.parentElement?.className
-            });
-          });
-          
-          Object.keys(positionMap).forEach(position => {
-            if (positionMap[position].length > 1) {
-              console.warn(`🚨 OVERLAPPING IMAGES at position ${position}:`, positionMap[position]);
-            }
-          });
-          
-          console.log("=== GALLERY DIAGNOSTIC END ===");
-        }, 100);
-      }, 50);
-            
-      imagesSection.style.display = "block";
-    } else {
-      // Hide gallery section if no images
-      imagesSection.style.display = "none";
-            
-      // Clear any existing gallery content
-      const thumbnailsContainer = document.getElementById("gallery-thumbnails");
-      const mainImage = document.getElementById("gallery-main-image");
-      if (thumbnailsContainer) thumbnailsContainer.innerHTML = '';
-      if (mainImage) {
-        mainImage.src = '';
-        mainImage.alt = '';
-      }
-    }
 
-    thesisModal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-
-    function setupCompactGallery() {
+  function setupCompactGallery() {
     console.log("setupCompactGallery called, current thumbnails:", document.querySelectorAll('.gallery-thumbnail').length);
     const mainImage = document.getElementById("gallery-main-image");
     const thumbnailsContainer = document.getElementById("gallery-thumbnails");
@@ -1453,87 +1383,6 @@ const projects = [
     mainImage.src = '';
     mainImage.alt = '';
     mainImage.style.opacity = '1';
-    
-    // Clear caption and counter
-    if (caption) caption.textContent = '';
-    if (counter) counter.textContent = '';
-
-    // Reset current image index
-    currentImageIndex = 0;
-
-    // Validate galleryImages array
-    if (!galleryImages || galleryImages.length === 0) {
-      console.log("No gallery images to display");
-      return;
-    }
-
-    // Remove any existing event listeners by cloning nodes (prevents duplicate listeners)
-    let cleanPrevBtn = prevBtn;
-    let cleanNextBtn = nextBtn;
-    
-    if (prevBtn) {
-      cleanPrevBtn = prevBtn.cloneNode(true);
-      prevBtn.parentNode.replaceChild(cleanPrevBtn, prevBtn);
-    }
-    
-    if (nextBtn) {
-      cleanNextBtn = nextBtn.cloneNode(true);
-      nextBtn.parentNode.replaceChild(cleanNextBtn, nextBtn);
-    }
-
-    // Create thumbnails (only once)
-    galleryImages.forEach((image, index) => {
-      const thumb = document.createElement("img");
-      thumb.src = image.src;
-      thumb.alt = image.caption;
-      thumb.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
-      
-      // Add click listener
-      thumb.addEventListener("click", () => showImage(index));
-      
-      // Append to container
-      thumbnailsContainer.appendChild(thumb);
-    });
-
-    // Setup navigation buttons with clean event listeners
-    if (cleanPrevBtn && cleanNextBtn) {
-      cleanPrevBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        previousImage();
-      });
-      
-      cleanNextBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        nextImage();
-      });
-
-      // Show/hide navigation based on image count
-      if (galleryImages.length <= 1) {
-        cleanPrevBtn.style.display = "none";
-        cleanNextBtn.style.display = "none";
-      } else {
-        cleanPrevBtn.style.display = "block";
-        cleanNextBtn.style.display = "block";
-      }
-    }
-
-    // Show first image (this should happen only once)
-    if (galleryImages.length > 0) {
-      showImage(0);
-    }
-
-    console.log("Gallery setup complete. Images loaded:", galleryImages.length);
-  }
-
-    // CRITICAL FIX: Completely clear and reset the gallery
-    // Clear thumbnails container
-    thumbnailsContainer.innerHTML = '';
-    
-    // Reset main image to prevent duplication
-    mainImage.src = '';
-    mainImage.alt = '';
     
     // Clear caption and counter
     if (caption) caption.textContent = '';
@@ -1687,7 +1536,6 @@ const projects = [
         if (e.target.closest('a')) {
           return;
         }
-
         const projectId = card.dataset.projectId;
         const project = projectsData[projectId];
         if (project) {
@@ -1769,7 +1617,7 @@ const projects = [
       }
     }
   });
-  
+
   // Setup event listeners
   setTimeout(setupEventListeners, 100);
 </script>
