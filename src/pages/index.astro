@@ -1335,20 +1335,60 @@ const projects = [
     const counter = document.getElementById("gallery-counter");
     const prevBtn = document.getElementById("gallery-prev");
     const nextBtn = document.getElementById("gallery-next");
-
+    
+    // CRITICAL: Also get the gallery container to clear any duplicate elements
+    const galleryContainer = document.querySelector('.bg-black\\/40.rounded-lg.border.border-gray-700\\/50.overflow-hidden');
+    
     if (!mainImage || !thumbnailsContainer) {
       console.log("Gallery elements not found");
       return;
     }
 
-    // CRITICAL FIX: Completely clear and reset the gallery
-    // Clear thumbnails container
+    // CRITICAL FIX: Remove any orphaned image elements that might be duplicates
+    const gallerySection = document.getElementById("thesis-images-section");
+    if (gallerySection) {
+      // Remove any img elements that are direct children but not the main gallery image
+      const orphanedImages = gallerySection.querySelectorAll('img:not(#gallery-main-image):not(.gallery-thumbnail)');
+      orphanedImages.forEach(img => img.remove());
+      
+      // Also check for any elements with black background that might contain duplicate images
+      const blackBgElements = gallerySection.querySelectorAll('.bg-black, [style*="background-color: black"], [style*="background: black"]');
+      blackBgElements.forEach(el => {
+        if (el.id !== 'gallery-main-image' && !el.closest('#gallery-main-image')) {
+          el.remove();
+        }
+      });
+    }
+
+    // CRITICAL: Clear thumbnails container and its parent strip completely
     thumbnailsContainer.innerHTML = '';
     
-    // Reset main image to prevent duplication
+    // Also clear the entire thumbnail strip area to remove any orphaned images
+    const thumbnailStrip = thumbnailsContainer.parentElement;
+    if (thumbnailStrip && thumbnailStrip.classList.contains('bg-black/20')) {
+      // Remove any direct image children from the strip that aren't in the thumbnails container
+      const directImages = Array.from(thumbnailStrip.children).filter(child => 
+        child.tagName === 'IMG' && child !== thumbnailsContainer
+      );
+      directImages.forEach(img => img.remove());
+    }
+    
+    // FIXED: Properly reset main image with immediate display
+    mainImage.style.opacity = "1";
+    mainImage.style.transition = "none";
     mainImage.src = '';
     mainImage.alt = '';
+    mainImage.style.transform = '';
+    mainImage.style.filter = '';
     
+    // Force reflow to ensure changes are applied
+    mainImage.offsetHeight;
+    
+    // Re-enable transitions after reset
+    setTimeout(() => {
+      mainImage.style.transition = "opacity 0.15s ease";
+    }, 10);
+
     // Clear caption and counter
     if (caption) caption.textContent = '';
     if (counter) counter.textContent = '';
@@ -1414,12 +1454,77 @@ const projects = [
       }
     }
 
-    // Show first image (this should happen only once)
+    // FIXED: Show first image without fade effect initially
     if (galleryImages.length > 0) {
-      showImage(0);
+      showImageImmediate(0);
     }
 
     console.log("Gallery setup complete. Images loaded:", galleryImages.length);
+  }
+
+  // NEW: Immediate image display function for initial load
+  function showImageImmediate(index) {
+    if (!galleryImages || index < 0 || index >= galleryImages.length) {
+      console.log("Invalid image index:", index);
+      return;
+    }
+
+    currentImageIndex = index;
+    const image = galleryImages[index];
+    
+    // Update main image immediately without fade
+    const mainImage = document.getElementById("gallery-main-image");
+    if (mainImage) {
+      mainImage.src = image.src;
+      mainImage.alt = image.caption;
+      mainImage.style.opacity = "1";
+    }
+
+    // Update caption and counter
+    const caption = document.getElementById("gallery-caption");
+    const counter = document.getElementById("gallery-counter");
+    
+    if (caption) caption.textContent = image.caption || '';
+    if (counter) counter.textContent = `${index + 1}/${galleryImages.length}`;
+
+    // Update active thumbnail
+    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
+  }
+
+  // UPDATED: Keep the fade effect for navigation
+  function showImage(index) {
+    if (!galleryImages || index < 0 || index >= galleryImages.length) {
+      console.log("Invalid image index:", index);
+      return;
+    }
+
+    currentImageIndex = index;
+    const image = galleryImages[index];
+    
+    // Update main image with fade effect (only for navigation)
+    const mainImage = document.getElementById("gallery-main-image");
+    if (mainImage) {
+      mainImage.style.opacity = "0";
+      setTimeout(() => {
+        mainImage.src = image.src;
+        mainImage.alt = image.caption;
+        mainImage.style.opacity = "1";
+      }, 150);
+    }
+
+    // Update caption and counter
+    const caption = document.getElementById("gallery-caption");
+    const counter = document.getElementById("gallery-counter");
+    
+    if (caption) caption.textContent = image.caption || '';
+    if (counter) counter.textContent = `${index + 1}/${galleryImages.length}`;
+
+    // Update active thumbnail
+    document.querySelectorAll(".gallery-thumbnail").forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
   }
 
   function previousImage() {
