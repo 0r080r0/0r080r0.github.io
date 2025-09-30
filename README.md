@@ -5,8 +5,6 @@ PhD Portfolio (GitHub Pages)
 
 Live Link to my Portfolio: https://0r080r0.github.io/
 
-#####################ADD IMAGES!!! ######################
-
 Link to my Music Website (Musician & Industry Experience): https://evangelia-music.netlify.app/
 
 ### The Origin: *From Musical Passion to Scientific Insight*
