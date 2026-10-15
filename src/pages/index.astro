@@ -162,11 +162,11 @@ const projects = [
     <!-- Content Layer: All content above the background -->
     <div class="relative z-10 w-full flex">
       <!-- Left Sidebar -->
-      <aside class="w-48 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col overflow-y-auto">
+      <aside class="w-48 bg-black/50 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col overflow-y-auto">
         <nav class="space-y-6">
           <!-- Research Experience -->
           <div>
-  <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">
+  <h3 class="text-xs font-semibold text-[#5ef7cb] mb-2 tracking-wide uppercase opacity-90">
     Research Experience
   </h3>
   <div class="space-y-2">
@@ -200,7 +200,7 @@ const projects = [
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18l6-6-6-6"></path>
           </svg>
         </div>
-        <div class="text-xs text-gray-400 mt-0.5 opacity-70">Meta-Analysis: Music Listening Effects on Cognitive and Physical Performance</div>
+        <div class="text-xs text-gray-400 mt-0.5 opacity-70">Music &amp; Cognitive/Physical Performance Meta-Analysis</div>
       </div>
     </div>
     <div class="thesis-item cursor-pointer" data-thesis-index="0">
@@ -230,7 +230,7 @@ const projects = [
 
           <!-- Research Outputs: new section only -->
           <div>
-            <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Research Outputs</h3>
+            <h3 class="text-xs font-semibold text-[#5ef7cb] mb-2 tracking-wide uppercase opacity-90">Research Outputs</h3>
             <div class="space-y-2">
               {['Publications', 'Talks & Conferences'].map((label, index) => (
                 <div class="output-item cursor-pointer" data-output-index={index} role="button" tabindex="0" aria-label={label}>
@@ -244,7 +244,7 @@ const projects = [
           </div>
           <!-- Awards: new section only -->
           <div>
-            <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Awards</h3>
+            <h3 class="text-xs font-semibold text-[#5ef7cb] mb-2 tracking-wide uppercase opacity-90">Awards</h3>
             <div class="space-y-2">
               <div class="award-item cursor-pointer" data-award-index="0" role="button" tabindex="0" aria-label="USydIS Scholarship">
                 <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
@@ -259,9 +259,9 @@ const projects = [
           </div>
           <!-- CV: new section only -->
           <div>
-            <h3 class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90">Curriculum Vitae</h3>
+            <h3 class="text-xs font-semibold text-[#5ef7cb] mb-2 tracking-wide uppercase opacity-90">Curriculum Vitae</h3>
             <button id="open-cv-modal" type="button" class="w-full text-left p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-between gap-2" aria-haspopup="dialog">
-              <span class="text-xs font-medium text-white">Explore visual CV</span>
+              <span class="text-xs font-medium text-white">Visual CV</span>
               <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18l6-6-6-6"></path></svg>
             </button>
           </div>
@@ -269,7 +269,7 @@ const projects = [
           <!-- Quick Links -->
           <div>
             <h3
-              class="text-xs font-semibold text-white mb-2 tracking-wide uppercase opacity-90"
+              class="text-xs font-semibold text-[#5ef7cb] mb-2 tracking-wide uppercase opacity-90"
             >
               Quick Links
             </h3>
@@ -303,7 +303,7 @@ const projects = [
           class="w-full px-6 py-4 bg-black/50 backdrop-blur-sm border-b border-gray-700"
         >
           <div class="w-full text-center">
-            <h1 class="text-3xl font-light text-white mb-2">
+            <h1 class="text-3xl font-light accent-header mb-2">
               Evangelia Karakoliou
             </h1>
             <div class="intro-text opacity-0 space-y-1 text-gray-300">
@@ -552,7 +552,7 @@ const projects = [
     </div>
     <!-- Visual CV Modal: new independent component -->
     <div id="cv-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
-      <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-[84rem] w-full max-h-[94vh] overflow-y-auto">
         <div class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between">
           <div>
             <p class="text-[11px] uppercase tracking-[0.2em] accent-header mb-1">Professional journey</p>
@@ -561,8 +561,7 @@ const projects = [
           <button id="close-cv-modal" class="text-gray-400 hover:text-white transition-colors" aria-label="Close visual CV"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
         <div class="p-6">
-          <p class="text-sm text-gray-400 mb-8">Selected work experience and education.</p>
-          <div id="cv-timeline" class="space-y-10"></div>
+          <div id="cv-timeline" class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-10"></div>
         </div>
       </div>
     </div>
@@ -904,11 +903,11 @@ const projects = [
 
   /* Overlay accents: mint header (soft glow), dark teal subhead */
   :global(.accent-header) {
-    color: #a9e5d4;
-    text-shadow: 0 0 8px rgba(169, 229, 212, 0.35);
+    color: #5ef7cb;
+    text-shadow: 0 0 8px rgba(94, 247, 203, 0.25);
   }
   :global(.accent-subhead) {
-    color: #1a8c84;
+    color: #0d6680;
   }
 
   /* Thesis gallery thumbnails are created by JS, so their styles must be global */
@@ -931,6 +930,28 @@ const projects = [
     opacity: 1;
     border-color: #10b981;
     box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Sidebar: slides in on load, then every header and entry follows like dominoes */
+  aside {
+    animation: sidebarUnfold 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  aside nav h3,
+  aside nav .space-y-2 > *,
+  aside nav > div > button {
+    animation: sidebarSectionIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(0.6s + var(--i, 0) * 0.1s);
+  }
+  @keyframes sidebarUnfold {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes sidebarSectionIn {
+    from { transform: translateX(-12px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    aside, aside nav h3, aside nav .space-y-2 > *, aside nav > div > button { animation: none; }
   }
 
   /* Sidebar: quiet scrollbar, only visible if content ever overflows */
@@ -961,6 +982,8 @@ const projects = [
 </style>
 
 <script client:load>
+  // Sidebar domino order: each header/entry gets its position for a staggered entrance
+  document.querySelectorAll("aside nav h3, aside nav .space-y-2 > *, aside nav > div > button").forEach((el, i) => el.style.setProperty("--i", i));
   const projectsData = {
     "drummer-posture": {
       title: "Drummer Posture Monitoring Application",
@@ -1225,17 +1248,18 @@ const projects = [
   ];
   const researchOutputs = [
     { title: "Publications", eyebrow: "Research outputs", entries: [{
-      type: "Manuscript in preparation · University of Gothenburg, Sweden",
+      type: "Manuscript under review · University of Gothenburg · Gothenburg, Sweden",
       title: "Music Listening as an Adjunct to Motor Rehabilitation in Parkinson's Disease: A Systematic Review and Meta-Analysis",
-      detail: "Bjälkebring, P., Karakoliou, E., & Fransson, N. (in prep.). Contributing to an ongoing systematic review and meta-analysis on music-based neuromotor rehabilitation in Parkinson's disease.",
+      detail: "Bjälkebring, P., Karakoliou, E., & Fransson, N. (under review).",
       points: [
+        "Contributing to an ongoing systematic review and meta-analysis on music-based neuromotor rehabilitation in Parkinson's disease",
         "Manuscript development and iterative feedback across review cycles",
         "Data reconciliation, restoring 341 missing article decisions across rater datasets",
         "Article screening, coding and eligibility assessment for the updated literature search",
         "Ongoing methodological refinement and quality assurance throughout publication preparation"
       ]
     }] },
-    { title: "Talks & Conferences", eyebrow: "Research outputs", entries: [{ type: "Conference presentation · 2 October 2026", title: "Scaling Soundness: A Computational Approach to the Discovery of Musician-Health Information on Music Institution Websites Worldwide", detail: "ASME Graduate Research Symposium" }] }
+    { title: "Talks & Conferences", eyebrow: "Research outputs", entries: [{ type: "Symposium presentation · University of Melbourne · Melbourne, Australia · 2 October 2026", title: "Scaling Soundness: A Computational Approach to the Discovery of Musician-Health Information on Music Institution Websites Worldwide", detail: "Australian Society for Music Education · ASME Graduate Research Symposium" }, { type: "Symposium presentation · University of Sydney · Sydney, Australia · 14 October 2026", title: "The Prevalence of Musician-Health Content across Tertiary Music Institution Websites Worldwide", detail: "Early PhD research on a systematic web-search pipeline examining what tertiary music institutions worldwide publicly communicate about musician health, covering pipeline architecture, challenges and solutions, and preliminary pilot results.", venue: "Sydney Conservatorium of Music · Postgraduate Research Symposium" }] }
   ];
   const awards = [
     { title: "Awards", eyebrow: "Recognition", entries: [{ type: "Issued by The University of Sydney · Dec 2025", title: "University of Sydney International Scholarship (USydIS)", detail: "Competitive scholarship for international students, providing a living stipend and full tuition fee support for doctoral study at the University of Sydney." }] }
@@ -1245,18 +1269,20 @@ const projects = [
     {
       heading: "Work Experience",
       entries: [
-        { period: "Dates to confirm", role: "Statistical & Clinical Research Consultant", organisation: "Freelance · Two clients", detail: "Statistical analysis and research-methodology support for clinical and applied health research." },
-        { period: "Oct 2024 – Oct 2025", role: "Data Analytics Tutor & Mental Wellbeing Coach", organisation: "DataSmart Point · Retraining start-up for unemployed adults", detail: "Taught data analytics to people retraining for new careers, and supported participants' mental wellbeing as a coach." },
-        { period: "BSc · Dates to confirm", role: "Research Assistant · Experimental Neuroscience", organisation: "", detail: "EEG setup, data collection and MATLAB analysis in audiovisual working-memory studies; contributed to published research." }
+        { period: "Jan 2024 – Present", role: "Clinical Research Consultant", organisation: "Gibson Research Consultancy · Leeds, United Kingdom · Freelance", detail: "Linguistic validation and cognitive debriefing interviews for rehabilitation and pain-management assessment tools in international clinical studies." },
+        { period: "Oct 2024 – Oct 2025", role: "Data Analytics Tutor & Mental Health Coach", organisation: "DataSmart Point · Berlin, Germany · Full-time, fixed-term", detail: "Taught Python, machine learning and data analytics; led a small tutor team; ran mental-health workshops on stress, burnout and resilience." },
+        { period: "Oct 2023 – Oct 2024", role: "Statistical Consultant", organisation: "Hanseatic Statistics · Hamburg, Germany · Freelance", detail: "Statistical analyses for 21+ international empirical research projects in psychology, neuroscience, physiotherapy and medicine." },
+        { period: "Nov 2023 – Oct 2024", role: "Linguistic Editor", organisation: "DeepL · Cologne, Germany · Freelance", detail: "Data collection and annotation for machine-learning translation models." },
+        { period: "Feb 2019 – Jul 2019", role: "Research Assistant · Neuroscience", organisation: "University of Groningen · Groningen, The Netherlands · Part-time", detail: "EEG data collection and MATLAB analysis for an audio-visual working memory study." }
       ]
     },
     {
       heading: "Education",
       entries: [
-        { period: "2026 – Present", role: "PhD in Music · Musician Health", organisation: "Sydney Conservatorium of Music · University of Sydney", detail: "Occupational health, biomechanics and computational methods for preventing musicians' pain and injury. Funded by the USydIS scholarship." },
-        { period: "2023", role: "Research Master Psychological Science", organisation: "University of Gothenburg · Sweden", detail: "Pass with distinction (Väl godkänt). Thesis: meta-analysis of music listening effects on motricity in Parkinson's disease. Research training in systematic review, mixed methods and GLM/MLM/SEM in R; literature search and coding for a meta-analysis on music and cognitive and physical performance (Cognitive Psychology Research Group)." },
-        { period: "2021", role: "BSc Psychology", organisation: "University of Groningen · The Netherlands", detail: "Grade 7.5/10 · Thesis 8/10: The Role of Mental Toughness in Goal Focus and Peak Performance. Minor in Developmental Neuropsychology & Cognitive Neuroscience; Experimental Skills and Sports & Performance Psychology programme." },
-        { period: "4-year programme · Secondary school", role: "STEM Mentorship Programme \"Zukunft MINT\"", organisation: "Campus of Excellence gGmbH · Hof, Germany", detail: "50+ courses, seminars and conferences across Europe; mentored adolescents in career preparation; 3-week rotational medical internship at the Berlin Military Hospital." }
+        { period: "Jul 2026 – Present", role: "PhD in Music · Musician Health", organisation: "Sydney Conservatorium of Music · University of Sydney · Sydney, Australia · Full-time", detail: "Occupational health, biomechanics and computational methods for preventing musicians' pain and injury." },
+        { period: "Aug 2021 – Jun 2023", role: "Research Master Psychological Science", organisation: "University of Gothenburg · Gothenburg, Sweden · Full-time", detail: "Pass with distinction. Thesis: meta-analysis of music listening effects on motricity in Parkinson's disease." },
+        { period: "Sep 2018 – Jul 2021", role: "Bachelor of Science Psychology", organisation: "University of Groningen · Groningen, The Netherlands · Full-time", detail: "Grade 7.5/10. Thesis – Grade 8/10: Mental toughness and peak performance. Minor in Performance Psychology and Cognitive Neuroscience." },
+        { period: "2008 – 2012", role: "Early Career Exploration · Medicine & STEM", organisation: "Campus of Excellence · Hof, Germany · Part-time", detail: "STEM mentorship \"Zukunft MINT\" (50 courses across Europe & Berlin Military Hospital internship); internships in pain therapy and IT." }
       ]
     }
   ];
@@ -1276,6 +1302,7 @@ const projects = [
       const title = document.createElement("h3"); title.className = "text-lg font-medium text-white"; title.textContent = entry.title;
       const detail = document.createElement("p"); detail.className = "text-sm text-gray-300 leading-relaxed"; detail.textContent = entry.detail;
       article.append(type,title,detail);
+      if (entry.venue) { const venue = document.createElement("p"); venue.className = "text-sm text-gray-300 leading-relaxed"; venue.textContent = entry.venue; article.appendChild(venue); }
       if (entry.points && entry.points.length) {
         const list = document.createElement("ul"); list.className = "space-y-2 text-sm text-gray-300 pt-1";
         entry.points.forEach(point => {
@@ -1294,17 +1321,17 @@ const projects = [
     if (!cvModal) return;
     const timeline = document.getElementById("cv-timeline"); timeline.replaceChildren();
     cvSections.forEach(section => {
-      const group = document.createElement("section");
-      const heading = document.createElement("h3"); heading.className = "text-xs uppercase tracking-[0.2em] accent-header mb-5"; heading.textContent = section.heading;
-      const list = document.createElement("div"); list.className = "relative ml-2 border-l border-[#a9e5d4]/40 space-y-7 pb-2";
+      const group = document.createElement("section"); group.className = "flex flex-col";
+      const heading = document.createElement("h3"); heading.className = "text-xs uppercase tracking-[0.2em] accent-header mb-4"; heading.textContent = section.heading;
+      const list = document.createElement("div"); list.className = "relative ml-2 border-l border-[#5ef7cb]/40 flex-1 flex flex-col justify-between gap-4 pb-1";
       section.entries.forEach(entry => {
         const item = document.createElement("article"); item.className = "relative pl-7";
-        const dot = document.createElement("span"); dot.className = "absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full bg-[#a9e5d4] shadow-[0_0_10px_rgba(169,229,212,0.3)]";
+        const dot = document.createElement("span"); dot.className = "absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full bg-[#5ef7cb] shadow-[0_0_10px_rgba(94,247,203,0.3)]";
         const period = document.createElement("p"); period.className = "text-xs tracking-wide accent-subhead mb-1"; period.textContent = entry.period;
         const title = document.createElement("h4"); title.className = "text-base font-semibold text-white"; title.textContent = entry.role;
         item.append(dot, period, title);
         if (entry.organisation) { const org = document.createElement("p"); org.className = "text-sm text-gray-300 mt-0.5"; org.textContent = entry.organisation; item.appendChild(org); }
-        const detail = document.createElement("p"); detail.className = "text-sm text-gray-400 mt-2 leading-relaxed"; detail.textContent = entry.detail;
+        const detail = document.createElement("p"); detail.className = "text-sm text-gray-400 mt-1 leading-normal"; detail.textContent = entry.detail;
         item.appendChild(detail); list.appendChild(item);
       });
       group.append(heading, list); timeline.appendChild(group);
