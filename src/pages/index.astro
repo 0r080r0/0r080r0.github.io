@@ -300,7 +300,7 @@ const projects = [
       <div class="flex-1 flex flex-col">
         <!-- Header -->
         <header
-          class="w-full px-6 py-4 bg-black/50 backdrop-blur-sm border-b border-gray-700"
+          class="header-unfold w-full px-6 py-4 bg-black/50 backdrop-blur-sm border-b border-gray-700"
         >
           <div class="w-full text-center">
             <h1 class="intro-name opacity-0 text-3xl font-light accent-header mb-2">
@@ -951,6 +951,14 @@ const projects = [
     animation: sidebarSectionIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: calc(0.6s + var(--i, 0) * 0.1s);
   }
+  /* Header panel: glides down and fades in, same timing and easing as the sidebar */
+  .header-unfold {
+    animation: headerUnfold 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes headerUnfold {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
   @keyframes sidebarUnfold {
     from { transform: translateX(-100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -960,7 +968,7 @@ const projects = [
     to { transform: translateX(0); opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
-    aside, aside nav h3, aside nav .space-y-2 > *, aside nav > div > button { animation: none; }
+    aside, aside nav h3, aside nav .space-y-2 > *, aside nav > div > button, .header-unfold { animation: none; }
   }
 
   /* Sidebar: quiet scrollbar, only visible if content ever overflows */
@@ -1291,7 +1299,7 @@ const projects = [
         { period: "Jul 2026 – Present", role: "PhD in Music · Musician Health", organisation: "Sydney Conservatorium of Music · University of Sydney · Sydney, Australia · Full-time", detail: "Occupational health, biomechanics and computational methods for preventing musicians' pain and injury." },
         { period: "Aug 2021 – Jun 2023", role: "Research Master Psychological Science", organisation: "University of Gothenburg · Gothenburg, Sweden · Full-time", detail: "Pass with distinction. Thesis: meta-analysis of music listening effects on motricity in Parkinson's disease." },
         { period: "Sep 2018 – Jul 2021", role: "Bachelor of Science Psychology", organisation: "University of Groningen · Groningen, The Netherlands · Full-time", detail: "Grade 7.5/10. Thesis – Grade 8/10: Mental toughness and peak performance. Minor in Performance Psychology and Cognitive Neuroscience." },
-        { period: "2008 – 2012", role: "Early Career Exploration · Medicine & STEM", organisation: "Campus of Excellence · Hof, Germany · Part-time", detail: "STEM mentorship \"Zukunft MINT\" (50 courses across Europe & Berlin Military Hospital internship); internships in pain therapy and IT." }
+        { period: "Jun 2011 – Jun 2014", role: "Early Career Exploration & STEM Mentorship · Medicine & STEM", organisation: "Campus of Excellence · Hof, Germany · Part-time", detail: "Participated in a four-year STEM mentorship programme \"Zukunft MINT\" (50 courses across Europe & Berlin Military Hospital medical internship); completed internships in pain therapy and IT." }
       ]
     }
   ];
