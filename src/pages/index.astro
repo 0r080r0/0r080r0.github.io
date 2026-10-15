@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const projects = [
   {
     id: "drummer-posture",
+    status: "In Progress",
     title: "Drummer Posture Monitoring Application",
     shortDescription: "Real-time posture monitoring for drummers",
     description:
@@ -23,6 +24,7 @@ const projects = [
   },
   {
     id: "health-survey",
+    status: "Completed",
     title: "Musician Health Survey",
     shortDescription: "Online survey assessing musicians’ mental and physical wellbeing",
     description:
@@ -47,6 +49,7 @@ const projects = [
   },
   {
     id: "biomechanical-analysis",
+    status: "Completed",
     title: "Biomechanical Analysis (EMG)",
     shortDescription: "Muscle activity pattern analysis for injury prevention",
     description:
@@ -70,6 +73,7 @@ const projects = [
   },
   {
     id: "machine-learning",
+    status: "Concept",
     title: "ML-Based Injury Risk and Pain Prediction (in Progress)",
     shortDescription:
       "ML algorithm for prediction of performance-related musculoskeletal injuries",
@@ -90,6 +94,7 @@ const projects = [
   },
   {
     id: "multi-level-model",
+    status: "Completed",
     title: "Multi-Level Modeling",
     shortDescription: "Multi-Level Modeling for Panic Symptoms and Performance Anxiety in Drummers",
     description:
@@ -113,6 +118,7 @@ const projects = [
   },
   {
     id: "music-experience-website",
+    status: "Completed",
     title: "Music Experience Website",
     shortDescription: "A self-developed website showcasing my music experience",
     description:
@@ -156,7 +162,7 @@ const projects = [
     <!-- Content Layer: All content above the background -->
     <div class="relative z-10 w-full flex">
       <!-- Left Sidebar -->
-      <aside class="w-48 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col mt-32">
+      <aside class="w-48 bg-black/80 backdrop-blur-sm border-r border-gray-700 p-4 flex flex-col overflow-y-auto">
         <nav class="space-y-6">
           <!-- Research Experience -->
           <div>
@@ -221,6 +227,58 @@ const projects = [
     </div>
   </div>
 </div>
+
+          <!-- Professional Experience: new section only -->
+          <div>
+            <h3 class="text-xs font-semibold text-[#a9e5d4] mb-2 tracking-wide uppercase opacity-90">Professional Experience</h3>
+            <div class="space-y-2">
+              {['Statistical Consulting', 'Clinical Research Consulting'].map((label, index) => (
+                <div class="professional-item cursor-pointer" data-professional-index={index} role="button" tabindex="0" aria-label={label}>
+                  <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-between gap-2">
+                    <div class="text-xs font-medium text-white">{label}</div>
+                    <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <!-- Research Outputs: new section only -->
+          <div>
+            <h3 class="text-xs font-semibold text-[#a9e5d4] mb-2 tracking-wide uppercase opacity-90">Research Outputs</h3>
+            <div class="space-y-2">
+              {['Publications', 'Talks & Conferences'].map((label, index) => (
+                <div class="output-item cursor-pointer" data-output-index={index} role="button" tabindex="0" aria-label={label}>
+                  <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-between gap-2">
+                    <div class="text-xs font-medium text-white">{label}</div>
+                    <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <!-- Awards: new section only -->
+          <div>
+            <h3 class="text-xs font-semibold text-[#a9e5d4] mb-2 tracking-wide uppercase opacity-90">Awards</h3>
+            <div class="space-y-2">
+              <div class="award-item cursor-pointer" data-award-index="0" role="button" tabindex="0" aria-label="USydIS Scholarship">
+                <div class="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+                  <div class="flex items-center justify-between gap-2">
+                    <div class="text-xs font-medium text-white">USydIS Scholarship</div>
+                    <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </div>
+                  <div class="text-xs text-gray-400 mt-0.5 opacity-70">Dec 2025 • University of Sydney</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- CV: new section only -->
+          <div>
+            <h3 class="text-xs font-semibold text-[#a9e5d4] mb-2 tracking-wide uppercase opacity-90">Curriculum Vitae</h3>
+            <button id="open-cv-modal" type="button" class="w-full text-left p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-between gap-2" aria-haspopup="dialog">
+              <span class="text-xs font-medium text-white">Explore visual CV</span>
+              <svg class="w-3 h-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </button>
+          </div>
 
           <!-- Quick Links -->
           <div>
@@ -292,6 +350,7 @@ const projects = [
                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-black/80 text-gray-200 text-[10px] border border-gray-500/60">{project.status}</span>
                     <div class="absolute bottom-3 left-3 text-white">
                       <h3 class="font-medium text-sm mb-1">{project.title}</h3>
                     </div>
@@ -492,6 +551,36 @@ const projects = [
       </div>
     </div>
 
+    <!-- Research Outputs Modal: independent of all existing modals -->
+    <div id="output-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="output-modal-title">
+      <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between">
+          <div>
+            <p id="output-modal-eyebrow" class="text-[11px] uppercase tracking-[0.2em] accent-header mb-1"></p>
+            <h2 id="output-modal-title" class="text-2xl font-semibold text-white"></h2>
+          </div>
+          <button id="close-output-modal" class="text-gray-400 hover:text-white transition-colors" aria-label="Close research outputs"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div id="output-modal-content" class="p-6 space-y-4 text-gray-300"></div>
+      </div>
+    </div>
+    <!-- Visual CV Modal: new independent component -->
+    <div id="cv-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <div class="bg-black/90 border border-gray-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-black/90 border-b border-gray-700 p-6 flex items-center justify-between">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.2em] accent-header mb-1">Professional journey</p>
+            <h2 id="cv-modal-title" class="text-2xl font-semibold text-white">Curriculum Vitae</h2>
+          </div>
+          <button id="close-cv-modal" class="text-gray-400 hover:text-white transition-colors" aria-label="Close visual CV"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="p-6">
+          <p class="text-sm text-gray-400 mb-8">Selected work experience and education.</p>
+          <div id="cv-timeline" class="space-y-10"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Thesis Modal -->
     <div
       id="thesis-modal"
@@ -675,6 +764,7 @@ const projects = [
   #research-modal.active {
     display: flex;
   }
+  #output-modal.active, #cv-modal.active { display: flex; }
   #thesis-modal {
     display: none;
   }
@@ -824,6 +914,50 @@ const projects = [
     opacity: 1;
     border-color: #10b981;
     box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Overlay accents: mint header (soft glow), dark teal subhead */
+  :global(.accent-header) {
+    color: #a9e5d4;
+    text-shadow: 0 0 8px rgba(169, 229, 212, 0.35);
+  }
+  :global(.accent-subhead) {
+    color: #1a8c84;
+  }
+
+  /* Thesis gallery thumbnails are created by JS, so their styles must be global */
+  :global(.gallery-thumbnail) {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+  :global(.gallery-thumbnail:hover) {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  :global(.gallery-thumbnail.active) {
+    opacity: 1;
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Sidebar: quiet scrollbar, only visible if content ever overflows */
+  aside {
+    scrollbar-width: thin;
+    scrollbar-color: #374151 transparent;
+  }
+  aside::-webkit-scrollbar {
+    width: 4px;
+  }
+  aside::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 2px;
   }
 
   /* Different colors for different list types */
@@ -1097,6 +1231,78 @@ const projects = [
       ]
     }
   ];
+
+  // New sidebar content. Update these draft entries with confirmed CV details.
+  const professionalExperiences = [
+    { title: "Statistical Consulting", description: "Statistical and analytical consulting across research contexts. Details to be completed.", tasks: ["Quantitative research support", "Statistical analysis and interpretation"], challenges: ["Adapting methods to research questions"], contributions: ["Research-oriented analytical support"] },
+    { title: "Clinical Research Consulting", description: "Methodological and analytical support for applied health research. Details to be completed.", tasks: ["Research methodology support", "Data analysis and interpretation"], challenges: ["Interdisciplinary research requirements"], contributions: ["Clinical and applied research support"] }
+  ];
+  const researchOutputs = [
+    { title: "Publications", eyebrow: "Research outputs", entries: [{ type: "Manuscript under review", title: "MSc Research Practicum manuscript", detail: "Research on music listening and cognitive and physical performance. Title and journal withheld pending confirmation." }] },
+    { title: "Talks & Conferences", eyebrow: "Research outputs", entries: [{ type: "Conference presentation · 2 October 2026", title: "Scaling Soundness: A Computational Approach to the Discovery of Musician-Health Information on Music Institution Websites Worldwide", detail: "ASME Graduate Research Symposium" }] }
+  ];
+  const awards = [
+    { title: "Awards", eyebrow: "Recognition", entries: [{ type: "Issued by The University of Sydney · Dec 2025", title: "University of Sydney International Scholarship (USydIS)", detail: "Competitive scholarship for international students, providing a living stipend and full tuition fee support for doctoral study at the University of Sydney." }] }
+  ];
+  // Visual CV: work experience and education only (research outputs and awards live in the sidebar).
+  const cvSections = [
+    {
+      heading: "Work Experience",
+      entries: [
+        { period: "Dates to confirm", role: "Statistical & Clinical Research Consultant", organisation: "Freelance · Two clients", detail: "Statistical analysis and research-methodology support for clinical and applied health research." },
+        { period: "Oct 2024 – Oct 2025", role: "Data Analytics Tutor & Mental Wellbeing Coach", organisation: "DataSmart Point · Retraining start-up for unemployed adults", detail: "Taught data analytics to people retraining for new careers, and supported participants' mental wellbeing as a coach." },
+        { period: "BSc · Dates to confirm", role: "Research Assistant · Experimental Neuroscience", organisation: "", detail: "EEG setup, data collection and MATLAB analysis in audiovisual working-memory studies; contributed to published research." }
+      ]
+    },
+    {
+      heading: "Education",
+      entries: [
+        { period: "2026 – Present", role: "PhD in Music · Musician Health", organisation: "Sydney Conservatorium of Music · University of Sydney", detail: "Occupational health, biomechanics and computational methods for preventing musicians' pain and injury. Funded by the USydIS scholarship." },
+        { period: "2023", role: "MSc Psychological Science", organisation: "", detail: "Thesis: meta-analysis of music listening effects on motor rehabilitation in Parkinson's disease." },
+        { period: "2021", role: "BSc Psychology", organisation: "", detail: "Thesis: online experiment on mental toughness, goal focus and peak performance." }
+      ]
+    }
+  ];
+  let outputModal, cvModal;
+  function hideNewModal(element) { if (!element) return; element.classList.remove("active"); document.body.style.overflow = "auto"; }
+  function showNewModal(element) { if (!element) return; element.classList.add("active"); document.body.style.overflow = "hidden"; }
+  function showOutputModal(group) {
+    if (!outputModal) return;
+    document.getElementById("output-modal-title").textContent = group.title;
+    const eyebrow = document.getElementById("output-modal-eyebrow");
+    if (eyebrow) eyebrow.textContent = group.eyebrow || "";
+    const content = document.getElementById("output-modal-content");
+    content.replaceChildren();
+    group.entries.forEach(entry => {
+      const article = document.createElement("article"); article.className = "space-y-2 pb-4 border-b border-gray-700/70";
+      const type = document.createElement("p"); type.className = "text-xs accent-subhead"; type.textContent = entry.type;
+      const title = document.createElement("h3"); title.className = "text-lg font-medium text-white"; title.textContent = entry.title;
+      const detail = document.createElement("p"); detail.className = "text-sm text-gray-300 leading-relaxed"; detail.textContent = entry.detail;
+      article.append(type,title,detail); content.appendChild(article);
+    });
+    showNewModal(outputModal);
+  }
+  function showCvModal() {
+    if (!cvModal) return;
+    const timeline = document.getElementById("cv-timeline"); timeline.replaceChildren();
+    cvSections.forEach(section => {
+      const group = document.createElement("section");
+      const heading = document.createElement("h3"); heading.className = "text-xs uppercase tracking-[0.2em] accent-header mb-5"; heading.textContent = section.heading;
+      const list = document.createElement("div"); list.className = "relative ml-2 border-l border-[#a9e5d4]/40 space-y-7 pb-2";
+      section.entries.forEach(entry => {
+        const item = document.createElement("article"); item.className = "relative pl-7";
+        const dot = document.createElement("span"); dot.className = "absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full bg-[#a9e5d4] shadow-[0_0_10px_rgba(169,229,212,0.3)]";
+        const period = document.createElement("p"); period.className = "text-xs tracking-wide accent-subhead mb-1"; period.textContent = entry.period;
+        const title = document.createElement("h4"); title.className = "text-base font-semibold text-white"; title.textContent = entry.role;
+        item.append(dot, period, title);
+        if (entry.organisation) { const org = document.createElement("p"); org.className = "text-sm text-gray-300 mt-0.5"; org.textContent = entry.organisation; item.appendChild(org); }
+        const detail = document.createElement("p"); detail.className = "text-sm text-gray-400 mt-2 leading-relaxed"; detail.textContent = entry.detail;
+        item.appendChild(detail); list.appendChild(item);
+      });
+      group.append(heading, list); timeline.appendChild(group);
+    });
+    showNewModal(cvModal);
+  }
 
   // Modal elements - declared but will be assigned in setupEventListeners
   let modal, modalTitle, modalImage, modalDescription, modalTechnologies, modalChallenges, modalOutcomes, modalLinks, closeModal;
@@ -1464,6 +1670,7 @@ const projects = [
       
       // Add click listener
       thumb.addEventListener("click", () => showImage(index));
+      thumbnailsContainer.appendChild(thumb);
     });
 
     // Setup navigation buttons with clean event listeners
@@ -1680,6 +1887,30 @@ const projects = [
       });
     });
 
+    // New sidebar controls: existing research/thesis handlers remain unchanged.
+    document.querySelectorAll(".professional-item").forEach(item => {
+      const open = () => { const entry = professionalExperiences[Number(item.dataset.professionalIndex)]; if (entry) showResearchModal(entry); };
+      item.addEventListener("click", open);
+      item.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+    });
+    outputModal = document.getElementById("output-modal");
+    document.querySelectorAll(".output-item").forEach(item => {
+      const open = () => { const entry = researchOutputs[Number(item.dataset.outputIndex)]; if (entry) showOutputModal(entry); };
+      item.addEventListener("click", open);
+      item.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+    });
+    document.querySelectorAll(".award-item").forEach(item => {
+      const open = () => { const entry = awards[Number(item.dataset.awardIndex)]; if (entry) showOutputModal(entry); };
+      item.addEventListener("click", open);
+      item.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+    });
+    cvModal = document.getElementById("cv-modal");
+    document.getElementById("open-cv-modal")?.addEventListener("click", showCvModal);
+    document.getElementById("close-output-modal")?.addEventListener("click", () => hideNewModal(outputModal));
+    document.getElementById("close-cv-modal")?.addEventListener("click", () => hideNewModal(cvModal));
+    outputModal?.addEventListener("click", e => { if (e.target === outputModal) hideNewModal(outputModal); });
+    cvModal?.addEventListener("click", e => { if (e.target === cvModal) hideNewModal(cvModal); });
+
     // Close button event listeners
     if (closeModal) {
       closeModal.addEventListener("click", hideModal);
@@ -1708,6 +1939,8 @@ const projects = [
         hideModal();
         hideThesisModal();
         hideResearchModal();
+        hideNewModal(outputModal);
+        hideNewModal(cvModal);
       }
     });
   }
